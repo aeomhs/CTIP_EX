@@ -12,20 +12,21 @@ plugins {
 
     // Apply the application plugin to add support for building an application
     id 'application'
+    id "org.sonarqube" version "2.7"
 }
 
 repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    mavenCenteral()
 }
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
-    implementation 'com.google.guava:guava:27.0.1-jre'
+    //implementation 'com.google.guava:guava:27.0.1-jre'
     compile files('src/main/resources/activation.jar', 'src/main/resources/mail.jar')
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    ttestImplementation('org.junit.jupiter:junit-jupiter:5.4.1')
 }
 
 // Define the main class for the application
