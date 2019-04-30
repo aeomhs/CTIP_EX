@@ -7,3 +7,8 @@ build
 .DS_Store
 *.bat
 
+.classpath
+.project
+.settings/
+.vscode/
+bin/
