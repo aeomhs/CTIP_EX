@@ -58,8 +58,8 @@ jacocoTestReport {
 test{
     useJUnitPlatform()
     reports{
-        junitXml.enabled = false
-        html.enabled = true
+        junitXml.enabled = true
+        html.enabled = false
     }
 }
 // Define the main class for the application
