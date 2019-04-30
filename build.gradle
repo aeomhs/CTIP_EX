@@ -12,6 +12,7 @@ plugins {
     // Apply the application plugin to add support for building an application
     id 'application'
     id "org.sonarqube" version "2.7"
+    id 'jacoco'
 }
 
 repositories {
@@ -26,6 +27,19 @@ dependencies {
     compile files('src/main/resources/activation.jar', 'src/main/resources/mail.jar')
     // Use JUnit test framework
     testImplementation('org.junit.jupiter:junit-jupiter:5.4.1')
+}
+
+jacoco {
+    toolVersion = "0.8.3"
+    reportsDir = file("$buildDir/reports/jacoco")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/reports/jacocoHtml")
+    }
 }
 
 test{
