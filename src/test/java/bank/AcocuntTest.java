@@ -13,7 +13,7 @@ class AccountTests {
 	void initAccountTest() {
 		Account account = new Account("Hong gil-dong", "1234567890", "0001");
 		assertNotNull(account);
-		assertEquals(10, account.getBalance());
+		assertEquals(0, account.getBalance());
 	}
 
 	@Test
