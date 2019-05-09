@@ -37,6 +37,7 @@ __/src__
 
 ## PLZ DO NOT TOUCH
 __settings.gradle__
+
 __build.gradle__
 
 ## YOU CAN USE FOR BUILD
