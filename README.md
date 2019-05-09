@@ -10,10 +10,10 @@
 # Guideline CTIP Environment
 
 ## Intellij
- > git clone
- > jdk 1.8
- > junit 5
- > Test project running
+ > git clone  
+ > jdk 1.8  
+ > junit 5  
+ > Test project running  
 
 ## Slack
 
