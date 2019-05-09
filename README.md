@@ -2,9 +2,22 @@
 
 # Co-Working SV_3 & SMA_6
 
+## SV_3
+## SMA_6
+
 ***
 
 # Guideline CTIP Environment
+
+## Intellij
+ > git clone
+ > jdk 1.8
+ > junit 5
+ > Test project running
+
+## Slack
+
+## Jenkins & Trello
 
 ## Directory Structure
 
