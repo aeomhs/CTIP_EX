@@ -13,19 +13,19 @@ public class Dday extends Thread{
     private String[] goalList ={"stop drinking","stop smoking","studying","exercising","diet","save money"};
     private int index=0;
     private int number;
-    private int dayCount;
+    private int dayCount = 0;
     private int diffHour;
     private int diffMinute;
     private String status;
     private InstManager im;
-    private int check =0;
     Timer timer;
     Timekeeping tk;
+    TimerTask task;
 
     public Dday()
     {
         //자바에서 제공하는 타이머. watch package의 Timer class 아님
-        timer = new Timer();
+        im = InstManager.getInstance();
         tk = im.getTimekeeping();
     }
 
@@ -57,21 +57,56 @@ public class Dday extends Thread{
 
     public void calculateDday()
     {
-        TimerTask task = new TimerTask() {
+        task = new TimerTask() {
             @Override
             public void run() {
-                if(check==0)
-                    timer.cancel();
                 dayCount +=1;
-                check++;
+                System.out.println("TImer 발동!");
             }
         };
+
+        timer = new Timer();
+        timer.scheduleAtFixedRate(task, (diffHour * 60 + diffMinute) * 60 * 1000, 24 * 60 * 60 * 1000);
+        //timer.scheduleAtFixedRate(task, 1000*60, 1000*60*2);
+/*
         while(check < 2) {
-            if (check == 0)
-                timer.scheduleAtFixedRate(task, 0, (diffHour * 60 + diffMinute) * 60 * 1000);
-            else
-                timer.scheduleAtFixedRate(task, 0, 24 * 60 * 60 * 1000);
+            if (check == 0) {
+                task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        if(check==0) {
+                            timer.cancel();
+                            timer.purge();
+                        }
+                        dayCount +=1;
+                        check++;
+                    }
+                };
+                timer = new Timer();
+                //timer.scheduleAtFixedRate(task, 0, (diffHour * 60 + diffMinute) * 60 * 1000);
+                timer.scheduleAtFixedRate(task, 0, 1000*60);
+            }
+            else {
+                task = new TimerTask() {
+                    @Override
+                    public void run() {
+                       /* if(check==1) {
+                            timer.cancel();
+                            timer.purge();
+                        }
+                           check++;
+
+
+                        dayCount +=1;
+                       //check++;
+                    }
+                };
+                timer = new Timer();
+                //timer.scheduleAtFixedRate(task, 0, 24 * 60 * 60 * 1000);
+                timer.scheduleAtFixedRate(task, 0, 1000*60*2);
+            }
         }
+        */
 
     }
 
@@ -98,7 +133,9 @@ public class Dday extends Thread{
             count++;
             cal2.add(Calendar.DATE, 1);
         }
-        dayCount = count;
+        dayCount = count -1;
+
+        System.out.println("dayCOunt:"+dayCount);
     }
 
 
@@ -127,6 +164,7 @@ public class Dday extends Thread{
     public void setYear(int year) {
         this.year = year;
     }
+
 
     public void setMonth(int month) {
         this.month = month;

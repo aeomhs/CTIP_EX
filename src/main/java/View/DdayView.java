@@ -1,6 +1,10 @@
 package View;
 
 
+import watch.Dday;
+import watch.InstManager;
+import watch.Timekeeping;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
@@ -9,7 +13,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.InputStream;
 import java.net.URL;
-
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Collections;
 
 
 public class DdayView extends JPanel{
@@ -31,13 +37,26 @@ public class DdayView extends JPanel{
     private JLabel segment;
     private JLabel tmp;
 
-    private int hour;
-    private int minute;
-    private int second;
+    private Dday dDay;
+    private int year;
+    private int month;
+    private int date;
+    private String goal;
+    private String[] goalList = {"stop drinking","stop smoking","studying","exercising","diet","save money"};
+    private int goal_index = -1;
+    private int settingNum = 1;
+
+    private Calendar calendar;
+    private SimpleDateFormat seg_fm;
+
+    private Timekeeping timekeeping;
+
     private String dDay_status = "List"; //TimeKeeping 과 TimeSetting 의 View 가 존재한다.
     /*
-        1. List     2. Setting     3. Add
+        1. List     2. Setting     3. Add   4.DeleteFinish   5. AddFinish
      */
+    private String strDate;
+
 
     public DdayView(BaseView base)
     {
@@ -45,8 +64,14 @@ public class DdayView extends JPanel{
         this.setBounds(0,0,800,500);
         this.setBackground(Color.PINK);
 
-        ImageIcon icon1 = new ImageIcon("C:\\Users\\조은지\\IdeaProjects\\CTIP_SMA_6\\src\\main\\java\\Image\\circle.png");
-        Dday_label = new JLabel(icon1);
+        seg_fm = new SimpleDateFormat("yyyy.MM.dd");
+        timekeeping = InstManager.getInstance().getTimekeeping();
+        calendar = Calendar.getInstance();
+        calendar.set(timekeeping.getYear(),timekeeping.getMonth(),timekeeping.getDate());
+
+
+        //ImageIcon icon1 = new ImageIcon("C:\\Users\\조은지\\IdeaProjects\\CTIP_SMA_6\\src\\main\\java\\Image\\circle.png");
+        Dday_label = new JLabel();
         Dday_label.setBorder(new TitledBorder(new LineBorder(Color.BLACK)));
         Dday_label.setBounds(0,0,500,500);
 
@@ -92,6 +117,8 @@ public class DdayView extends JPanel{
         this.add(Dday_label);
         this.setLayout(null);
 
+
+
         A = new JButton("A");
         A.setBounds(100,150,50,50);
         Dday_label.add(A);
@@ -108,17 +135,74 @@ public class DdayView extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //if(tk_status.equals("TimeKeeping"))
-                base.change_view(6);
+                //base.change_view(6);
                 if(dDay_status.equals("List") == true){
+                    dDay =base.controller.req_selectDate();
+                    if( dDay != null){
+                        dDay_status = "Add";
+                        segment.setText("   ???   ");
+                        req_nextGoal();
+                    }
 
 
                 }
+                else if(dDay_status.equals("Finish") == true){
+                    dDay =base.controller.req_selectDate();
+                    if( dDay != null){
+                        dDay_status = "Add";
+                        segment.setText("   ???   ");
+                        req_nextGoal();
+                    }
+                }
                 else if(dDay_status.equals("Setting") == true){
+                    base.controller.req_deleteDday();
+                    base.controller.getInstManager().setdDayIndex(-1);
+                    dDay_status = "Finish";
+
+                    dot.setText("delete completed~");
+                    segment.setText("   X   ");
 
 
                 }
                 else if(dDay_status.equals("Add") == true){
+                    switch(settingNum)
+                    {
+                        case 1:
+                            req_nextGoal();
+                            break;
+                        case 2:
+                            if(timekeeping.getYear() > calendar.get(Calendar.YEAR)) {
+                                req_nextYear();
+                            }
+                            break;
+                        case 3:
+                            if(timekeeping.getYear() > calendar.get(Calendar.YEAR)) {
+                                req_nextMonth();
+                            }
+                            else if(timekeeping.getYear() == calendar.get(Calendar.YEAR)){
+                                if(timekeeping.getMonth() > calendar.get(Calendar.MONTH)) {
+                                    req_nextMonth();
+                                }
+                            }
+                            break;
+                        case 4:
+                            if(timekeeping.getYear() > calendar.get(Calendar.YEAR)) {
+                                req_nextDate();
+                            }
+                            else if(timekeeping.getYear() == calendar.get(Calendar.YEAR)){
 
+                                if(timekeeping.getMonth() > calendar.get(Calendar.MONTH)) {
+                                    req_nextDate();
+                                }
+                                else if(timekeeping.getMonth() == calendar.get(Calendar.MONTH)) {
+                                    if(timekeeping.getDate() > calendar.get(Calendar.DATE)) {
+                                        req_nextDate();
+                                    }
+                                }
+                            }
+                            break;
+
+                    }
 
                 }
             }
@@ -127,18 +211,61 @@ public class DdayView extends JPanel{
         C.setBounds(100,300,50,50);
         Dday_label.add(C);
         C.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println(dDay_status);
                 if(dDay_status.equals("List") == true){
-
+                    if(dDay != null) {
+                        dDay_status = "Setting";
+                        dot.setText("Really Delete??");
+                    }
+                }
+                else if(dDay_status.equals("Finish") == true){
 
                 }
                 else if(dDay_status.equals("Setting") == true){
-
+                    dDay_status = "List";
+                    dot.setText((InstManager.getInstance().getdDayIndex()+1)+"번째 목표 : "+dDay.getGoal());
 
                 }
                 else if(dDay_status.equals("Add") == true){
+                    if(settingNum == 1){
+                        goal = goalList[goal_index];
+                        base.controller.req_setGoal(goal);
+                        settingNum++;
+                        strDate = seg_fm.format(calendar.getTime());
+                        segment.setText(strDate);
+                    }
+                    else if(settingNum == 2){
+                        settingNum++;
+                    }
+                    else if(settingNum == 3){
+                        settingNum++;
+                    }
+                    else if(settingNum == 4) {
+                        base.controller.req_setDate("dDay",calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
+                        dDay.start();
 
+                        settingNum = 1;
+                        calendar.set(timekeeping.getYear(),timekeeping.getMonth() ,timekeeping.getDate());
+
+                        base.controller.getInstManager().setdDayIndex(-1);
+                        dDay_status = "Finish";
+                        dot.setText("Add completed!!");
+                        segment.setText("   Cheer Up~   ");
+
+                       /* dDay = base.controller.req_DdayList();
+                        if(dDay == null){
+                            dot.setText("No D+day List");
+                            segment.setText("   +0   ");
+                        }
+                        else{
+                            dot.setText(dDay.getGoal());
+                            segment.setText((InstManager.getInstance().getdDayIndex()+1)+"번째 D+day: +"+dDay.getDayCount());
+                        }
+                        */
+                    }
 
                 }
             }
@@ -150,36 +277,131 @@ public class DdayView extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(dDay_status.equals("List") == true){
-
+                    dDay = base.controller.req_DdayList();
+                    if(dDay == null){
+                        dot.setText("D+day List Is NULL!");
+                        segment.setText("   X   ");
+                    }
+                    else{
+                        dot.setText(dDay.getGoal());
+                        dot.setText((InstManager.getInstance().getdDayIndex()+1)+"번째 목표 : "+dDay.getGoal());
+                        segment.setText((InstManager.getInstance().getdDayIndex()+1)+"번쨰 D+day 값: +"+dDay.getDayCount());
+                    }
 
                 }
-                else if(dDay_status.equals("Setting") == true){
-
-
+                else if(dDay_status.equals("Finish") == true){
+                    dDay_status = "List";
+                    dDay = base.controller.req_DdayList();
+                    if(dDay == null){
+                        dot.setText("D+day List Is NULL!");
+                        segment.setText("   X   ");
+                    }
+                    else{
+                        dot.setText(dDay.getGoal());
+                        dot.setText((InstManager.getInstance().getdDayIndex()+1)+"번째 목표 : "+dDay.getGoal());
+                        segment.setText((InstManager.getInstance().getdDayIndex()+1)+"번쨰 D+day 값: +"+dDay.getDayCount());
+                    }
                 }
                 else if(dDay_status.equals("Add") == true){
+                    switch(settingNum)
+                    {
+                        case 1:
+                            req_prevGoal();
+                            break;
+                        case 2:
+                            req_prevYear();
+                            break;
+                        case 3:
+                            req_prevMonth();
+                            break;
+                        case 4:
+                            req_prevDate();
+                            break;
 
+                    }
 
                 }
             }
         });
         dot = new JLabel();
-        dot.setText("05.24.FRI");
-        dot.setBounds(150,200,100,30);
+        dot.setText("D+day List Is NULL!");
+        dot.setBounds(150,200,200,30);
         dot.setFont(new Font("돋움",Font.BOLD,15));
         dot.setBorder(new TitledBorder(new LineBorder(Color.BLACK)));
         Dday_label.add(dot);
 
         segment = new JLabel();
 
-        segment.setText(Integer.toString(hour)+":"+Integer.toString(minute)+":"+Integer.toString(second));
+        segment.setText("   X   ");
         segment.setBounds(150,230,200,50);
         segment.setBorder(new TitledBorder((new LineBorder(Color.BLACK))));
-        segment.setFont(new Font("돋움",Font.BOLD,50));
+        segment.setFont(new Font("돋움",Font.BOLD,15));
         Dday_label.add(segment);
 
 
 
+
+    }
+
+    public void setLCD(DdayView ddayView) {
+        ddayView.LCD1.setVisible(base.controller.req_isFunctionSelected(1));
+        ddayView.LCD2.setVisible(base.controller.req_isFunctionSelected(2));
+        ddayView.LCD3.setVisible(base.controller.req_isFunctionSelected(3));
+        ddayView.LCD4.setVisible(base.controller.req_isFunctionSelected(4));
+        ddayView.LCD5.setVisible(base.controller.req_isFunctionSelected(5));
+    }
+
+    public void req_nextGoal(){
+        goal_index ++;
+        if(goal_index == 6){
+            goal_index = 0;
+        }
+        dot.setText("목표:"+goalList[goal_index]);
+    }
+    public void req_prevGoal(){
+        goal_index --;
+        if(goal_index == -1){
+            goal_index = 5;
+        }
+        dot.setText("목표:"+goalList[goal_index]);
+    }
+
+    public void req_nextYear()
+    {
+        calendar.add(Calendar.YEAR,1);
+        strDate = seg_fm.format(calendar.getTime());
+        segment.setText(strDate);
+    }
+    public void req_prevYear()
+    {
+        calendar.add(Calendar.YEAR,-1);
+        strDate = seg_fm.format(calendar.getTime());
+        segment.setText(strDate);
+    }
+    public void req_nextMonth()
+    {
+        calendar.add(Calendar.MONTH, 1);
+        strDate = seg_fm.format(calendar.getTime());
+        segment.setText(strDate);
+    }
+    public void req_prevMonth()
+    {
+        calendar.add(Calendar.MONTH,-1);
+        strDate = seg_fm.format(calendar.getTime());
+        segment.setText(strDate);
+    }
+
+    public void req_nextDate()
+    {
+        calendar.add(Calendar.DATE, 1);
+        strDate = seg_fm.format(calendar.getTime());
+        segment.setText(strDate);
+    }
+    public void req_prevDate()
+    {
+        calendar.add(Calendar.DATE,-1);
+        strDate = seg_fm.format(calendar.getTime());
+        segment.setText(strDate);
     }
 
 }

@@ -15,7 +15,7 @@ public class DBManager {
 
     ResultSet rs = null;
     ResultSet rs_ver2 = null;
-   // ResultSetMetaData rs_num = null;
+    // ResultSetMetaData rs_num = null;
 
 
 
@@ -39,7 +39,7 @@ public class DBManager {
     public DBManager()
     {
 
-        url = "jdbc:mysql://localhost/watch?useSSL=false";
+        url = "jdbc:mysql://localhost:3306/watch?useSSL=false";
         sql_fit = "select * from fitness";
         sql_sw = "select * from stopwatch";
 
@@ -92,18 +92,18 @@ public class DBManager {
                 psmt = con.prepareStatement(sql);//특정 행 가져오기
                 rs = psmt.executeQuery(sql);
 
-                    while(rs.next()) {
-                        fitDTO.setMonth(rs.getInt("month"));
-                        fitDTO.setDate(rs.getInt("date"));
-                        fitDTO.setHour(rs.getInt("hour"));
-                        fitDTO.setMinute(rs.getInt("minute"));
-                        fitDTO.setSecond(rs.getInt("second"));
-                        fitDTO.setTotalCalories(rs.getInt("totalCalories"));
+                while(rs.next()) {
+                    fitDTO.setMonth(rs.getInt("month"));
+                    fitDTO.setDate(rs.getInt("date"));
+                    fitDTO.setHour(rs.getInt("hour"));
+                    fitDTO.setMinute(rs.getInt("minute"));
+                    fitDTO.setSecond(rs.getInt("second"));
+                    fitDTO.setTotalCalories(rs.getInt("totalCalories"));
 
-
-                    }
 
                 }
+
+            }
             else if(status.equals("finish"))
             {
                 sql = "select * FROM stopwatch where number="+Integer.toString(fitDTO.getCount())+";"; //마지막 레코드만 읽어오기
@@ -120,10 +120,10 @@ public class DBManager {
 
             }
 
-            }
+        }
         catch(Exception e){
-                e.printStackTrace();
-            }
+            e.printStackTrace();
+        }
 
     }
     public void insertFitness(int month, int date, int hour, int minute,int second, int totalCalories) throws ClassNotFoundException {
@@ -218,14 +218,14 @@ public class DBManager {
             rs_ver2.last();
             swDTO.setNum(rs_ver2.getRow());
 
-                while(rs.next()) {
-                    swDTO.setHour(rs.getInt("hour"));
-                    swDTO.setMinute(rs.getInt("minute"));
-                    swDTO.setSecond(rs.getInt("second"));
-                    swColumn++;
-                    if (swColumn == 11)
-                        swColumn = 0;
-                }
+            while(rs.next()) {
+                swDTO.setHour(rs.getInt("hour"));
+                swDTO.setMinute(rs.getInt("minute"));
+                swDTO.setSecond(rs.getInt("second"));
+                swColumn++;
+                if (swColumn == 11)
+                    swColumn = 0;
+            }
 
         }catch (Exception e){
             e.printStackTrace();

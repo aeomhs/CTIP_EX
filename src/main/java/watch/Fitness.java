@@ -1,6 +1,7 @@
 package watch;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.function.DoubleBinaryOperator;
 
 public class Fitness extends Thread implements CountUp{
@@ -30,6 +31,7 @@ public class Fitness extends Thread implements CountUp{
         this.minute = 0;
         this.second = 0;
         this.totalCalories = 0;
+        this.CPM=0;
         this.dbManager = new DBManager();
         this.fitDTO = FitnessDTO.getInstance();
     }
@@ -130,21 +132,17 @@ public class Fitness extends Thread implements CountUp{
 
     public void getRecentDate()
     {
-        dbManager.selectFitness("finish",1);
+        dbManager.selectFitness("finish",count);
         this.recentMonth = fitDTO.getMonth();
         this.recentDate= fitDTO.getDate();
     }
 
     public boolean checkDate(){
-        Timekeeping timekeeping =inst.getTimekeeping();
-        month = timekeeping.getMonth();
-        date = timekeeping.getDate();
-        if(this.recentMonth== month && this.recentDate == date)
-            return true;
 
+        if((recentMonth==month)&&( recentDate == date))
+            return true;
         else
             return false;
-
     }
 
 
@@ -164,12 +162,15 @@ public class Fitness extends Thread implements CountUp{
     }
 
     @Override
-    synchronized public void countUp() {
+    public void countUp() {
+
         second = 0;
         minute = 0;
-        hour =0;
-        while(true) {
-            if(is_stop == false) {
+        hour = 0;
+        totalCalories =0;
+        while (true) {
+            if (is_stop == false) {
+                System.out.println("카운트업");
                 second++;
                 if (second == 60) {
                     second = 0;
@@ -180,9 +181,14 @@ public class Fitness extends Thread implements CountUp{
                     minute = 0;
                     hour++;
                 }
+                try {
+                    sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
             //is_stop == true
-            else{
+            else {
                 synchronized (this) {
                     try {
                         //System.out.println("wait");
@@ -196,27 +202,31 @@ public class Fitness extends Thread implements CountUp{
         }
     }
 
+
+
+
     public void calcultateCalories(){
-            this.totalCalories += this.CPM;
+        this.totalCalories += this.CPM;
     }
 
     public void finish()
     {
         getRecentDate();
-
-        if(checkDate() == true){
-            if(count ==30)
+        boolean check = checkDate();
+        if(check==false){
+            if(count == 30)
             {
                 dbManager.deleteFitness();
             }
             try {
+
                 dbManager.insertFitness(month,date,hour,minute,second,totalCalories);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-
         }
-        else if(checkDate() == false){
+
+        else{
             updateFitness(hour,minute,second,totalCalories);
         }
 

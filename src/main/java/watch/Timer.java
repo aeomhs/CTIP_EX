@@ -12,10 +12,11 @@ public class Timer extends Thread{
         this.hour = 0;
         this.minute = 0;
         this.second = 0;
-        this.is_stop = false;
+        this.is_stop = true;
     }
 
     public void run(){
+        //여기는 run
         //checkTimer()은 countDown()안에 존재한다.
         countDown();
     }
@@ -45,8 +46,6 @@ public class Timer extends Thread{
         return this.second;
     }
 
-    //다이어그램 고쳐주기! 반환말고 get get get
-
     //usecase: count_down
     synchronized public void countDown() {
         outerLoop:
@@ -59,14 +58,12 @@ public class Timer extends Thread{
                 } else if (this.second == 0 && this.minute == 0 && this.hour != 0) {
                     this.minute = 60;
                     this.hour--;
-                } else {
-
+                } else if(this.second == 0 && this.minute == 0 && this.hour == 0){
                     check = checkTimer();
                     if (check == true) {
                         buzzer.setIs_stop(false);
                         buzzer.ringBuzzer();
                     }
-
                 }
                 try {
                     Thread.sleep(1000);
@@ -87,6 +84,7 @@ public class Timer extends Thread{
                     }
                 }
             }
+            System.out.println(hour + ":" +  minute +  ":" +  second);
         }
 
     }

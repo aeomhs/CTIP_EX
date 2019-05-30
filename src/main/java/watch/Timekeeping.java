@@ -17,7 +17,7 @@ public class Timekeeping extends Thread implements CountUp {
     public Timekeeping(){
         Calendar myCalendar = Calendar.getInstance();
         this.year = myCalendar.get(Calendar.YEAR);
-        this.month = myCalendar.get((Calendar.MONTH))+1;
+        this.month = myCalendar.get((Calendar.MONTH));
         this.date = myCalendar.get(Calendar.DAY_OF_MONTH);
         this.hour = myCalendar.get(Calendar.HOUR_OF_DAY);
         this.minute = myCalendar.get(Calendar.MINUTE);

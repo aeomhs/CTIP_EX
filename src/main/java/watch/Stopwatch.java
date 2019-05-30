@@ -14,14 +14,14 @@ public class Stopwatch extends Thread implements CountUp, StateChange{
 
 
     public Stopwatch(){
-
         this.hour = 0;
         this.minute = 0;
         this.second = 0;
-        is_stop = false;
+        is_stop = true;
 
         this.dbManager = new DBManager();
         this.swDTO = StopwatchDTO.getInstance();
+        start();
     }
 
 
@@ -78,6 +78,12 @@ public class Stopwatch extends Thread implements CountUp, StateChange{
                     minute = 0;
                     hour++;
                 }
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
             //is_stop == true
             else{
@@ -90,6 +96,11 @@ public class Stopwatch extends Thread implements CountUp, StateChange{
                         e.printStackTrace();
                     }
                 }
+            }
+            try{
+                sleep(1000);
+            }catch(InterruptedException e){
+                e.printStackTrace();
             }
 
         }

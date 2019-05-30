@@ -66,7 +66,7 @@ public class Alarm extends Thread {
 
 
     public void setDay(int day) {
-        this.checkDayList.get(day);
+        this.checkDayList.add(day);
     }
 
     public void setCycle(int cycle) {
@@ -131,7 +131,7 @@ public class Alarm extends Thread {
                     for (int i = 0; i < checkDayList.size(); i++) {
                         if (this.checkDayList.get(i) == time.getDayNum()) {
                             if(cycle !=0)
-                               tm.scheduleAtFixedRate(tt,0,cycle*60*1000);
+                                tm.scheduleAtFixedRate(tt,0,cycle*60*1000);
                             else if(cycle==0) {
                                 buzzer.setIs_stop(false);
                                 buzzer.ringBuzzer();

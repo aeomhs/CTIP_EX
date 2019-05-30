@@ -55,7 +55,7 @@ public class SelectView extends JPanel{
 
         //<
         this.tkv = new TimeKeepingView(base);
-        this.selectFunction = new SelectFunction();
+        this.selectFunction = base.controller.getInstManager().getSelectFunction();
         this.functionName = base.controller.req_funcList();
         this.functionName = base.controller.req_funcList();
         //초기에 timekeeping(항상 선택된 기능)이 대입되어있기 때문에

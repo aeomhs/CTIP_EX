@@ -7,53 +7,60 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import watch.*;
 import watch.Timer;
+import java.util.Calendar;
+
+import static java.lang.Thread.sleep;
+//import java.util.Timer;
+//import java.util.TimerTask;
 
 public class TimerView extends JPanel{
     private JLabel timer_label;
     private BaseView base;
 
+    private Timer timer;
+    private InstManager instManager;
+    private Timekeeping tk;
+
     private JButton A;  //mode전환    ->    mode
     private JButton B;  //up          ->    reset
     private JButton C;  //ok(start)   ->    pause(continue)
     private JButton D;  //down        ->    none
-    private String timer_status = "Pause";
+    private String timer_status = "Setting";
     /*
         1. Setting      2. Excute       3. Pause
      */
-
     private JLabel segment;
     private JLabel dot;
 
-
-    //세그먼트 창에서 시분초보여줘야하니까
     private int hour = 0;
     private int minute = 0;
     private int second = 0;
-    int settingNum;
+    int settingNum = 0;
+
+    Calendar calendar;
     SimpleDateFormat dot_fm;
     SimpleDateFormat seg_fm;
     String strDate;
-    Calendar calendar;
     public Controller controller = null;
 
 
 
     public TimerView(BaseView base)
     {
+        timer = instManager.getInstance().getTimer();
+        instManager = InstManager.getInstance();
+        tk = instManager.getInstance().getTimekeeping();
+        calendar = Calendar.getInstance();
+
+
         this.base = base;
         this.setBounds(0,0,800,500);
         this.setBackground(Color.CYAN);
 
-        calendar = Calendar.getInstance();
         dot_fm = new SimpleDateFormat("yy.MM.dd.E요일");
         seg_fm = new SimpleDateFormat("HH:mm:SS");
-
-        calendar.set(InstManager.getInstance().getTimekeeping().getYear(),InstManager.getInstance().getTimekeeping().getMonth(),InstManager.getInstance().getTimekeeping().getDate(),InstManager.getInstance().getTimekeeping().getHour(),InstManager.getInstance().getTimekeeping().getMinute(),InstManager.getInstance().getTimekeeping().getSecond());
-
 
         ImageIcon icon1 = new ImageIcon("C:\\Users\\조은지\\IdeaProjects\\CTIP_SMA_6\\src\\main\\java\\Image\\circle.png");
         timer_label = new JLabel(icon1);
@@ -62,6 +69,7 @@ public class TimerView extends JPanel{
 
         this.add(timer_label);
         this.setLayout(null);
+
 
         A = new JButton("A");
         A.setBounds(100,150,50,50);
@@ -73,6 +81,7 @@ public class TimerView extends JPanel{
                 base.controller.req_changeMode();
             }
         });
+
         B = new JButton("B");
         B.setBounds(350,150,50,50);
         this.add(B);
@@ -81,7 +90,6 @@ public class TimerView extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(timer_status.equals("Setting") == true){     //이게 문제
-                    Timer timer = InstManager.getInstance().getTimer();
                     switch(settingNum){
                         case 0:
                             req_nextHour();
@@ -94,22 +102,22 @@ public class TimerView extends JPanel{
                             break;
                     }
                 }
-                //타이머 실행 중 일시정지된 상태
+                //타이머 일시정지 중에 리셋버튼이 눌리면
                 else if(timer_status.equals("Pause") == true){
                     base.controller.req_reset();
-                    base.change_view(1);
-                    //리셋하고 타이머 설정화면으로 돌아가야한다
+                    timer_status = "Setting";
+                    segment.setText(Integer.toString(timer.getHour())+":"+Integer.toString(timer.getMinute())+":"+Integer.toString(timer.getSecond()));
                 }
-                //타이머 세팅하는 상태
-                else if(timer_status.equals("Excute") == true){
-                    //카운트다운 멈추고
-                    //reset하고
-                    controller.req_reset();
-                    //타이머 설정화면으로 돌아간다
-                    base.change_view(2);
+                //타이머 실행 중에 리셋 버튼이 눌리면
+                else if(timer_status.equals("Execute") == true){
+                    base.controller.req_pause("timer");
+                    base.controller.req_reset();
+                    timer_status = "Setting";
+                    segment.setText(Integer.toString( timer.getHour())+":"+Integer.toString(timer.getMinute())+":"+Integer.toString(timer.getSecond()));
                 }
             }
         });
+
         //if(타이머설정):ok, else(타이머실행):pause/continue
         C = new JButton("C");
         C.setBounds(100,300,50,50);
@@ -118,16 +126,31 @@ public class TimerView extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(timer_status.equals("Pause") == true){
-                    controller.req_continue("timer");
-                }
+                    System.out.println("continue합니다");
+                    base.controller.req_continue("timer");
+                    timer_status = "Execute";
+                    while(timer_status.equals("Execute") == true){
+                        segment.setText(Integer.toString( timer.getHour())+":"+Integer.toString(timer.getMinute())+":"+Integer.toString(timer.getSecond()));
+                        try {
+                            sleep(1000);
+                        } catch (InterruptedException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                    }
+
                 else if(timer_status.equals("Setting") == true){
                     settingNum++;
-                    if(settingNum == 3){
-                        controller.req_countDown();
+                    if(settingNum == 3) {
+                        req_next();
+                        timer_status = "Execute";
                     }
                 }
-                else if(timer_status.equals("Excute") == true){
-                    controller.req_pause();
+                else if(timer_status.equals("Execute") == true){
+                    timer_status = "Pause";
+                    System.out.println("일시정지합니다");
+                    base.controller.req_pause("timer");
+                    segment.setText(Integer.toString( timer.getHour())+":"+Integer.toString(timer.getMinute())+":"+Integer.toString(timer.getSecond()));
                 }
             }
         });
@@ -155,35 +178,32 @@ public class TimerView extends JPanel{
                             break;
                     }
                 }
-                else if(timer_status.equals("Excute") == true){
+                else if(timer_status.equals("Execute") == true){
                     //none
                 }
             }
         });
 
         dot = new JLabel();
-        //도트칸을 말한다
-        strDate = dot_fm.format(calendar.getTime());
-        dot.setText(strDate);
         dot.setBounds(150,200,150,30);
         dot.setFont(new Font("돋움",Font.BOLD,15));
         dot.setBorder(new TitledBorder(new LineBorder(Color.BLACK)));
 
+        calendar.set(tk.getYear(),tk.getMonth(),tk.getDate(),tk.getHour(),tk.getMinute(),tk.getSecond());
+        strDate = dot_fm.format(calendar.getTime());
+        dot.setText(strDate);
 
-        //       strDate = dot_fm.format(Calendar.getTime());
-        //      dot.setText(strDate);
         timer_label.add(dot);
 
         segment = new JLabel();
 
-        //세그먼트창텍스트
         segment.setText(Integer.toString(hour)+":"+Integer.toString(minute)+":"+Integer.toString(second));
         segment.setBounds(150,230,200,50);
         segment.setBorder(new TitledBorder((new LineBorder(Color.BLACK))));
-        segment.setFont(new Font("돋움",Font.BOLD,50));
+        segment.setFont(new Font("돋움",Font.BOLD,40));
         timer_label.add(segment);
-    }
 
+    }
     //req함수들
     public void req_nextHour() {
         if(hour != 99){
@@ -210,7 +230,6 @@ public class TimerView extends JPanel{
         }
         segment.setText(Integer.toString(hour)+":"+Integer.toString(minute)+":"+Integer.toString(second));
     }
-
     public void req_prevMinute(){
         if(minute != 0){
             minute--;
@@ -228,7 +247,6 @@ public class TimerView extends JPanel{
         }
         segment.setText(Integer.toString(hour)+":"+Integer.toString(minute)+":"+Integer.toString(second));
     }
-
     public void req_prevSecond(){
         if(second != 0){
             second--;
@@ -237,4 +255,12 @@ public class TimerView extends JPanel{
         }
         segment.setText(Integer.toString(hour)+":"+Integer.toString(minute)+":"+Integer.toString(second));
     }
+
+    public void req_next(){
+        base.controller.req_setTime("timer", hour, minute, second);
+        timer_status = "Execute";
+        base.controller.req_countDown();
+
+    }
 }
+
