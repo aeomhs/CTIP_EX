@@ -116,6 +116,9 @@ public class InstManager {
             this.alarmList.remove(this.alarmIndex);
         }
         else if(object.equals("dDay")==true){
+            System.out.println("디데이 타이머 삭제 + 객체 삭제 완료~ ");
+            this.dDayList.get(this.dDayIndex).timer.cancel();
+            this.dDayList.get(this.dDayIndex).timer.purge();
             this.dDayList.remove(this.dDayIndex);
 
         }

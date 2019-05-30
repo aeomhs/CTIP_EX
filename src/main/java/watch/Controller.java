@@ -48,7 +48,7 @@ public class Controller {
 
     // common function & select function
     synchronized public void req_countUp(String status) {
-       // System.out.println("tlqnfkf");
+        // System.out.println("tlqnfkf");
         if (status.equals("stopwatch")) {//스탑워치일 때
             stopwatch.setIs_stop(false);
             stopwatch.start();
@@ -328,13 +328,13 @@ public class Controller {
     }
 
     //dDay function
-    public boolean req_selectDate(){
+    public Dday req_selectDate(){
         dDay = (Dday) instManager.createInst("dDay");
         if(dDay == null){
-            return false;
+            return null;
         }
         else{
-            return true;
+            return dDay;
         }
     }
     public String req_nextGoal(String status){
