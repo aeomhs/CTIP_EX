@@ -1,6 +1,6 @@
 package watch;
 
-public class Timer extends Thread{
+public class Timers extends Thread{
     private int hour, minute, second;
     private boolean is_stop;
     private boolean check;
@@ -8,7 +8,7 @@ public class Timer extends Thread{
     //버저 객체를 가져옴
     Buzzer buzzer = Buzzer.getInstance();
 
-    public Timer(){
+    public Timers(){
         this.hour = 0;
         this.minute = 0;
         this.second = 0;
@@ -63,6 +63,7 @@ public class Timer extends Thread{
                     if (check == true) {
                         buzzer.setIs_stop(false);
                         buzzer.ringBuzzer();
+                        break outerLoop;
                     }
                 }
                 try {

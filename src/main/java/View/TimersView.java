@@ -8,18 +8,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import watch.*;
-import watch.Timer;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import static java.lang.Thread.sleep;
-//import java.util.Timer;
-//import java.util.TimerTask;
-
-public class TimerView extends JPanel{
+public class TimersView extends JPanel{
     private JLabel timer_label;
     private BaseView base;
 
-    private Timer timer;
+    private Timers timer;
     private InstManager instManager;
     private Timekeeping tk;
 
@@ -27,33 +24,42 @@ public class TimerView extends JPanel{
     private JButton B;  //up          ->    reset
     private JButton C;  //ok(start)   ->    pause(continue)
     private JButton D;  //down        ->    none
-    private String timer_status = "Setting";
+
     /*
         1. Setting      2. Excute       3. Pause
      */
-    private JLabel segment;
+
+    private  JLabel LCD1; //기능들을 표시할 LCD 화면 //Timer
+    private  JLabel LCD2;//Alarm
+    private  JLabel LCD3;//Stopwatch
+    private  JLabel LCD4;//Dday
+    private  JLabel LCD5;//Fitness
+
     private JLabel dot;
+    private JLabel segment;
+    private JLabel tmp;
 
     private int hour = 0;
     private int minute = 0;
     private int second = 0;
     int settingNum = 0;
+    private String timer_status = "Setting";
 
-    Calendar calendar;
+
     SimpleDateFormat dot_fm;
     SimpleDateFormat seg_fm;
+    Calendar calendar;
     String strDate;
     public Controller controller = null;
 
 
 
-    public TimerView(BaseView base)
+    public TimersView(BaseView base)
     {
         timer = instManager.getInstance().getTimer();
         instManager = InstManager.getInstance();
         tk = instManager.getInstance().getTimekeeping();
         calendar = Calendar.getInstance();
-
 
         this.base = base;
         this.setBounds(0,0,800,500);
@@ -69,6 +75,41 @@ public class TimerView extends JPanel{
 
         this.add(timer_label);
         this.setLayout(null);
+
+        LCD1 = new JLabel();
+        LCD1.setBounds(200,150,20,20);
+        LCD1.setText("T");
+        timer_label.add(LCD1);
+        LCD1.setVisible(base.controller.req_isFunctionSelected(1));
+
+        LCD2 = new JLabel();
+        LCD2.setBounds(220,150,20,20);
+        LCD2.setText("A");
+        timer_label.add(LCD2);
+        LCD2.setVisible(base.controller.req_isFunctionSelected(2));
+
+
+        LCD3 = new JLabel();
+        LCD3.setBounds(240,150,20,20);
+        LCD3.setText("S");
+        timer_label.add(LCD3);
+        LCD3.setVisible(base.controller.req_isFunctionSelected(3));
+
+
+        LCD4 = new JLabel();
+        LCD4.setBounds(260,150,20,20);
+        LCD4.setText("D");
+        timer_label.add(LCD4);
+        LCD4.setVisible(base.controller.req_isFunctionSelected(4));
+
+
+        LCD5 = new JLabel();
+        LCD5.setBounds(280,150,20,20);
+        LCD5.setText("F");
+        timer_label.add(LCD5);
+        LCD5.setVisible(base.controller.req_isFunctionSelected(5));
+
+
 
 
         A = new JButton("A");
@@ -113,7 +154,7 @@ public class TimerView extends JPanel{
                     base.controller.req_pause("timer");
                     base.controller.req_reset();
                     timer_status = "Setting";
-                    segment.setText(Integer.toString( timer.getHour())+":"+Integer.toString(timer.getMinute())+":"+Integer.toString(timer.getSecond()));
+                    segment.setText(Integer.toString(timer.getHour())+":"+Integer.toString(timer.getMinute())+":"+Integer.toString(timer.getSecond()));
                 }
             }
         });
@@ -129,15 +170,7 @@ public class TimerView extends JPanel{
                     System.out.println("continue합니다");
                     base.controller.req_continue("timer");
                     timer_status = "Execute";
-                    while(timer_status.equals("Execute") == true){
-                        segment.setText(Integer.toString( timer.getHour())+":"+Integer.toString(timer.getMinute())+":"+Integer.toString(timer.getSecond()));
-                        try {
-                            sleep(1000);
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-                        }
-                    }
-                    }
+                }
 
                 else if(timer_status.equals("Setting") == true){
                     settingNum++;
@@ -183,6 +216,19 @@ public class TimerView extends JPanel{
                 }
             }
         });
+
+        Timer m_timer = new Timer();
+        TimerTask m_task = new TimerTask(){
+            @Override
+            public void run(){
+                if(timer_status.equals("Execute")){
+                    segment.setText(Integer.toString( timer.getHour())+":"+Integer.toString(timer.getMinute())+":"+Integer.toString(timer.getSecond()));
+                }
+            }
+        };
+        m_timer.scheduleAtFixedRate(m_task, 0, 1000);
+
+
 
         dot = new JLabel();
         dot.setBounds(150,200,150,30);
@@ -260,7 +306,14 @@ public class TimerView extends JPanel{
         base.controller.req_setTime("timer", hour, minute, second);
         timer_status = "Execute";
         base.controller.req_countDown();
+    }
 
+    public void setLCD(TimersView timersView) {
+        timersView.LCD1.setVisible(base.controller.req_isFunctionSelected(1));
+        timersView.LCD2.setVisible(base.controller.req_isFunctionSelected(2));
+        timersView.LCD3.setVisible(base.controller.req_isFunctionSelected(3));
+        timersView.LCD4.setVisible(base.controller.req_isFunctionSelected(4));
+        timersView.LCD5.setVisible(base.controller.req_isFunctionSelected(5));
     }
 }
 

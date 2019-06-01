@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Controller {
 
     private Timekeeping timekeeping;
-    private Timer timer;
+    private Timers timer;
     private Alarm alarm;
     private Stopwatch stopwatch;
     private Dday dDay;

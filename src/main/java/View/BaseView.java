@@ -1,15 +1,13 @@
 package View;
 
-import watch.Alarm;
 import watch.Controller;
-import watch.InstManager;
 
 import javax.swing.*;
 
 public class BaseView extends JFrame {
     private JPanel contentPane;
     public TimeKeepingView tkv=null;
-    public TimerView tmv = null;
+    public TimersView tmv = null;
     public AlarmView alarmView = null;
     public StopWatchView stopWatchView =null;
     public DdayView ddayView = null;
@@ -70,7 +68,7 @@ public class BaseView extends JFrame {
    
         bv.controller = new Controller(bv);
         bv.tkv = new TimeKeepingView(bv);
-        bv.tmv = new TimerView(bv);
+        bv.tmv = new TimersView(bv);
         bv.alarmView = new AlarmView(bv);
         bv.selectView = new SelectView(bv);
         bv.stopWatchView = new StopWatchView(bv);
