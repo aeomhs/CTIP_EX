@@ -137,7 +137,7 @@ public class Timekeeping extends Thread implements CountUp {
 
     //usecase: set_time
     public String calculateDay (int year, int month, int date) throws Exception {
-        String str0 = "" + year;
+       /* String str0 = "" + year;
         String str1 = "" + month;
         String str2 = "" + date;
 
@@ -148,10 +148,11 @@ public class Timekeeping extends Thread implements CountUp {
         //이게 저 패턴으로 바꿔주는거고
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         Date nDate = formatter.parse(result2);
-        cal.setTime(nDate);
+        cal.setTime(nDate);*/
+
+       cal.set(year,month,date);
 
         int dayNum = cal.get(Calendar.DAY_OF_WEEK);
-
         switch(dayNum){
             case 1:
                 day = dayName[0];

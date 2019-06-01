@@ -185,13 +185,13 @@ public class TimeKeepingView extends JPanel{
                         System.out.println(settingNum);
                         if(settingNum==3)
                         {
-                        //    base.controller.req_setDate("timekeeping",calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE));
+                          base.controller.req_setDate("timekeeping",calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE));
                             Timekeeping tk = InstManager.getInstance().getTimekeeping();
                          System.out.println(tk.getDate());
 
                         }
                         else if(settingNum==6) {
-                            base.controller.req_setTime("timekeeping",calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND));
+                            base.controller.req_setTime("timekeeping",calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND));
                             settingNum = 0;
                             tk_status="Timekeeping";
                             base.controller.req_continue("timekeeping");
@@ -255,6 +255,11 @@ public class TimeKeepingView extends JPanel{
                     System.out.println("화면시간"+calendar.get(Calendar.SECOND));
                     strDate2 = seg_fm.format(calendar.getTime());
                     segment.setText(strDate2);
+                    try {
+                        sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         };
@@ -319,7 +324,7 @@ public class TimeKeepingView extends JPanel{
     }
     public void req_prevHour()
     {
-        calendar.add(Calendar.HOUR,-1);
+        calendar.add(Calendar.HOUR_OF_DAY,-1);
         strDate2 = seg_fm.format(calendar.getTime());
         segment.setText(strDate2);
     }
