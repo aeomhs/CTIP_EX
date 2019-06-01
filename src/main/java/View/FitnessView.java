@@ -181,6 +181,7 @@ public class FitnessView extends JPanel{
 
                         }
                     };
+
                     base.controller.req_setExercise(strDate);
                     fit_status = "Execute";//모드 전환
                     if(check==0)
