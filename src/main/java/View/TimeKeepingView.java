@@ -252,7 +252,7 @@ public class TimeKeepingView extends JPanel{
                     calendar.set(tk.getYear(),tk.getMonth(),tk.getDate(),tk.getHour(),tk.getMinute(),tk.getSecond());
                     strDate = dot_fm.format(calendar.getTime());
                     dot.setText(strDate);
-                    System.out.println("화면시간"+calendar.get(Calendar.SECOND));
+                    //System.out.println("화면시간"+calendar.get(Calendar.SECOND));
                     strDate2 = seg_fm.format(calendar.getTime());
                     segment.setText(strDate2);
                     try {

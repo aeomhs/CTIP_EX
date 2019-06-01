@@ -172,10 +172,11 @@ public class Fitness extends Thread implements CountUp{
             if (is_stop == false) {
                 System.out.println("카운트업");
                 second++;
+                calcultateCalories();
                 if (second == 60) {
                     second = 0;
                     minute++;
-                    calcultateCalories();
+
                 }
                 if (minute == 60) {
                     minute = 0;
@@ -229,19 +230,19 @@ public class Fitness extends Thread implements CountUp{
         else{
             updateFitness(hour,minute,second,totalCalories);
         }
-
+        totalCalories=0;
     }
 
     public void updateFitness(int hour, int minute, int second, int totalCal){
-        dbManager.selectFitness("finish",1);//마지막 행의 데이터 가져오기
+        dbManager.selectFitness("finish",count);//마지막 행의 데이터 가져오기
         int cal = fitDTO.getTotalCalories();
-        cal+=totalCal;
+        cal+=this.totalCalories;
         int h = fitDTO.getHour();
-        h+=hour;
+        h+=this.hour;
         int m = fitDTO.getMinute();
-        m+=minute;
+        m+=this.minute;
         int s = fitDTO.getSecond();
-        s+=second;
+        s+=this.second;
 
         dbManager.updateFitness(h,m,s,cal);
 

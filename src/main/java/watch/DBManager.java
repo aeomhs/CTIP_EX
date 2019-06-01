@@ -164,13 +164,12 @@ public class DBManager {
         fitColumn=0;
         try{
             psmt = con.prepareStatement(sql);
-            psmt.executeUpdate();
 
             fitDTO.setHour(hour);
             fitDTO.setMinute(minute);
             fitDTO.setSecond(second);
             fitDTO.setTotalCalories(totalCalories);
-
+            psmt.executeUpdate();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -252,11 +251,11 @@ public class DBManager {
             swDTO.setMinute(minute);
             swDTO.setSecond(second);
 
-
+            rs_ver2 =psmt_sw.executeQuery(sql_sw);
             psmt_ver2.executeUpdate();
-            psmt_sw.executeUpdate();
-            rs.last();
-            swDTO.setNum(rs.getRow());
+            rs_ver2.last();
+            swDTO.setNum(rs_ver2.getRow());
+            swColumn = swDTO.getNum();
         }
 
         catch (Exception e){

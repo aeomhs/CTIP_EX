@@ -64,11 +64,11 @@ public class FitnessView extends JPanel{
         this.base= base;
         this.setBounds(0,0,800,500);
         // this.setBackground(Color.YELLOW);
-        count =1;
+        count =0;
 
         calendar = Calendar.getInstance();
         fit = InstManager.getInstance().getFitness();
-        dot_fm = new SimpleDateFormat("MM월 dd일");
+        dot_fm = new SimpleDateFormat("M월 dd일");
         seg_fm = new SimpleDateFormat("HH:mm:ss");
         base.controller.req_fitnessList(fit.getCount());
         calendar.set(InstManager.getInstance().getTimekeeping().getYear(),fit.getMonth(),fit.getDate(),fit.getHour(),fit.getMinute(),fit.getSecond());
@@ -176,7 +176,6 @@ public class FitnessView extends JPanel{
                         public void run() {
                             calendar.set(base.controller.getInstManager().getTimekeeping().getYear(),fit.getMonth(),fit.getDate(),fit.getHour(),fit.getMinute(),fit.getSecond());
                             dot.setText(fit.getExercise()+"calories: "+fit.getTotalCalories());
-                            System.out.println("운동 화면시간"+fit.getDate());
                             strDate2 = seg_fm.format(calendar.getTime());
                             segment.setText(strDate2);
 
@@ -230,6 +229,7 @@ public class FitnessView extends JPanel{
 
                 }
                 else if(fit_status.equals("Execute") == true){
+                    //finish
                     check=1;
                     tm.cancel();
                     tm.purge();
@@ -237,6 +237,13 @@ public class FitnessView extends JPanel{
                     base.controller.req_finish("fitness");
                     strDate2 = seg_fm.format(calendar.getTime());
                     fit_status ="List";
+                    //바로 목록 보여줄 수 있도록
+                    base.controller.req_fitnessList(count);
+                    calendar.set(Calendar.YEAR,fit.getMonth(),fit.getDate(),fit.getHour(),fit.getMinute(),fit.getSecond());
+                    strDate = seg_fm.format(calendar.getTime());
+                    strDate2 = dot_fm.format(calendar.getTime());
+                    segment.setText(strDate);
+                    dot.setText(strDate2+"calories: "+InstManager.getInstance().getFitness().getTotalCalories());
                 }
 
             }
