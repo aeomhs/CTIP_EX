@@ -13,8 +13,8 @@ public class SelectFunction {
         this.functionList[1]=true;
         this.functionList[2]=true;
         this.functionList[3]=true;
-        this.functionList[4]=true;
-        this.functionList[5]=true;
+        this.functionList[4]=false;
+        this.functionList[5]=false;
         count=3;
     }
 
