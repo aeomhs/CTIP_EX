@@ -67,7 +67,7 @@ public class StopWatchView extends JPanel {
 
         this.base= base;
         this.setBounds(0,0,800,500);
-        this.setBackground(Color.CYAN);
+      //  this.setBackground(Color.CYAN);
 
         //ImageIcon icon1 = new ImageIcon("C:\\Users\\조은지\\IdeaProjects\\CTIP_SMA_6\\src\\main\\java\\Image\\circle.png");
         sw_label = new JLabel();
@@ -168,13 +168,11 @@ public class StopWatchView extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if(sw_status.equals("Pause") == true){
                     sw_status = "Execute";
-                    if(hour==0 && minute==0 && second==0){
+                    if(stw.getHour()==0 && stw.getMinute()==0 && stw.getSecond()==0){
                         base.controller.req_countUp("stopwatch");
-                        dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
                     }
-                    else if(hour!=0 || minute!=0 || second!=0){
+                    else if(stw.getHour()!=0 || stw.getMinute()!=0 || stw.getSecond()!=0){
                         base.controller.req_continue("stopwatch");
-                        dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
                     }
                 }
                 else if(sw_status.equals("Execute") == true){
@@ -189,14 +187,14 @@ public class StopWatchView extends JPanel {
             }
         });
 
-
         D = new JButton("D");
         D.setBounds(350,300,50,50);
         sw_label.add(D);
         D.addActionListener(new ActionListener() {
             //record하기(실행중) or record보기(일시정지)   -> record(일시정지상태로 돌아가기)
 
-            @Override
+
+        @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("여기는 d버튼");
                 if(sw_status.equals("Pause") == true){

@@ -63,7 +63,7 @@ public class TimersView extends JPanel{
 
         this.base = base;
         this.setBounds(0,0,800,500);
-        this.setBackground(Color.CYAN);
+    //    this.setBackground(Color.CYAN);
 
         dot_fm = new SimpleDateFormat("yy.MM.dd.E요일");
         seg_fm = new SimpleDateFormat("HH:mm:SS");
