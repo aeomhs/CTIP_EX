@@ -237,7 +237,7 @@ public class StopWatchView extends JPanel {
 
         //  dot.setText("05.24.FRI");   //record상태라면 기록보여주기, 아니라면 가장 최근 기록보여주기
         dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
-        dot.setBounds(150,200,100,30);
+        dot.setBounds(150,200,150,30);
         dot.setFont(new Font("돋움",Font.BOLD,13));
         dot.setBorder(new TitledBorder(new LineBorder(Color.BLACK)));
         sw_label.add(dot);
