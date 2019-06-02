@@ -37,7 +37,7 @@ public class TimersView extends JPanel{
 
     private JLabel dot;
     private JLabel segment;
-    private JLabel tmp;
+  //  private JLabel tmp;
 
     private int hour = 0;
     private int minute = 0;

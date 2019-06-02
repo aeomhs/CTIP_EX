@@ -41,10 +41,9 @@ public class AlarmView extends JPanel {
     private String text;
     private int i;
     private int num;
-    private String setting_state;
     private ArrayList<Integer> checkDayList;
     private int cycle;
-    private int[] cycleList = {5, 10, 15};
+    private int[] cycleList = {0, 5, 10, 15};
     private int index = 0;
     private int choice = 0;
 
@@ -174,20 +173,21 @@ public class AlarmView extends JPanel {
                             }
 
                         }
-                        dot.setText(text);
+
                         segment.setText(Integer.toString(InstManager.getInstance().getAlarmIndex())+". "+ Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()));
+                        if(alarm.getStatus() == true){
+                            dot.setText(text+" 주기:"+alarm.getCycle() + " On");
+                        }
+                        else{
+                            dot.setText(text+" 주기:"+alarm.getCycle() + " Off");
+                        }
                     }
 
 
                 }
                 else if(alarm_status.equals("Setting") == true){
-                    System.out.println("setting");
-                    if(setting_state.equals("Delete")){
-                        base.controller.req_deleteAlarm();
-                    }
-                    else if(setting_state.equals("Change OnOff")){
-                        base.controller.req_onOff();
-                    }
+
+                    req_nextSetting();
 
                 }
                 else if(alarm_status.equals("Add") == true){
@@ -217,11 +217,11 @@ public class AlarmView extends JPanel {
                             }
 
 
-                            if(calendar.get(Calendar.DAY_OF_WEEK)==2 && turn_over == true){
+                            if(calendar.get(Calendar.DAY_OF_WEEK)==2 && turn_over == true && checkDayList.size()!=0){
                                 //dot.setForeground(Color.DARK_GRAY);
                                 settingNum++;
                                 Collections.sort(checkDayList);
-
+                                dot.setForeground(Color.DARK_GRAY);
                                 System.out.println("Day select finish");
 
                                 text = " ";
@@ -280,9 +280,10 @@ public class AlarmView extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(alarm_status.equals("List") == true){
+                    alarm_status = "Setting";
                     if(alarm != null){
                         choice = 0;
-                        dot.setText("delete?");
+                        dot.setText("Delete?");
 
                     }
                     else{
@@ -293,7 +294,52 @@ public class AlarmView extends JPanel {
 
                 }
                 else if(alarm_status.equals("Setting") == true){
+                    alarm_status = "List";
+                    base.controller.getInstManager().setAlarmIndex(-1);
+                    alarm = base.controller.req_alarmList();
+                    if(alarm == null){
+                        dot.setText("No Record");
+                        segment.setText("   00:00");
 
+                    }
+                    else{
+                        text = " ";
+                        dayListNum = alarm.getDayListNum();
+                        System.out.println(dayListNum);
+                        for(i = 0; i< dayListNum; i++){
+                            num= alarm.getCheckDayList(i);
+                            if(num == 2){
+                                text = text + "월 " ;
+                            }
+                            else if(num == 3){
+                                text = text + "화 ";
+                            }
+                            else if(num == 4){
+                                text = text + "수 ";
+                            }
+                            else if(num == 5){
+                                text = text + "목 ";
+                            }
+                            else if(num == 6){
+                                text = text + "금 ";
+                            }
+                            else if(num == 7){
+                                text = text + "토 ";
+                            }
+                            else if(num == 1){
+                                text = text + "일 ";
+                            }
+
+                        }
+
+                        segment.setText(Integer.toString(InstManager.getInstance().getAlarmIndex())+". "+ Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()));
+                        if(alarm.getStatus() == true){
+                            dot.setText(text+" 주기:"+alarm.getCycle() + " On");
+                        }
+                        else{
+                            dot.setText(text+" 주기:"+alarm.getCycle() + " Off");
+                        }
+                    }
 
                     //이 때 C버튼은 OK(Next)
                  /*   System.out.println(settingNum);
@@ -332,11 +378,22 @@ public class AlarmView extends JPanel {
                         settingNum++;
                     }
                     else if(settingNum == 4){
-                        base.controller.req_setDate(checkDayList, dayListNum, cycleList[index], calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE));
+                        base.controller.req_setDate(checkDayList, dayListNum, cycleList[index], calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
+                        System.out.println("alarm start!!");
+                        System.out.println("시계시간: "+InstManager.getInstance().getTimekeeping().getHour());
+                        System.out.println("시계분: "+InstManager.getInstance().getTimekeeping().getMinute());
+                        System.out.println("시계요일: "+InstManager.getInstance().getTimekeeping().getDayNum());
+                        System.out.println("알람시간: "+alarm.getHour());
+                        System.out.println("알람분: "+alarm.getMinute());
+                        for(int i=0; i<alarm.getCheckDayList().size(); i++) {
+                            System.out.println("알람요일: " + alarm.getCheckDayList().get(i));
+                        }
                         alarm.start();
 
                         alarm_status = "List";
                         settingNum = 1;
+                        index = 0;
+                        dot.setForeground(Color.DARK_GRAY);
                         calendar.set(0,0,0, 0,0);
                         calendar.setWeekDate(0,0,2);
                         checkDayList.clear();
@@ -372,9 +429,14 @@ public class AlarmView extends JPanel {
                             }
 
                         }
-                        dot.setText(text);
-                        segment.setText(Integer.toString(InstManager.getInstance().getAlarmIndex())+". "+ Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()));
 
+                        segment.setText(Integer.toString(InstManager.getInstance().getAlarmIndex())+". "+ Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()));
+                        if(alarm.getStatus() == true){
+                            dot.setText(text+" 주기:"+alarm.getCycle() + " On");
+                        }
+                        else{
+                            dot.setText(text+" 주기:"+alarm.getCycle() + " Off");
+                        }
 
                     }
 
@@ -390,6 +452,7 @@ public class AlarmView extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(alarm_status.equals("List") == true){
+                    Alarm alarm_ver2 = alarm;
                     alarm = base.controller.req_setAlarm();
                     if(alarm != null){
                         alarm_status = "Add";
@@ -398,10 +461,66 @@ public class AlarmView extends JPanel {
                         settingNum = 1;
                         segment.setText("   00:00");
                     }
+                    else{
+                        alarm = alarm_ver2;
+
+                    }
                 }
                 else if(alarm_status.equals("Setting") == true){
+                    System.out.println("choice : "+choice);
+                    if(choice == 0){
+                        if(alarm != null) {
+                            base.controller.req_deleteAlarm();
+                        }
+                    }
+                    else if(choice ==1) {
+                        if (alarm != null) {
+                            System.out.println("ChangeOnOff");
+                            base.controller.req_onOff();
+                        }
+                    }
+                    alarm_status = "List";
+                    //index = 0;
 
+                    base.controller.getInstManager().setAlarmIndex(-1);
+                    alarm = base.controller.req_alarmList();
+                    if(alarm == null){
+                        dot.setText("No Record");
+                        segment.setText("   00:00");
 
+                    }
+                    else {
+                        text = " ";
+                        dayListNum = alarm.getDayListNum();
+                        System.out.println(dayListNum);
+                        for (i = 0; i < dayListNum; i++) {
+                            num = alarm.getCheckDayList(i);
+                            if (num == 2) {
+                                text = text + "월 ";
+                            } else if (num == 3) {
+                                text = text + "화 ";
+                            } else if (num == 4) {
+                                text = text + "수 ";
+                            } else if (num == 5) {
+                                text = text + "목 ";
+                            } else if (num == 6) {
+                                text = text + "금 ";
+                            } else if (num == 7) {
+                                text = text + "토 ";
+                            } else if (num == 1) {
+                                text = text + "일 ";
+                            }
+
+                        }
+
+                        segment.setText(Integer.toString(InstManager.getInstance().getAlarmIndex()) + ". " + Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()));
+                        if (alarm.getStatus() == true) {
+                            dot.setText(text + " 주기:" + alarm.getCycle() + " On");
+                        } else {
+                            dot.setText(text + " 주기:" + alarm.getCycle() + " Off");
+                        }
+
+                    }
                 }
                 else if(alarm_status.equals("Add") == true){
                     //DOWN버튼
@@ -452,13 +571,13 @@ public class AlarmView extends JPanel {
         dot_fm = new SimpleDateFormat("E요일");
         seg_fm = new SimpleDateFormat("   HH:mm");
 
-        alarm = base.controller.req_alarmList();
-        if(alarm == null){
-            dot.setText("No Record");
-            segment.setText("   00:00");
+        //alarm = base.controller.req_alarmList();
+        //if(alarm == null){
+        dot.setText("No Record");
+        segment.setText("   00:00");
 
-        }
-        else{
+        //}
+       /* else{
             text = " ";
             dayListNum = alarm.getDayListNum();
             for(i = 0; i< dayListNum; i++){
@@ -490,7 +609,7 @@ public class AlarmView extends JPanel {
             dot.setText(text);
             segment.setText(Integer.toString(InstManager.getInstance().getAlarmIndex())+". "+ Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()));
         }
-
+*/
 
 
     }
@@ -508,7 +627,7 @@ public class AlarmView extends JPanel {
     }
     public void req_nextCycle(){
         index ++;
-        if(index == 3){
+        if(index == 4){
             index = 0;
         }
         dot.setText(text + " 주기:"+cycleList[index]);
@@ -516,7 +635,7 @@ public class AlarmView extends JPanel {
     public void req_prevCycle(){
         index --;
         if(index == -1){
-            index = 2;
+            index = 3;
         }
         dot.setText(text + " 주기:"+cycleList[index]);
     }
@@ -544,6 +663,17 @@ public class AlarmView extends JPanel {
         calendar.add(Calendar.MINUTE,-1);
         strTime = seg_fm.format(calendar.getTime());
         segment.setText(strTime);
+    }
+    public void req_nextSetting(){
+        choice = (choice +1)%2;
+        if(choice == 0) {
+            dot.setText("Delete?");
+            // choice = (choice+1)%2;
+        }
+        else if(choice == 1){
+            dot.setText("change OnOff mode?");
+            // choice = (choice+1)%2;
+        }
     }
 
     public void setLCD(AlarmView alarmview) {

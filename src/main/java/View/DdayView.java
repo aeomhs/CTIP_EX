@@ -36,11 +36,8 @@ public class DdayView extends JPanel{
     private JLabel dot;
     private JLabel segment;
     private JLabel tmp;
-
     private Dday dDay;
-    private int year;
-    private int month;
-    private int date;
+
     private String goal;
     private String[] goalList = {"stop drinking","stop smoking","studying","exercising","diet","save money"};
     private int goal_index = -1;

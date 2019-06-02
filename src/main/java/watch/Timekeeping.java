@@ -31,7 +31,7 @@ public class Timekeeping extends Thread implements CountUp {
     }
 
     public void run(){
-            countUp();
+        countUp();
     }
 
     //usecse: set_alarm 이랑 count_up
@@ -150,7 +150,7 @@ public class Timekeeping extends Thread implements CountUp {
         Date nDate = formatter.parse(result2);
         cal.setTime(nDate);*/
 
-       cal.set(year,month,date);
+        cal.set(year,month,date);
 
         int dayNum = cal.get(Calendar.DAY_OF_WEEK);
         switch(dayNum){

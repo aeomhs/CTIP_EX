@@ -43,6 +43,7 @@ public class StopWatchView extends JPanel {
     private int second = 0;
     private String sw_status = "Pause"; //TimeKeeping 과 TimeSetting 의 View 가 존재한다.
     private boolean is_stop = false;
+    private int count = 0;
 
     SimpleDateFormat dot_fm;
     SimpleDateFormat seg_fm;
@@ -152,10 +153,14 @@ public class StopWatchView extends JPanel {
                     dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
                 }
                 else if(sw_status.equals("Record") == true){    //next기록보여준다
-                    base.controller.req_recordList();
+                    //next기록보여준다
+                    count++;
+                    if(count==dto.getNum()+1)
+                        count= 1;
+                    base.controller.req_recordList(count);
                     calendar.set(InstManager.getInstance().getTimekeeping().getYear(),InstManager.getInstance().getTimekeeping().getMonth(),InstManager.getInstance().getTimekeeping().getDate(),dto.getHour(),dto.getMinute(),dto.getSecond());
                     strDate = seg_fm.format(calendar.getTime());
-                    dot.setText(dto.getNum()+1 +"st " +strDate);
+                    dot.setText("number"+count+":" +strDate);
                 }
             }
         });
@@ -196,14 +201,17 @@ public class StopWatchView extends JPanel {
 
         @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("여기는 d버튼");
+           //     System.out.println("여기는 d버튼");
                 if(sw_status.equals("Pause") == true){
                     sw_status = "Record";
-                    base.controller.req_recordList();
+                    count=0;
+                    base.controller.req_recordList(dto.getNum());
                 }
                 else if(sw_status.equals("Execute") == true){
-                    System.out.println("record하러왔다");
-                    base.controller.req_record();
+                    count++;
+                    if(count==11)
+                        count =1;
+                    base.controller.req_record(count);
                     dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
                 }
                 else if(sw_status.equals("Record") == true){

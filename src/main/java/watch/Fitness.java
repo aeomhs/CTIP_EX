@@ -171,13 +171,12 @@ public class Fitness extends Thread implements CountUp{
         totalCalories =0;
         while (true) {
             if (is_stop == false) {
-                System.out.println("카운트업");
                 second++;
                 calcultateCalories();
                 if (second == 60) {
                     second = 0;
                     minute++;
-
+                    calcultateCalories();
                 }
                 if (minute == 60) {
                     minute = 0;
@@ -231,7 +230,7 @@ public class Fitness extends Thread implements CountUp{
         else{
             updateFitness(hour,minute,second,totalCalories);
         }
-      initFitness();
+        initFitness();
     }
 
     public void updateFitness(int hour, int minute, int second, int totalCal){

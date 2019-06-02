@@ -108,18 +108,17 @@ public class Stopwatch extends Thread implements CountUp, StateChange{
         dbManager.resetStopwatch();
     }
 
-
-    public void showRecord(){
-        dbManager.selectStopwatch();
+    public void showRecord(int column){
+        dbManager.selectStopwatch(column);
     }
 
-    public void  record(){
-        System.out.println("여기는 스탑워치의 record함수");
-        if(swDTO.getNum() >= 10){
+    public void  record(int count){
+     //   System.out.println("여기는 스탑워치의 record함수");
+        if(swDTO.getNum() > 10){
             dbManager.deleteStopwatch();
         }
-        dbManager.insertStopwatch(this.hour, this.minute, this.second);
-        dbManager.selectStopwatch();
+        dbManager.insertStopwatch(this.hour, this.minute, this.second, count);
+        dbManager.selectStopwatch(swDTO.getNum());
     }
 
 

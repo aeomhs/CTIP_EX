@@ -303,14 +303,14 @@ public class Controller {
     }
 
     //stopwatch function
-    public void req_record(){
-        this.stopwatch.record();
+    public void req_record(int count){
+        this.stopwatch.record(count);
     }
     public void req_pause(){
         this.stopwatch.setIs_stop(true);
     }
-    public void req_recordList(){
-        this.stopwatch.showRecord();
+    public void req_recordList(int column){
+        this.stopwatch.showRecord(column);
     }
     public void req_finish(String status)
     {
