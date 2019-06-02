@@ -122,6 +122,7 @@ public class StopWatchView extends JPanel {
         LCD5.setVisible(base.controller.req_isFunctionSelected(5));
 
 
+
         A = new JButton("A");
         A.setBounds(100,150,50,50);
         sw_label.add(A);

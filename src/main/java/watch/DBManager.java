@@ -31,6 +31,7 @@ public class DBManager {
 
     private int fitColumn ;// 열 개수
     private FitnessDTO fitDTO = FitnessDTO.getInstance();
+    private int first=0;
 
     //Stopwatch Attibute
     private int swColumn;
@@ -251,13 +252,14 @@ public class DBManager {
             rs_ver2 =psmt_sw.executeQuery(sql_sw);
             rs_ver2.last();
             System.out.println(rs_ver2.getRow());
-            if(count-1 != rs_ver2.getRow() )
+            if((count-1 != rs_ver2.getRow())&&first==0 )
             {
                 resetStopwatch();
                 //지워주고 저장시작
                 rs_ver2 = psmt_sw.executeQuery(sql_sw);
                 rs_ver2.last();
                 swDTO.setNum(0);
+                first++;
             }
 
             psmt_ver2.setInt(1,hour);
@@ -294,6 +296,7 @@ public class DBManager {
 
             psmt.executeUpdate();
             psmt_ver2.executeUpdate();
+            swDTO.setNum(swDTO.getNum()-1);
 
         }
         catch (Exception e){
