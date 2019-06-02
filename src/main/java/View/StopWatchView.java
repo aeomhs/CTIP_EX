@@ -1,20 +1,21 @@
 package View;
 
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.InputStream;
-import java.net.URL;
 import java.text.SimpleDateFormat;
-import watch.*;
 import java.util.Calendar;
 import java.util.Timer;
+import watch.*;
+
 import java.util.TimerTask;
 
-public class StopWatchView extends JPanel{
+
+public class StopWatchView extends JPanel {
     private JLabel sw_label;
     private BaseView base;
 
@@ -141,17 +142,20 @@ public class StopWatchView extends JPanel{
                 if(sw_status.equals("Pause") == true){  //리셋이다.
                     base.controller.req_finish("stopwatch");
                     segment.setText(Integer.toString(stw.getHour())+":"+Integer.toString(stw.getMinute())+":"+Integer.toString(stw.getSecond()));
+                    dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
+
                 }
                 else if(sw_status.equals("Execute") == true){   //리셋이다
                     base.controller.req_finish("stopwatch");
                     sw_status = "Pause";
                     segment.setText(Integer.toString(stw.getHour())+":"+Integer.toString(stw.getMinute())+":"+Integer.toString(stw.getSecond()));
+                    dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
                 }
                 else if(sw_status.equals("Record") == true){    //next기록보여준다
                     base.controller.req_recordList();
                     calendar.set(InstManager.getInstance().getTimekeeping().getYear(),InstManager.getInstance().getTimekeeping().getMonth(),InstManager.getInstance().getTimekeeping().getDate(),dto.getHour(),dto.getMinute(),dto.getSecond());
                     strDate = seg_fm.format(calendar.getTime());
-                    dot.setText(dto.getNum()+":"+strDate);
+                    dot.setText(dto.getNum()+1 +"st " +strDate);
                 }
             }
         });
@@ -166,16 +170,18 @@ public class StopWatchView extends JPanel{
                     sw_status = "Execute";
                     if(hour==0 && minute==0 && second==0){
                         base.controller.req_countUp("stopwatch");
+                        dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
                     }
                     else if(hour!=0 || minute!=0 || second!=0){
                         base.controller.req_continue("stopwatch");
+                        dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
                     }
                 }
                 else if(sw_status.equals("Execute") == true){
                     sw_status = "Pause";
                     base.controller.req_pause("stopwatch");
                     segment.setText(Integer.toString(stw.getHour())+":"+Integer.toString(stw.getMinute())+":"+Integer.toString(stw.getSecond()));
-
+                    dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
                 }
                 else if(sw_status.equals("Record") == true){
                     //none
@@ -196,12 +202,11 @@ public class StopWatchView extends JPanel{
                 if(sw_status.equals("Pause") == true){
                     sw_status = "Record";
                     base.controller.req_recordList();
-
                 }
                 else if(sw_status.equals("Execute") == true){
                     System.out.println("record하러왔다");
                     base.controller.req_record();
-
+                    dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
                 }
                 else if(sw_status.equals("Record") == true){
                     sw_status = "Pause";
@@ -224,9 +229,10 @@ public class StopWatchView extends JPanel{
         m_timer.scheduleAtFixedRate(m_task, 0, 1000);
 
 
-        dot.setText("05.24.FRI");   //record상태라면 기록보여주기, 아니라면 가장 최근 기록보여주기
+        //  dot.setText("05.24.FRI");   //record상태라면 기록보여주기, 아니라면 가장 최근 기록보여주기
+        dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
         dot.setBounds(150,200,100,30);
-        dot.setFont(new Font("돋움",Font.BOLD,15));
+        dot.setFont(new Font("돋움",Font.BOLD,13));
         dot.setBorder(new TitledBorder(new LineBorder(Color.BLACK)));
         sw_label.add(dot);
 
@@ -235,7 +241,7 @@ public class StopWatchView extends JPanel{
         segment.setText(Integer.toString(hour)+":"+Integer.toString(minute)+":"+Integer.toString(second));
         segment.setBounds(150,230,200,50);
         segment.setBorder(new TitledBorder((new LineBorder(Color.BLACK))));
-        segment.setFont(new Font("돋움",Font.BOLD,50));
+        segment.setFont(new Font("돋움",Font.BOLD,40));
         sw_label.add(segment);
     }
 

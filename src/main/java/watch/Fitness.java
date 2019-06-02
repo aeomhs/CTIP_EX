@@ -134,6 +134,7 @@ public class Fitness extends Thread implements CountUp{
     {
         dbManager.selectFitness("finish",count);
         this.recentMonth = fitDTO.getMonth();
+        System.out.println(recentMonth);
         this.recentDate= fitDTO.getDate();
     }
 
@@ -230,7 +231,7 @@ public class Fitness extends Thread implements CountUp{
         else{
             updateFitness(hour,minute,second,totalCalories);
         }
-        totalCalories=0;
+      initFitness();
     }
 
     public void updateFitness(int hour, int minute, int second, int totalCal){

@@ -106,7 +106,7 @@ public class DBManager {
             }
             else if(status.equals("finish"))
             {
-                sql = "select * FROM stopwatch where number="+Integer.toString(fitDTO.getCount())+";"; //마지막 레코드만 읽어오기
+                sql = "select * FROM fitness where number="+Integer.toString(fitDTO.getCount())+";"; //마지막 레코드만 읽어오기
                 psmt = con.prepareStatement(sql);
                 rs = psmt.executeQuery(sql);
                 while(rs.next()) {
@@ -160,16 +160,21 @@ public class DBManager {
     public void updateFitness( int hour, int minute,int second, int totalCalories){
 
         //맨 마지막 거에만 추가해주는 거.
-        sql = "update fitness set hour = "+Integer.toString(hour)+",minute="+Integer.toString(minute)+",second="+Integer.toString(second)+",totalCalories="+Integer.toString(totalCalories)+"where number = "+fitDTO.getCount()+";";
+        sql = "update fitness set hour = ?,minute= ? ,second= ?,totalCalories= ? where number = ?;";
         fitColumn=0;
         try{
             psmt = con.prepareStatement(sql);
-
+            psmt.setInt(1,hour);
+            psmt.setInt(2,minute);
+            psmt.setInt(3,second);
+            psmt.setInt(4,totalCalories);
+            psmt.setInt(5,fitDTO.getCount());
+            psmt.executeUpdate();
             fitDTO.setHour(hour);
             fitDTO.setMinute(minute);
             fitDTO.setSecond(second);
             fitDTO.setTotalCalories(totalCalories);
-            psmt.executeUpdate();
+
         }
         catch (Exception e){
             e.printStackTrace();
@@ -245,7 +250,7 @@ public class DBManager {
             psmt_ver2.setInt(1,hour);
             psmt_ver2.setInt(2,minute);
             psmt_ver2.setInt(3,second);
-            psmt_ver2.setInt(4,swDTO.getNum()+1);
+            psmt_ver2.setInt(4,swColumn+1);
 
             swDTO.setHour(hour);
             swDTO.setMinute(minute);

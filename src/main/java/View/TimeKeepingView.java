@@ -65,7 +65,7 @@ public class TimeKeepingView extends JPanel{
         this.setBounds(0,0,800,500);
         //this.setBackground(Color.ORANGE);
         calendar = Calendar.getInstance();
-        dot_fm = new SimpleDateFormat("yy.MM.dd.E요일");
+        dot_fm = new SimpleDateFormat("yy.M.dd.E요일");
         seg_fm = new SimpleDateFormat("HH:mm:ss");
 
         calendar.set(InstManager.getInstance().getTimekeeping().getYear(),InstManager.getInstance().getTimekeeping().getMonth(),InstManager.getInstance().getTimekeeping().getDate(),InstManager.getInstance().getTimekeeping().getHour(),InstManager.getInstance().getTimekeeping().getMinute(),InstManager.getInstance().getTimekeeping().getSecond());
@@ -362,7 +362,13 @@ public class TimeKeepingView extends JPanel{
     }
 
 
-
+    public void setLCD(TimeKeepingView timeKeepingView) {
+        timeKeepingView.LCD1.setVisible(base.controller.req_isFunctionSelected(1));
+        timeKeepingView.LCD2.setVisible(base.controller.req_isFunctionSelected(2));
+        timeKeepingView.LCD3.setVisible(base.controller.req_isFunctionSelected(3));
+        timeKeepingView.LCD4.setVisible(base.controller.req_isFunctionSelected(4));
+        timeKeepingView.LCD5.setVisible(base.controller.req_isFunctionSelected(5));
+    }
 
 
 

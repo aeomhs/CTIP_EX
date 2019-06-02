@@ -11,10 +11,10 @@ public class SelectFunction {
     public SelectFunction() {
         this.functionList[0]=true;
         this.functionList[1]=true;
-        this.functionList[2]=true;
+        this.functionList[2]=false;
         this.functionList[3]=true;
         this.functionList[4]=false;
-        this.functionList[5]=false;
+        this.functionList[5]=true;
         count=3;
     }
 
