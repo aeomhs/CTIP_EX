@@ -7,15 +7,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TimerTest {
-    public static Timer junitTest;
+class TimersTest {
+    public static Timers junitTest;
 
-    TimerTest() {
+    TimersTest() {
     }
 
     @BeforeAll
     public static void makeInstance(){
-        junitTest = new Timer();
+        junitTest = new Timers();
     }
 
 

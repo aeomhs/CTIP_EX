@@ -46,7 +46,7 @@ public class DBManager {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");//드라이버 로드
-            con = DriverManager.getConnection(url,"root","!rhfms2clrhk!");
+            con = DriverManager.getConnection(url,"aaa","!rhfms2clrhk!");
             System.out.println("DB연결 성공");
         } catch (SQLException e) {
             e.printStackTrace();
