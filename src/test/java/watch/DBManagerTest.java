@@ -19,7 +19,7 @@ class DBManagerTest {
     @Test
     void selectFitness() throws Exception{
         try{
-            junitTest.selectFitness("look", 0);
+            junitTest.selectFitness("look");
         }catch (Exception e){
             System.out.println("selectFitness failed");
         }
@@ -55,7 +55,7 @@ class DBManagerTest {
     @Test
     void selectStopwatch() throws Exception {
         try{
-            junitTest.selectStopwatch(0);
+            junitTest.selectStopwatch();
         }catch (Exception e){
             System.out.println("selectStopwatch failed");
         }
@@ -65,7 +65,7 @@ class DBManagerTest {
     @Test
     void insertStopwatch() throws Exception {
         try{
-            junitTest.insertStopwatch(9,30,00, 1);
+            junitTest.insertStopwatch(9,30,00);
         }catch (Exception e){
             System.out.println("insertStopwatch failed");
         }

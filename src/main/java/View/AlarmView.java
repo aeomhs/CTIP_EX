@@ -1,6 +1,7 @@
 package View;
 
 import watch.Alarm;
+import watch.Buzzer;
 import watch.InstManager;
 import watch.Timekeeping;
 
@@ -59,6 +60,11 @@ public class AlarmView extends JPanel {
         1. List     2. Setting      3. Add
      */
 
+    boolean buzzer_mode;
+
+    public void setBuzzer_mode(boolean buzzer_mode) {
+        this.buzzer_mode = buzzer_mode;
+    }
     public AlarmView(BaseView base)
     {
         turn_over = false;
@@ -125,8 +131,13 @@ public class AlarmView extends JPanel {
         A.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                base.controller.req_changeMode();
 
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
+                }
+                else {
+                    base.controller.req_changeMode();
+                }
             }
         });
         B = new JButton("B");
@@ -136,137 +147,125 @@ public class AlarmView extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if(alarm_status.equals("List") == true){
-                    System.out.println("List");
-                    alarm = base.controller.req_alarmList();
-                    if(alarm == null){
-                        dot.setText("No Record");
-                        segment.setText("   00:00");
-
-                    }
-                    else{
-                        text = " ";
-                        dayListNum = alarm.getDayListNum();
-                        System.out.println(dayListNum);
-                        for(i = 0; i< dayListNum; i++){
-                            num= alarm.getCheckDayList(i);
-                            if(num == 2){
-                                text = text + "월 " ;
-                            }
-                            else if(num == 3){
-                                text = text + "화 ";
-                            }
-                            else if(num == 4){
-                                text = text + "수 ";
-                            }
-                            else if(num == 5){
-                                text = text + "목 ";
-                            }
-                            else if(num == 6){
-                                text = text + "금 ";
-                            }
-                            else if(num == 7){
-                                text = text + "토 ";
-                            }
-                            else if(num == 1){
-                                text = text + "일 ";
-                            }
-
-                        }
-
-                        segment.setText(Integer.toString(InstManager.getInstance().getAlarmIndex())+". "+ Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()));
-                        if(alarm.getStatus() == true){
-                            dot.setText(text+" 주기:"+alarm.getCycle() + " On");
-                        }
-                        else{
-                            dot.setText(text+" 주기:"+alarm.getCycle() + " Off");
-                        }
-                    }
-
-
+                if(buzzer_mode == true) {
+                    Buzzer.getInstance().stopBuzzer();
                 }
-                else if(alarm_status.equals("Setting") == true){
+                else{
+                    if (alarm_status.equals("List") == true) {
+                        System.out.println("List");
+                        alarm = base.controller.req_alarmList();
+                        if (alarm == null) {
+                            dot.setText("No Record");
+                            segment.setText("   00:00");
 
-                    req_nextSetting();
-
-                }
-                else if(alarm_status.equals("Add") == true){
-                    System.out.println("Add");
-                    switch(settingNum)
-                    {
-                        case 1:
-
-                            req_nextDay();
-                            if(checkDayList.contains(new Integer(calendar.get(Calendar.DAY_OF_WEEK)))){
-                                System.out.println(calendar.get(Calendar.DAY_OF_WEEK)+1);
-                                dot.setForeground(Color.BLUE);
-                                //req_nextDay();
-                                if(calendar.get(Calendar.DAY_OF_WEEK)==1){
-                                    turn_over = true;
+                        } else {
+                            text = " ";
+                            dayListNum = alarm.getDayListNum();
+                            System.out.println(dayListNum);
+                            for (i = 0; i < dayListNum; i++) {
+                                num = alarm.getCheckDayList(i);
+                                if (num == 2) {
+                                    text = text + "월 ";
+                                } else if (num == 3) {
+                                    text = text + "화 ";
+                                } else if (num == 4) {
+                                    text = text + "수 ";
+                                } else if (num == 5) {
+                                    text = text + "목 ";
+                                } else if (num == 6) {
+                                    text = text + "금 ";
+                                } else if (num == 7) {
+                                    text = text + "토 ";
+                                } else if (num == 1) {
+                                    text = text + "일 ";
                                 }
-                                System.out.println("Blue");
-                            }
-                            else{
-                                System.out.println(calendar.get(Calendar.DAY_OF_WEEK));
-                                dot.setForeground(Color.DARK_GRAY);
-                                //req_nextDay();
-                                if(calendar.get(Calendar.DAY_OF_WEEK)==1){
-                                    turn_over = true;
-                                }
-                                System.out.println("Gray");
-                            }
-
-
-                            if(calendar.get(Calendar.DAY_OF_WEEK)==2 && turn_over == true && checkDayList.size()!=0){
-                                //dot.setForeground(Color.DARK_GRAY);
-                                settingNum++;
-                                Collections.sort(checkDayList);
-                                dot.setForeground(Color.DARK_GRAY);
-                                System.out.println("Day select finish");
-
-                                text = " ";
-                                dayListNum = checkDayList.size();
-                                for(i = 0; i< dayListNum; i++){
-                                    num= checkDayList.get(i);
-                                    if(num == 2){
-                                        text = text + "월 " ;
-                                    }
-                                    else if(num == 3){
-                                        text = text + "화 ";
-                                    }
-                                    else if(num == 4){
-                                        text = text + "수 ";
-                                    }
-                                    else if(num == 5){
-                                        text = text + "목 ";
-                                    }
-                                    else if(num == 6){
-                                        text = text + "금 ";
-                                    }
-                                    else if(num == 7){
-                                        text = text + "토 ";
-                                    }
-                                    else if(num == 1){
-                                        text = text + "일 ";
-                                    }
-
-                                }
-                                System.out.println(text);
-                                dot.setText(text + " 주기:"+cycleList[index]);
 
                             }
 
-                            break;
-                        case 2:
-                            req_nextCycle();
-                            break;
-                        case 3:
-                            req_nextHour();
-                            break;
-                        case 4:
+                            segment.setText(Integer.toString(InstManager.getInstance().getAlarmIndex()) + ". " + Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()));
+                            if (alarm.getStatus() == true) {
+                                dot.setText(text + " 주기:" + alarm.getCycle() + " On");
+                            } else {
+                                dot.setText(text + " 주기:" + alarm.getCycle() + " Off");
+                            }
+                        }
 
-                            req_nextMinute();
-                            break;
+
+                    } else if (alarm_status.equals("Setting") == true) {
+
+                        req_nextSetting();
+
+                    } else if (alarm_status.equals("Add") == true) {
+                        System.out.println("Add");
+                        switch (settingNum) {
+                            case 1:
+
+                                req_nextDay();
+                                if (checkDayList.contains(new Integer(calendar.get(Calendar.DAY_OF_WEEK)))) {
+                                    System.out.println(calendar.get(Calendar.DAY_OF_WEEK) + 1);
+                                    dot.setForeground(Color.BLUE);
+                                    //req_nextDay();
+                                    if (calendar.get(Calendar.DAY_OF_WEEK) == 1) {
+                                        turn_over = true;
+                                    }
+                                    System.out.println("Blue");
+                                } else {
+                                    System.out.println(calendar.get(Calendar.DAY_OF_WEEK));
+                                    dot.setForeground(Color.DARK_GRAY);
+                                    //req_nextDay();
+                                    if (calendar.get(Calendar.DAY_OF_WEEK) == 1) {
+                                        turn_over = true;
+                                    }
+                                    System.out.println("Gray");
+                                }
+
+
+                                if (calendar.get(Calendar.DAY_OF_WEEK) == 2 && turn_over == true && checkDayList.size() != 0) {
+                                    //dot.setForeground(Color.DARK_GRAY);
+                                    settingNum++;
+                                    Collections.sort(checkDayList);
+                                    dot.setForeground(Color.DARK_GRAY);
+                                    System.out.println("Day select finish");
+
+                                    text = " ";
+                                    dayListNum = checkDayList.size();
+                                    for (i = 0; i < dayListNum; i++) {
+                                        num = checkDayList.get(i);
+                                        if (num == 2) {
+                                            text = text + "월 ";
+                                        } else if (num == 3) {
+                                            text = text + "화 ";
+                                        } else if (num == 4) {
+                                            text = text + "수 ";
+                                        } else if (num == 5) {
+                                            text = text + "목 ";
+                                        } else if (num == 6) {
+                                            text = text + "금 ";
+                                        } else if (num == 7) {
+                                            text = text + "토 ";
+                                        } else if (num == 1) {
+                                            text = text + "일 ";
+                                        }
+
+                                    }
+                                    System.out.println(text);
+                                    dot.setText(text + " 주기:" + cycleList[index]);
+
+                                }
+
+                                break;
+                            case 2:
+                                req_nextCycle();
+                                break;
+                            case 3:
+                                req_nextHour();
+                                break;
+                            case 4:
+
+                                req_nextMinute();
+                                break;
+
+                        }
 
                     }
 
@@ -279,69 +278,62 @@ public class AlarmView extends JPanel {
         C.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(alarm_status.equals("List") == true){
-                    alarm_status = "Setting";
-                    if(alarm != null){
-                        choice = 0;
-                        dot.setText("Delete?");
+                if (buzzer_mode == true) {
+                    Buzzer.getInstance().stopBuzzer();
+                } else {
+                    if (alarm_status.equals("List") == true) {
+                        alarm_status = "Setting";
+                        if (alarm != null) {
+                            choice = 0;
+                            dot.setText("Delete?");
 
-                    }
-                    else{
-                        dot.setText("No Record");
-                        segment.setText("   00:00");
-
-                    }
-
-                }
-                else if(alarm_status.equals("Setting") == true){
-                    alarm_status = "List";
-                    base.controller.getInstManager().setAlarmIndex(-1);
-                    alarm = base.controller.req_alarmList();
-                    if(alarm == null){
-                        dot.setText("No Record");
-                        segment.setText("   00:00");
-
-                    }
-                    else{
-                        text = " ";
-                        dayListNum = alarm.getDayListNum();
-                        System.out.println(dayListNum);
-                        for(i = 0; i< dayListNum; i++){
-                            num= alarm.getCheckDayList(i);
-                            if(num == 2){
-                                text = text + "월 " ;
-                            }
-                            else if(num == 3){
-                                text = text + "화 ";
-                            }
-                            else if(num == 4){
-                                text = text + "수 ";
-                            }
-                            else if(num == 5){
-                                text = text + "목 ";
-                            }
-                            else if(num == 6){
-                                text = text + "금 ";
-                            }
-                            else if(num == 7){
-                                text = text + "토 ";
-                            }
-                            else if(num == 1){
-                                text = text + "일 ";
-                            }
+                        } else {
+                            dot.setText("No Record");
+                            segment.setText("   00:00");
 
                         }
 
-                        segment.setText(Integer.toString(InstManager.getInstance().getAlarmIndex())+". "+ Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()));
-                        if(alarm.getStatus() == true){
-                            dot.setText(text+" 주기:"+alarm.getCycle() + " On");
-                        }
-                        else{
-                            dot.setText(text+" 주기:"+alarm.getCycle() + " Off");
-                        }
-                    }
+                    } else if (alarm_status.equals("Setting") == true) {
+                        alarm_status = "List";
+                        base.controller.getInstManager().setAlarmIndex(-1);
+                        alarm = base.controller.req_alarmList();
+                        if (alarm == null) {
+                            dot.setText("No Record");
+                            segment.setText("   00:00");
 
-                    //이 때 C버튼은 OK(Next)
+                        } else {
+                            text = " ";
+                            dayListNum = alarm.getDayListNum();
+                            System.out.println(dayListNum);
+                            for (i = 0; i < dayListNum; i++) {
+                                num = alarm.getCheckDayList(i);
+                                if (num == 2) {
+                                    text = text + "월 ";
+                                } else if (num == 3) {
+                                    text = text + "화 ";
+                                } else if (num == 4) {
+                                    text = text + "수 ";
+                                } else if (num == 5) {
+                                    text = text + "목 ";
+                                } else if (num == 6) {
+                                    text = text + "금 ";
+                                } else if (num == 7) {
+                                    text = text + "토 ";
+                                } else if (num == 1) {
+                                    text = text + "일 ";
+                                }
+
+                            }
+
+                            segment.setText(Integer.toString(InstManager.getInstance().getAlarmIndex()) + ". " + Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()));
+                            if (alarm.getStatus() == true) {
+                                dot.setText(text + " 주기:" + alarm.getCycle() + " On");
+                            } else {
+                                dot.setText(text + " 주기:" + alarm.getCycle() + " Off");
+                            }
+                        }
+
+                        //이 때 C버튼은 OK(Next)
                  /*   System.out.println(settingNum);
                     if(settingNum==2)
                     {
@@ -356,86 +348,76 @@ public class AlarmView extends JPanel {
 
                     }
                 */
-                }
-                else if(alarm_status.equals("Add") == true){
+                    } else if (alarm_status.equals("Add") == true) {
 
-                    if(settingNum == 1){
-                        if(checkDayList.contains(new Integer(calendar.get(Calendar.DAY_OF_WEEK)))){
-                            checkDayList.remove(new Integer(calendar.get(Calendar.DAY_OF_WEEK)));
+                        if (settingNum == 1) {
+                            if (checkDayList.contains(new Integer(calendar.get(Calendar.DAY_OF_WEEK)))) {
+                                checkDayList.remove(new Integer(calendar.get(Calendar.DAY_OF_WEEK)));
+                                dot.setForeground(Color.DARK_GRAY);
+                            } else {
+                                checkDayList.add(new Integer(calendar.get(Calendar.DAY_OF_WEEK)));
+                                dot.setForeground(Color.BLUE);
+                            }
+
+                        } else if (settingNum == 2) {
+                            cycle = cycleList[index];
+                            settingNum++;
+                        } else if (settingNum == 3) {
+                            settingNum++;
+                        } else if (settingNum == 4) {
+                            base.controller.req_setDate(checkDayList, dayListNum, cycleList[index], calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
+                            System.out.println("alarm start!!");
+                            System.out.println("시계시간: " + InstManager.getInstance().getTimekeeping().getHour());
+                            System.out.println("시계분: " + InstManager.getInstance().getTimekeeping().getMinute());
+                            System.out.println("시계요일: " + InstManager.getInstance().getTimekeeping().getDayNum());
+                            System.out.println("알람시간: " + alarm.getHour());
+                            System.out.println("알람분: " + alarm.getMinute());
+                            for (int i = 0; i < alarm.getCheckDayList().size(); i++) {
+                                System.out.println("알람요일: " + alarm.getCheckDayList().get(i));
+                            }
+                            alarm.start();
+
+                            alarm_status = "List";
+                            settingNum = 1;
+                            index = 0;
                             dot.setForeground(Color.DARK_GRAY);
-                        }
-                        else{
-                            checkDayList.add(new Integer(calendar.get(Calendar.DAY_OF_WEEK)));
-                            dot.setForeground(Color.BLUE);
-                        }
+                            calendar.set(0, 0, 0, 0, 0);
+                            calendar.setWeekDate(0, 0, 2);
+                            checkDayList.clear();
+                            turn_over = false;
 
-                    }
-                    else if(settingNum == 2){
-                        cycle = cycleList[index];
-                        settingNum++;
-                    }
-                    else if(settingNum == 3){
-                        settingNum++;
-                    }
-                    else if(settingNum == 4){
-                        base.controller.req_setDate(checkDayList, dayListNum, cycleList[index], calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
-                        System.out.println("alarm start!!");
-                        System.out.println("시계시간: "+InstManager.getInstance().getTimekeeping().getHour());
-                        System.out.println("시계분: "+InstManager.getInstance().getTimekeeping().getMinute());
-                        System.out.println("시계요일: "+InstManager.getInstance().getTimekeeping().getDayNum());
-                        System.out.println("알람시간: "+alarm.getHour());
-                        System.out.println("알람분: "+alarm.getMinute());
-                        for(int i=0; i<alarm.getCheckDayList().size(); i++) {
-                            System.out.println("알람요일: " + alarm.getCheckDayList().get(i));
-                        }
-                        alarm.start();
+                            base.controller.getInstManager().setAlarmIndex(-1);
+                            alarm = base.controller.req_alarmList();
+                            text = " ";
+                            dayListNum = alarm.getDayListNum();
+                            System.out.println(dayListNum);
+                            for (i = 0; i < dayListNum; i++) {
+                                num = alarm.getCheckDayList(i);
+                                if (num == 2) {
+                                    text = text + "월 ";
+                                } else if (num == 3) {
+                                    text = text + "화 ";
+                                } else if (num == 4) {
+                                    text = text + "수 ";
+                                } else if (num == 5) {
+                                    text = text + "목 ";
+                                } else if (num == 6) {
+                                    text = text + "금 ";
+                                } else if (num == 7) {
+                                    text = text + "토 ";
+                                } else if (num == 1) {
+                                    text = text + "일 ";
+                                }
 
-                        alarm_status = "List";
-                        settingNum = 1;
-                        index = 0;
-                        dot.setForeground(Color.DARK_GRAY);
-                        calendar.set(0,0,0, 0,0);
-                        calendar.setWeekDate(0,0,2);
-                        checkDayList.clear();
-                        turn_over = false;
-
-                        base.controller.getInstManager().setAlarmIndex(-1);
-                        alarm = base.controller.req_alarmList();
-                        text = " ";
-                        dayListNum = alarm.getDayListNum();
-                        System.out.println(dayListNum);
-                        for(i = 0; i< dayListNum; i++){
-                            num= alarm.getCheckDayList(i);
-                            if(num == 2){
-                                text = text + "월 " ;
-                            }
-                            else if(num == 3){
-                                text = text + "화 ";
-                            }
-                            else if(num == 4){
-                                text = text + "수 ";
-                            }
-                            else if(num == 5){
-                                text = text + "목 ";
-                            }
-                            else if(num == 6){
-                                text = text + "금 ";
-                            }
-                            else if(num == 7){
-                                text = text + "토 ";
-                            }
-                            else if(num == 1){
-                                text = text + "일 ";
                             }
 
-                        }
+                            segment.setText(Integer.toString(InstManager.getInstance().getAlarmIndex()) + ". " + Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()));
+                            if (alarm.getStatus() == true) {
+                                dot.setText(text + " 주기:" + alarm.getCycle() + " On");
+                            } else {
+                                dot.setText(text + " 주기:" + alarm.getCycle() + " Off");
+                            }
 
-                        segment.setText(Integer.toString(InstManager.getInstance().getAlarmIndex())+". "+ Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()));
-                        if(alarm.getStatus() == true){
-                            dot.setText(text+" 주기:"+alarm.getCycle() + " On");
-                        }
-                        else{
-                            dot.setText(text+" 주기:"+alarm.getCycle() + " Off");
                         }
 
                     }
@@ -451,7 +433,12 @@ public class AlarmView extends JPanel {
         D.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(alarm_status.equals("List") == true){
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
+                }
+                else{
+
+                    if(alarm_status.equals("List") == true){
                     Alarm alarm_ver2 = alarm;
                     alarm = base.controller.req_setAlarm();
                     if(alarm != null){
@@ -466,7 +453,7 @@ public class AlarmView extends JPanel {
 
                     }
                 }
-                else if(alarm_status.equals("Setting") == true){
+                    else if(alarm_status.equals("Setting") == true){
                     System.out.println("choice : "+choice);
                     if(choice == 0){
                         if(alarm != null) {
@@ -522,7 +509,7 @@ public class AlarmView extends JPanel {
 
                     }
                 }
-                else if(alarm_status.equals("Add") == true){
+                    else if(alarm_status.equals("Add") == true){
                     //DOWN버튼
                     switch(settingNum)
                     {
@@ -550,6 +537,8 @@ public class AlarmView extends JPanel {
                     }
 
                 }
+
+                }
             }
         });
 
@@ -571,45 +560,8 @@ public class AlarmView extends JPanel {
         dot_fm = new SimpleDateFormat("E요일");
         seg_fm = new SimpleDateFormat("   HH:mm");
 
-        //alarm = base.controller.req_alarmList();
-        //if(alarm == null){
         dot.setText("No Record");
         segment.setText("   00:00");
-
-        //}
-       /* else{
-            text = " ";
-            dayListNum = alarm.getDayListNum();
-            for(i = 0; i< dayListNum; i++){
-                num= alarm.getCheckDayList(i);
-                if(num == 2){
-                    text = text + "월 " ;
-                }
-                else if(num == 3){
-                    text = text + "화 ";
-                }
-                else if(num == 4){
-                    text = text + "수 ";
-                }
-                else if(num == 5){
-                    text = text + "목 ";
-                }
-                else if(num == 6){
-                    text = text + "금 ";
-                }
-                else if(num == 7){
-                    text = text + "토 ";
-                }
-                else if(num == 1){
-                    text = text + "일 ";
-                }
-
-            }
-            System.out.println(text);
-            dot.setText(text);
-            segment.setText(Integer.toString(InstManager.getInstance().getAlarmIndex())+". "+ Integer.toString(alarm.getHour()) + ":" + Integer.toString(alarm.getMinute()));
-        }
-*/
 
 
     }
@@ -683,7 +635,5 @@ public class AlarmView extends JPanel {
         alarmview.LCD4.setVisible(base.controller.req_isFunctionSelected(4));
         alarmview.LCD5.setVisible(base.controller.req_isFunctionSelected(5));
     }
-
-
 
 }

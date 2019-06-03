@@ -52,7 +52,11 @@ public class TimersView extends JPanel{
     String strDate;
     public Controller controller = null;
 
+    boolean buzzer_mode;
 
+    public void setBuzzer_mode(boolean buzzer_mode) {
+        this.buzzer_mode = buzzer_mode;
+    }
 
     public TimersView(BaseView base)
     {
@@ -119,7 +123,13 @@ public class TimersView extends JPanel{
         A.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                base.controller.req_changeMode();
+
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
+                }
+                else {
+                    base.controller.req_changeMode();
+                }
             }
         });
 
@@ -130,31 +140,36 @@ public class TimersView extends JPanel{
         B.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(timer_status.equals("Setting") == true){     //이게 문제
-                    switch(settingNum){
-                        case 0:
-                            req_nextHour();
-                            break;
-                        case 1:
-                            req_nextMinute();
-                            break;
-                        case 2:
-                            req_nextSecond();
-                            break;
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
+                }
+                else {
+                    if (timer_status.equals("Setting") == true) {     //이게 문제
+                        switch (settingNum) {
+                            case 0:
+                                req_nextHour();
+                                break;
+                            case 1:
+                                req_nextMinute();
+                                break;
+                            case 2:
+                                req_nextSecond();
+                                break;
+                        }
                     }
-                }
-                //타이머 일시정지 중에 리셋버튼이 눌리면
-                else if(timer_status.equals("Pause") == true){
-                    base.controller.req_reset();
-                    timer_status = "Setting";
-                    segment.setText(Integer.toString(timer.getHour())+":"+Integer.toString(timer.getMinute())+":"+Integer.toString(timer.getSecond()));
-                }
-                //타이머 실행 중에 리셋 버튼이 눌리면
-                else if(timer_status.equals("Execute") == true){
-                    base.controller.req_pause("timer");
-                    base.controller.req_reset();
-                    timer_status = "Setting";
-                    segment.setText(Integer.toString(timer.getHour())+":"+Integer.toString(timer.getMinute())+":"+Integer.toString(timer.getSecond()));
+                    //타이머 일시정지 중에 리셋버튼이 눌리면
+                    else if (timer_status.equals("Pause") == true) {
+                        base.controller.req_reset();
+                        timer_status = "Setting";
+                        segment.setText(Integer.toString(timer.getHour()) + ":" + Integer.toString(timer.getMinute()) + ":" + Integer.toString(timer.getSecond()));
+                    }
+                    //타이머 실행 중에 리셋 버튼이 눌리면
+                    else if (timer_status.equals("Execute") == true) {
+                        base.controller.req_pause("timer");
+                        base.controller.req_reset();
+                        timer_status = "Setting";
+                        segment.setText(Integer.toString(timer.getHour()) + ":" + Integer.toString(timer.getMinute()) + ":" + Integer.toString(timer.getSecond()));
+                    }
                 }
             }
         });
@@ -166,24 +181,26 @@ public class TimersView extends JPanel{
         C.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(timer_status.equals("Pause") == true){
-                    System.out.println("continue합니다");
-                    base.controller.req_continue("timer");
-                    timer_status = "Execute";
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
                 }
-
-                else if(timer_status.equals("Setting") == true){
-                    settingNum++;
-                    if(settingNum == 3) {
-                        req_next();
+                else {
+                    if (timer_status.equals("Pause") == true) {
+                        System.out.println("continue합니다");
+                        base.controller.req_continue("timer");
                         timer_status = "Execute";
+                    } else if (timer_status.equals("Setting") == true) {
+                        settingNum++;
+                        if (settingNum == 3) {
+                            req_next();
+                            timer_status = "Execute";
+                        }
+                    } else if (timer_status.equals("Execute") == true) {
+                        timer_status = "Pause";
+                        System.out.println("일시정지합니다");
+                        base.controller.req_pause("timer");
+                        segment.setText(Integer.toString(timer.getHour()) + ":" + Integer.toString(timer.getMinute()) + ":" + Integer.toString(timer.getSecond()));
                     }
-                }
-                else if(timer_status.equals("Execute") == true){
-                    timer_status = "Pause";
-                    System.out.println("일시정지합니다");
-                    base.controller.req_pause("timer");
-                    segment.setText(Integer.toString( timer.getHour())+":"+Integer.toString(timer.getMinute())+":"+Integer.toString(timer.getSecond()));
                 }
             }
         });
@@ -195,24 +212,28 @@ public class TimersView extends JPanel{
         D.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(timer_status.equals("Pause") == true){
-                    //none
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
                 }
-                else if(timer_status.equals("Setting") == true){
-                    switch(settingNum){
-                        case 0:
-                            req_prevHour();
-                            break;
-                        case 1:
-                            req_prevMinute();
-                            break;
-                        case 2:
-                            req_prevSecond();
-                            break;
+                else {
+                    if (timer_status.equals("Pause") == true) {
+                        //none
+                    } else if (timer_status.equals("Setting") == true) {
+                        switch (settingNum) {
+                            case 0:
+                                req_prevHour();
+                                break;
+                            case 1:
+                                req_prevMinute();
+                                break;
+                            case 2:
+                                req_prevSecond();
+                                break;
+                        }
+                    } else if (timer_status.equals("Execute") == true) {
+                        //none
                     }
-                }
-                else if(timer_status.equals("Execute") == true){
-                    //none
+
                 }
             }
         });

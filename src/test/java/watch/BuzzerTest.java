@@ -12,6 +12,11 @@ class BuzzerTest {
     BuzzerTest() {
     }
 
+    @BeforeAll
+    public static void makeInstance(){
+        junitTest = new Buzzer();
+    }
+
     @Test
     void getInstance() throws Exception {
         try {

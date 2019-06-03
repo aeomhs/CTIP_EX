@@ -32,7 +32,7 @@ public class Fitness extends Thread implements CountUp{
         this.second = 0;
         this.totalCalories = 0;
         this.CPM=0;
-        this.dbManager = new DBManager();
+        this.dbManager = DBManager.getInstance();
         this.fitDTO = FitnessDTO.getInstance();
     }
 

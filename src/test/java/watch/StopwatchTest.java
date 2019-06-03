@@ -69,7 +69,7 @@ class StopwatchTest {
     @Test
     void showRecord() throws Exception {
         try {
-            junitTest.showRecord(0);
+            junitTest.showRecord();
         }catch (Exception e){
             System.out.println("error");
         }
@@ -78,7 +78,7 @@ class StopwatchTest {
     @Test
     void record() throws Exception {
         try {
-            junitTest.record(1);
+            junitTest.record();
         }catch (Exception e){
             System.out.println("error");
         }

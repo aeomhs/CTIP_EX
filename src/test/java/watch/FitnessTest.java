@@ -145,7 +145,7 @@ class FitnessTest {
     @Test
     void showFitnessList()  throws Exception {
         try {
-            junitTest.showFitnessList(0);
+            junitTest.showFitnessList();
         }catch (Exception e){
             System.out.println("error");
         }

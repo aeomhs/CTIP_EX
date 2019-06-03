@@ -16,7 +16,7 @@ public class Stopwatch extends Thread implements CountUp, StateChange{
         this.second = 0;
         is_stop = false;
 
-        this.dbManager = new DBManager();
+        this.dbManager = DBManager.getInstance();
         this.swDTO = StopwatchDTO.getInstance();
     }
 

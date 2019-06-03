@@ -3,6 +3,7 @@ package View;
 
 
 
+import watch.Buzzer;
 import watch.SelectFunction;
 
 import javax.swing.*;
@@ -39,6 +40,12 @@ public class SelectView extends JPanel{
     private TimeKeepingView tkv;
     private SelectFunction selectFunction;
     private String functionName;
+
+    boolean buzzer_mode;
+
+    public void setBuzzer_mode(boolean buzzer_mode) {
+        this.buzzer_mode = buzzer_mode;
+    }
 
 
     public SelectView(BaseView base)
@@ -109,7 +116,12 @@ public class SelectView extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //<
-                base.change_view(0);//A버튼을 누르면 timekeepingView로 바꿔준다.
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
+                }
+                else {
+                    base.change_view(0);//A버튼을 누르면 timekeepingView로 바꿔준다.
+                }
                 //>
             }
         });
@@ -120,11 +132,16 @@ public class SelectView extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //>
-                functionName = base.controller.req_funcList();
-                if(functionName.equals("TimeKeeping")){//보여주는 기능에 "TimeKeeping"이 뜨지 않도록 처리
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
+                }
+                else {
                     functionName = base.controller.req_funcList();
-                }//타임키핑은 기본으로 선택된 기능이므로 선택할 기능으로 보여주지 않고 한번 더 호출하여 다음 기능을 보여준다.
-                dot.setText(functionName);
+                    if (functionName.equals("TimeKeeping")) {//보여주는 기능에 "TimeKeeping"이 뜨지 않도록 처리
+                        functionName = base.controller.req_funcList();
+                    }//타임키핑은 기본으로 선택된 기능이므로 선택할 기능으로 보여주지 않고 한번 더 호출하여 다음 기능을 보여준다.
+                    dot.setText(functionName);
+                }
                 //>
             }
         });
@@ -135,27 +152,27 @@ public class SelectView extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if(functionName.equals("Timer")){
-                    selectFunction.setFunctionList(1);//해당기능을 선택 또는 취소
-                    LCD1.setVisible(selectFunction.getFunctionListBool(1));
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
                 }
-                else if(functionName.equals("Alarm")){
-                    selectFunction.setFunctionList(2);//해당기능을 선택 또는 취소
-                    LCD2.setVisible(selectFunction.getFunctionListBool(2));
+                else {
+                    if (functionName.equals("Timer")) {
+                        selectFunction.setFunctionList(1);//해당기능을 선택 또는 취소
+                        LCD1.setVisible(selectFunction.getFunctionListBool(1));
+                    } else if (functionName.equals("Alarm")) {
+                        selectFunction.setFunctionList(2);//해당기능을 선택 또는 취소
+                        LCD2.setVisible(selectFunction.getFunctionListBool(2));
+                    } else if (functionName.equals("StopWatch")) {
+                        selectFunction.setFunctionList(3);//해당기능을 선택 또는 취소
+                        LCD3.setVisible(selectFunction.getFunctionListBool(3));
+                    } else if (functionName.equals("D+Day")) {
+                        selectFunction.setFunctionList(4);//해당기능을 선택 또는 취소
+                        LCD4.setVisible(selectFunction.getFunctionListBool(4));
+                    } else if (functionName.equals("Fitness")) {
+                        selectFunction.setFunctionList(5);//해당기능을 선택 또는 취소
+                        LCD5.setVisible(selectFunction.getFunctionListBool(5));
+                    }
                 }
-                else if(functionName.equals("StopWatch")){
-                    selectFunction.setFunctionList(3);//해당기능을 선택 또는 취소
-                    LCD3.setVisible(selectFunction.getFunctionListBool(3));
-                }
-                else if(functionName.equals("D+Day")){
-                    selectFunction.setFunctionList(4);//해당기능을 선택 또는 취소
-                    LCD4.setVisible(selectFunction.getFunctionListBool(4));
-                }
-                else if(functionName.equals("Fitness")){
-                    selectFunction.setFunctionList(5);//해당기능을 선택 또는 취소
-                    LCD5.setVisible(selectFunction.getFunctionListBool(5));
-                }
-
             }
         });
         D = new JButton("D");
@@ -164,10 +181,14 @@ public class SelectView extends JPanel{
         D.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (base.controller.req_finishSelect()){//선택된 기능의 개수가 3개이면
-                    base.change_view(0);// timekeepingView로 바꿔준다.
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
                 }
-
+                else {
+                    if (base.controller.req_finishSelect()) {//선택된 기능의 개수가 3개이면
+                        base.change_view(0);// timekeepingView로 바꿔준다.
+                    }
+                }
             }
         });
         dot = new JLabel();

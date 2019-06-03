@@ -1,6 +1,7 @@
 package View;
 
 
+import watch.Buzzer;
 import watch.Dday;
 import watch.InstManager;
 import watch.Timekeeping;
@@ -53,6 +54,12 @@ public class DdayView extends JPanel{
         1. List     2. Setting     3. Add   4.DeleteFinish   5. AddFinish
      */
     private String strDate;
+
+    boolean buzzer_mode;
+
+    public void setBuzzer_mode(boolean buzzer_mode) {
+        this.buzzer_mode = buzzer_mode;
+    }
 
 
     public DdayView(BaseView base)
@@ -122,7 +129,12 @@ public class DdayView extends JPanel{
         A.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                base.controller.req_changeMode();
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
+                }
+                else{
+                    base.controller.req_changeMode();
+                }
             }
         });
         B = new JButton("B");
@@ -133,7 +145,11 @@ public class DdayView extends JPanel{
             public void actionPerformed(ActionEvent e) {
                 //if(tk_status.equals("TimeKeeping"))
                 //base.change_view(6);
-                if(dDay_status.equals("List") == true){
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
+                }
+                else{
+                    if(dDay_status.equals("List") == true){
                     dDay =base.controller.req_selectDate();
                     if( dDay != null){
                         dDay_status = "Add";
@@ -143,7 +159,7 @@ public class DdayView extends JPanel{
 
 
                 }
-                else if(dDay_status.equals("Finish") == true){
+                    else if(dDay_status.equals("Finish") == true){
                     dDay =base.controller.req_selectDate();
                     if( dDay != null){
                         dDay_status = "Add";
@@ -151,7 +167,7 @@ public class DdayView extends JPanel{
                         req_nextGoal();
                     }
                 }
-                else if(dDay_status.equals("Setting") == true){
+                    else if(dDay_status.equals("Setting") == true){
                     base.controller.req_deleteDday();
                     base.controller.getInstManager().setdDayIndex(-1);
                     dDay_status = "Finish";
@@ -161,7 +177,7 @@ public class DdayView extends JPanel{
 
 
                 }
-                else if(dDay_status.equals("Add") == true){
+                    else if(dDay_status.equals("Add") == true){
                     switch(settingNum)
                     {
                         case 1:
@@ -202,6 +218,7 @@ public class DdayView extends JPanel{
                     }
 
                 }
+                }
             }
         });
         C = new JButton("C");
@@ -212,45 +229,43 @@ public class DdayView extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println(dDay_status);
-                if(dDay_status.equals("List") == true){
-                    if(dDay != null) {
-                        dDay_status = "Setting";
-                        dot.setText("Really Delete??");
-                    }
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
                 }
-                else if(dDay_status.equals("Finish") == true){
+                else {
+                    if (dDay_status.equals("List") == true) {
+                        if (dDay != null) {
+                            dDay_status = "Setting";
+                            dot.setText("Really Delete??");
+                        }
+                    } else if (dDay_status.equals("Finish") == true) {
 
-                }
-                else if(dDay_status.equals("Setting") == true){
-                    dDay_status = "List";
-                    dot.setText((InstManager.getInstance().getdDayIndex()+1)+"번째 목표 : "+dDay.getGoal());
+                    } else if (dDay_status.equals("Setting") == true) {
+                        dDay_status = "List";
+                        dot.setText((InstManager.getInstance().getdDayIndex() + 1) + "번째 목표 : " + dDay.getGoal());
 
-                }
-                else if(dDay_status.equals("Add") == true){
-                    if(settingNum == 1){
-                        goal = goalList[goal_index];
-                        base.controller.req_setGoal(goal);
-                        settingNum++;
-                        strDate = seg_fm.format(calendar.getTime());
-                        segment.setText(strDate);
-                    }
-                    else if(settingNum == 2){
-                        settingNum++;
-                    }
-                    else if(settingNum == 3){
-                        settingNum++;
-                    }
-                    else if(settingNum == 4) {
-                        base.controller.req_setDate("dDay",calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
-                        dDay.start();
+                    } else if (dDay_status.equals("Add") == true) {
+                        if (settingNum == 1) {
+                            goal = goalList[goal_index];
+                            base.controller.req_setGoal(goal);
+                            settingNum++;
+                            strDate = seg_fm.format(calendar.getTime());
+                            segment.setText(strDate);
+                        } else if (settingNum == 2) {
+                            settingNum++;
+                        } else if (settingNum == 3) {
+                            settingNum++;
+                        } else if (settingNum == 4) {
+                            base.controller.req_setDate("dDay", calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
+                            dDay.start();
 
-                        settingNum = 1;
-                        calendar.set(timekeeping.getYear(),timekeeping.getMonth() ,timekeeping.getDate());
+                            settingNum = 1;
+                            calendar.set(timekeeping.getYear(), timekeeping.getMonth(), timekeeping.getDate());
 
-                        base.controller.getInstManager().setdDayIndex(-1);
-                        dDay_status = "Finish";
-                        dot.setText("Add completed!!");
-                        segment.setText("   Cheer Up~   ");
+                            base.controller.getInstManager().setdDayIndex(-1);
+                            dDay_status = "Finish";
+                            dot.setText("Add completed!!");
+                            segment.setText("   Cheer Up~   ");
 
                        /* dDay = base.controller.req_DdayList();
                         if(dDay == null){
@@ -262,8 +277,9 @@ public class DdayView extends JPanel{
                             segment.setText((InstManager.getInstance().getdDayIndex()+1)+"번째 D+day: +"+dDay.getDayCount());
                         }
                         */
-                    }
+                        }
 
+                    }
                 }
             }
         });
@@ -273,50 +289,50 @@ public class DdayView extends JPanel{
         D.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(dDay_status.equals("List") == true){
-                    dDay = base.controller.req_DdayList();
-                    if(dDay == null){
-                        dot.setText("D+day List Is NULL!");
-                        segment.setText("   X   ");
-                    }
-                    else{
-                        dot.setText(dDay.getGoal());
-                        dot.setText((InstManager.getInstance().getdDayIndex()+1)+"번째 목표 : "+dDay.getGoal());
-                        segment.setText((InstManager.getInstance().getdDayIndex()+1)+"번쨰 D+day 값: +"+dDay.getDayCount());
-                    }
-
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
                 }
-                else if(dDay_status.equals("Finish") == true){
-                    dDay_status = "List";
-                    dDay = base.controller.req_DdayList();
-                    if(dDay == null){
-                        dot.setText("D+day List Is NULL!");
-                        segment.setText("   X   ");
-                    }
-                    else{
-                        dot.setText(dDay.getGoal());
-                        dot.setText((InstManager.getInstance().getdDayIndex()+1)+"번째 목표 : "+dDay.getGoal());
-                        segment.setText((InstManager.getInstance().getdDayIndex()+1)+"번쨰 D+day 값: +"+dDay.getDayCount());
-                    }
-                }
-                else if(dDay_status.equals("Add") == true){
-                    switch(settingNum)
-                    {
-                        case 1:
-                            req_prevGoal();
-                            break;
-                        case 2:
-                            req_prevYear();
-                            break;
-                        case 3:
-                            req_prevMonth();
-                            break;
-                        case 4:
-                            req_prevDate();
-                            break;
+                else {
+                    if (dDay_status.equals("List") == true) {
+                        dDay = base.controller.req_DdayList();
+                        if (dDay == null) {
+                            dot.setText("D+day List Is NULL!");
+                            segment.setText("   X   ");
+                        } else {
+                            dot.setText(dDay.getGoal());
+                            dot.setText((InstManager.getInstance().getdDayIndex() + 1) + "번째 목표 : " + dDay.getGoal());
+                            segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: +" + dDay.getDayCount());
+                        }
+
+                    } else if (dDay_status.equals("Finish") == true) {
+                        dDay_status = "List";
+                        dDay = base.controller.req_DdayList();
+                        if (dDay == null) {
+                            dot.setText("D+day List Is NULL!");
+                            segment.setText("   X   ");
+                        } else {
+                            dot.setText(dDay.getGoal());
+                            dot.setText((InstManager.getInstance().getdDayIndex() + 1) + "번째 목표 : " + dDay.getGoal());
+                            segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: +" + dDay.getDayCount());
+                        }
+                    } else if (dDay_status.equals("Add") == true) {
+                        switch (settingNum) {
+                            case 1:
+                                req_prevGoal();
+                                break;
+                            case 2:
+                                req_prevYear();
+                                break;
+                            case 3:
+                                req_prevMonth();
+                                break;
+                            case 4:
+                                req_prevDate();
+                                break;
+
+                        }
 
                     }
-
                 }
             }
         });
@@ -400,6 +416,8 @@ public class DdayView extends JPanel{
         strDate = seg_fm.format(calendar.getTime());
         segment.setText(strDate);
     }
+
+
 
 }
 

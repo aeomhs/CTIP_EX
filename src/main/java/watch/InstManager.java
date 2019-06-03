@@ -1,5 +1,7 @@
 package watch;
 
+import View.BaseView;
+
 import java.util.ArrayList;
 
 public class InstManager {
@@ -88,6 +90,11 @@ public class InstManager {
         else {
             return alarmList.get(alarmIndex);
         }
+
+    }
+
+    public ArrayList<Alarm> getAlarmList() {
+        return alarmList;
     }
 
     public Stopwatch getStopwatch() {
@@ -113,7 +120,9 @@ public class InstManager {
 
     public void deleteInst(String object){
         if(object.equals("alarm") == true){
+            this.alarmList.get(this.alarmIndex).setIs_delete(true);
             this.alarmList.remove(this.alarmIndex);
+
         }
         else if(object.equals("dDay")==true){
             System.out.println("디데이 타이머 삭제 + 객체 삭제 완료~ ");

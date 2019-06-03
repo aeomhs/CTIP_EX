@@ -11,6 +11,10 @@ class StopwatchDTOTest {
     StopwatchDTOTest(){
     }
 
+    @BeforeAll
+    public static void makeInstance(){
+        junitTest = new StopwatchDTO();
+    }
 
     @Test
     void getInstance() throws Exception{

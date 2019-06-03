@@ -183,7 +183,7 @@ class ControllerTest {
     @Test
     void req_record() throws Exception {
         try {
-            junitTest.req_record(1);
+            junitTest.req_record();
         }catch (Exception e){
             System.out.println("req_record failed");
         }
@@ -201,7 +201,7 @@ class ControllerTest {
     @Test
     void req_recordList() throws Exception {
         try {
-            junitTest.req_recordList(1);
+            junitTest.req_recordList();
         }catch (Exception e){
             System.out.println("req_recordList failed");
         }
@@ -273,7 +273,7 @@ class ControllerTest {
     @Test
     void req_fitnessList() throws Exception {
         try {
-            junitTest.req_fitnessList(1);
+            junitTest.req_fitnessList();
         }catch (Exception e){
             System.out.println("req_fitnessList failed");
         }

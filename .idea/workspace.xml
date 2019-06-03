@@ -7,13 +7,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e3c3cb9-d7da-4981-97b3-68d1b6236022" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/CTIP_SMA_6_main_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/StopWatchView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/StopWatchView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/AlarmView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/AlarmView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/BaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/BaseView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/DdayView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/DdayView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/FitnessView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/FitnessView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/SelectView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/SelectView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/StopWatchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/StopWatchView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/TimeKeepingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/TimeKeepingView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/TimersView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/TimersView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/watch/Alarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/watch/Alarm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/watch/Buzzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/watch/Buzzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/watch/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/watch/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/watch/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/watch/DBManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/watch/Fitness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/watch/Fitness.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/watch/InstManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/watch/InstManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/watch/SelectFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/watch/SelectFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/watch/Stopwatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/watch/Stopwatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/watch/BuzzerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/BuzzerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/watch/ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/ControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/watch/DBManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/DBManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/watch/FitnessTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/FitnessTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/watch/StopwatchDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/StopwatchDTOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/watch/StopwatchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/StopwatchTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/watch/TimersTest.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -51,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/watch/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="305" column="36" selection-start-line="305" selection-start-column="36" selection-end-line="305" selection-end-column="36" />
+            <state relative-caret-position="5833">
+              <caret line="311" column="36" selection-start-line="311" selection-start-column="36" selection-end-line="311" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -63,7 +81,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/watch/Fitness.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
+            <state relative-caret-position="2128">
               <caret line="156" column="48" selection-start-line="156" selection-start-column="48" selection-end-line="156" selection-end-column="49" />
             </state>
           </provider>
@@ -81,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/TimeKeepingView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="363" selection-start-line="363" selection-end-line="363" />
+            <state relative-caret-position="6479">
+              <caret line="377" selection-start-line="377" selection-end-line="377" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/AlarmView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="342">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -102,8 +120,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/watch/DBManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="260" column="32" lean-forward="true" selection-start-line="260" selection-start-column="32" selection-end-line="260" selection-end-column="32" />
+            <state relative-caret-position="247">
+              <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -111,7 +129,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/watch/FitnessDTO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
+            <state relative-caret-position="836">
               <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
             </state>
           </provider>
@@ -120,8 +138,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/FitnessView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="187" column="48" selection-start-line="187" selection-start-column="48" selection-end-line="187" selection-end-column="48" />
+            <state relative-caret-position="4009">
+              <caret line="211" selection-start-line="211" selection-end-line="211" />
             </state>
           </provider>
         </entry>
@@ -138,8 +156,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/StopWatchView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="214" column="54" lean-forward="true" selection-start-line="214" selection-start-column="54" selection-end-line="214" selection-end-column="54" />
+            <state relative-caret-position="4142">
+              <caret line="229" column="54" selection-start-line="229" selection-start-column="54" selection-end-line="229" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -196,16 +214,16 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1933" />
-    <option name="height" value="1049" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -245,33 +263,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="AlarmView" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="FitnessView" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="StopWatchView" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="watch" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -282,7 +273,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -295,7 +285,7 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
@@ -345,17 +335,18 @@
       <workItem from="1559399046350" duration="2944000" />
       <workItem from="1559404040838" duration="18325000" />
       <workItem from="1559480898115" duration="1688000" />
+      <workItem from="1559574910542" duration="238000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22957000" />
+    <option name="totallyTimeSpent" value="23195000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10671141" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10805369" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -364,7 +355,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32624114" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32624114" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -541,6 +532,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/watch/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5833">
+          <caret line="311" column="36" selection-start-line="311" selection-start-column="36" selection-end-line="311" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/watch/Fitness.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2128">
+          <caret line="156" column="48" selection-start-line="156" selection-start-column="48" selection-end-line="156" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/watch/Timekeeping.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2508">
@@ -550,59 +558,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/TimeKeepingView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="363" selection-start-line="363" selection-end-line="363" />
+        <state relative-caret-position="6479">
+          <caret line="377" selection-start-line="377" selection-end-line="377" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/FitnessView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="187" column="48" selection-start-line="187" selection-start-column="48" selection-end-line="187" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/watch/FitnessDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/AlarmView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="342">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/watch/Fitness.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/watch/FitnessDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="156" column="48" selection-start-line="156" selection-start-column="48" selection-end-line="156" selection-end-column="49" />
+        <state relative-caret-position="836">
+          <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/watch/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/FitnessView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="305" column="36" selection-start-line="305" selection-start-column="36" selection-end-line="305" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/StopWatchView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="214" column="54" lean-forward="true" selection-start-line="214" selection-start-column="54" selection-end-line="214" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="4009">
+          <caret line="211" selection-start-line="211" selection-end-line="211" />
         </state>
       </provider>
     </entry>
@@ -613,10 +594,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/StopWatchView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4142">
+          <caret line="229" column="54" selection-start-line="229" selection-start-column="54" selection-end-line="229" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/watch/DBManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="260" column="32" lean-forward="true" selection-start-line="260" selection-start-column="32" selection-end-line="260" selection-end-column="32" />
+        <state relative-caret-position="247">
+          <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
         </state>
       </provider>
     </entry>

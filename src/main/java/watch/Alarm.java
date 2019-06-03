@@ -14,10 +14,11 @@ public class Alarm extends Thread {
     private InstManager inst;
     private Timekeeping time;
     private Timer tm;
-    private int cycleCount;
+    private int cycleCount = 0;
     private boolean is_delete = false;
     TimerTask tt;
     Buzzer buzzer;
+
 
     Calendar cal = Calendar.getInstance();
 
@@ -93,108 +94,80 @@ public class Alarm extends Thread {
         this.is_delete = is_delete;
     }
 
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     //usecase: onoff_alarm  그리고 이부분 보고서랑 다이어그램 고치기.
     public void OnOffAlarm() {
         if(status == true) {
             status = false;
             System.out.println("Off status:"+status);
         }
-        //status == false
+
         else {
             status = true;
             System.out.println("On status :"+status);
-           /* synchronized (this) {
-                try {
-                    status = true;
-                   // notify();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            */
-
         }
     }
 
     synchronized public void checkAlarm() {
-
+        int i;
+        int j;
+        int time_value;
 
         while (is_delete == false) {
-            //(Alarm off)
-            System.out.println("check alarm!!");
-            try{
+            try {
+                // 주기만큼 잠든다.
                 sleep(1000);
             }
             catch (Exception e){
                 e.printStackTrace();
             }
+
+
             if(status == true) {
-                /*
-                try {
-                    Thread.sleep(60000);
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                */
-                System.out.println("status ==true!!");
+
+                System.out.println("alarm check!");
+
                 if (this.hour == time.getHour() && this.minute == time.getMinute()) {
                     System.out.println("시간이 똑같다!!");
-                    for (int i = 0; i < checkDayList.size(); i++) {
+                    for (i = 0; i < checkDayList.size(); i++) {
                         if (this.checkDayList.get(i) == time.getDayNum()) {
                             System.out.println("요일도 똑같다!!");
-                            System.out.println("알람요일 : "+this.checkDayList.get(i)+"   시계 요일 : "+ time.getDayNum());
-                            if(cycle !=0 ) {
-                                tm = new Timer();
-                                tt = new TimerTask() {
-                                    @Override
-                                    public void run() {
-
-                                        //int i;
-                                        //for(i=0; i<3; i++){
-                                        // buzzer.setIs_stop(false);
-                                        //buzzer.ringBuzzer();
-                                        //}
-                                        if (cycleCount == 3 || buzzer.getIs_stop() == true) {
-                                            tm.cancel();
-                                            tm.purge();
-                                            cycleCount = 0;
-                                            status = true;
-                                            //return;
-                                        } else {
-                                            cycleCount++;
-                                            System.out.println("cycle : "+cycle);
-                                            buzzer.setIs_stop(false);
-                                            buzzer.ringBuzzer();
-                                            status = false;
+                            //System.out.println("알람요일 : "+this.checkDayList.get(i)+"   시계 요일 : "+ time.getDayNum());
+                            if(cycle != 0 ) {
+                                // 총 3번 버저를 울린다.
+                                for(j = 0; j < 3; j++) {
+                                    if(status == true && is_delete == false) {
+                                        buzzer.setIs_stop(false);
+                                        time_value = buzzer.ringBuzzer();
+                                        try {
+                                            // (주기-버저울린시간)만큼 잠든다.
+                                            time_value = (time_value*3)-1;
+                                            sleep(cycle * 60 * 1000 - time_value * 1000);
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
                                         }
-                                    }
-                                };
 
-                                tm.scheduleAtFixedRate(tt, 0, cycle * 60 * 1000);
+                                    }
+                                }
                             }
-                            else if(cycle==0) {
+                            else {      // cycle == 0
                                 buzzer.setIs_stop(false);
-                                buzzer.ringBuzzer();
+                                time_value = buzzer.ringBuzzer();
+                                try {
+                                    // (1분-버저울린시간)만큼 잠든다.
+                                    time_value = (time_value*3)-1;
+                                    sleep(  (60 * 1000) - (time_value * 1000));
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                             }
                         }
-
                     }
                 }
             }
-            //status == false (Alarm off)
-            /*else{
-                synchronized (this) {
-                    try {
-
-                        System.out.println("wait");
-                        this.wait();
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                }
-            }*/
         }
     }
 }

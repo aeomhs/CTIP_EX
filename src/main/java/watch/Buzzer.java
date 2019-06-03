@@ -1,5 +1,7 @@
 package watch;
 
+import View.BaseView;
+
 import java.io.File;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -8,8 +10,9 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 
 public class Buzzer{
-    public int time;
+    public int time=0;
     public boolean is_stop;
+    private BaseView baseView;
     private static Buzzer buzzerInstance = new Buzzer();
 
     //다른클래스에서는 getInstance로 호출
@@ -20,6 +23,10 @@ public class Buzzer{
 
     public Buzzer() {
         this.time = time;
+    }
+
+    public void setBaseView(BaseView baseView) {
+        this.baseView = baseView;
     }
 
     public void beep(){
@@ -45,28 +52,40 @@ public class Buzzer{
         }
     }
 
-    public void ringBuzzer() {
-        while(time<30){
+    //30초 다 채워서 울리면 return true
+    //30초 다 못 채우고 울리면 return false
+    public int ringBuzzer() {
+        int time_value;
+        baseView.on_buzzerMode();
+        while(time<10){
             if(is_stop == false) {
                 beep();
+                System.out.println("Beep!!!!!!!!!!!!!!");
                 this.time++;
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
 
             }
-            //is_stop == true
             else{
                 break;
             }
         }
+        time_value = time;
+        is_stop = true;
+        time = 0;
+        return time_value;
+
+
     }
+
 
     public void stopBuzzer(){
         this.is_stop = true;
+        baseView.off_buzzerMode();
     }
 
     public boolean getIs_stop() {
