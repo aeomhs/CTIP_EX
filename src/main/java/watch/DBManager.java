@@ -44,7 +44,7 @@ public class DBManager {
         url = "jdbc:sqlite:watch.db";
         sql_fit = "select * from fitness";
         sql_sw = "select * from stopwatch";
-        
+
         try {
             Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException e) {
