@@ -172,7 +172,6 @@ public class Fitness extends Thread implements CountUp{
         while (true) {
             if (is_stop == false) {
                 second++;
-                calcultateCalories();
                 if (second == 60) {
                     second = 0;
                     minute++;

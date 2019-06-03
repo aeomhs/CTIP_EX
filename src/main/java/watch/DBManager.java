@@ -352,7 +352,7 @@ public class DBManager {
 
     }
     private void createTable(){
-        String createTableQuery = "CREATE TABLE fitness(" +
+        String createTableQuery = "CREATE TABLE IF NOT EXISTS fitness(" +
                 "month INTEGER NOT NULL," +
                 "date INTEGER NOT NULL," +
                 "hour INTEGER NOT NULL," +
@@ -362,7 +362,7 @@ public class DBManager {
                 "number INTEGER NOT NULL "+
                 ");";
 
-        String createTableQuery_2= "CREATE TABLE stopwatch("+
+        String createTableQuery_2= "CREATE TABLE IF NOT EXISTS stopwatch("+
                 "hour INTEGER NOT NULL,"+
                 "minute INTEGER  NOT NULL,"+
                 "second INTEGER  NOT NULL,"+
