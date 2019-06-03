@@ -67,18 +67,18 @@ class StopwatchTest {
     }
 
     @Test
-    void showRecord(int column) throws Exception {
+    void showRecord() throws Exception {
         try {
-            junitTest.showRecord(3);
+            junitTest.showRecord(0);
         }catch (Exception e){
             System.out.println("error");
         }
     }
 
     @Test
-    void record(int count) throws Exception {
+    void record() throws Exception {
         try {
-            junitTest.record(2);
+            junitTest.record(1);
         }catch (Exception e){
             System.out.println("error");
         }
