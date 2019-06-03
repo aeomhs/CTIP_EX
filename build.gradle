@@ -59,6 +59,9 @@ jacocoTestReport {
 
 test{
     useJUnitPlatform()
+    beforeTest { 
+        descriptor -> logger.lifecycle("Running test: " + descriptor)
+    }
     reports{
         junitXml.enabled = true
         html.enabled = false
