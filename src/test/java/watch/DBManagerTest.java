@@ -13,7 +13,7 @@ class DBManagerTest {
 
     @BeforeAll
     public static void makeInstance(){
-        junitTest = new DBManager();
+        junitTest = DBManager.getInstance();
     }
 
     @Test
