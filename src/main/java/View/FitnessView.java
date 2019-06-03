@@ -38,9 +38,7 @@ public class FitnessView extends JPanel{
     private JLabel segment;
     private  JLabel tmp;
 
-    private int hour;
-    private int minute;
-    private int second;
+
     private int count;
     private boolean is_pause = false; //뷰에서 pause체크해준다.
     private int check=0;
@@ -64,11 +62,11 @@ public class FitnessView extends JPanel{
         this.base= base;
         this.setBounds(0,0,800,500);
         // this.setBackground(Color.YELLOW);
-        count =1;
+        count =0;
 
         calendar = Calendar.getInstance();
         fit = InstManager.getInstance().getFitness();
-        dot_fm = new SimpleDateFormat("MM월 dd일");
+        dot_fm = new SimpleDateFormat("M월 dd일");
         seg_fm = new SimpleDateFormat("HH:mm:ss");
         base.controller.req_fitnessList(fit.getCount());
         calendar.set(InstManager.getInstance().getTimekeeping().getYear(),fit.getMonth(),fit.getDate(),fit.getHour(),fit.getMinute(),fit.getSecond());
@@ -150,10 +148,7 @@ public class FitnessView extends JPanel{
                     dot.setText(strDate);
 
                 }
-                else if(fit_status.equals("Excute") == true){
 
-
-                }
             }
         });
         C = new JButton("C");
@@ -165,30 +160,36 @@ public class FitnessView extends JPanel{
 
 
                 if(fit_status.equals("Setting") == true){
-                    tm = new Timer();
-                    fit.setMonth(InstManager.getInstance().getTimekeeping().getMonth());
-                    fit.setDate(InstManager.getInstance().getTimekeeping().getDate());
-                    calendar.set(Calendar.YEAR,fit.getMonth(),fit.getDate(),0,0,0);
-                    String str = dot_fm.format(calendar.getTime());
-                    dot.setText(str+"calories:");
-                    TimerTask tt = new TimerTask() {
-                        @Override
-                        public void run() {
-                            calendar.set(base.controller.getInstManager().getTimekeeping().getYear(),fit.getMonth(),fit.getDate(),fit.getHour(),fit.getMinute(),fit.getSecond());
-                            dot.setText(fit.getExercise()+"calories: "+fit.getTotalCalories());
-                            System.out.println("운동 화면시간"+fit.getDate());
-                            strDate2 = seg_fm.format(calendar.getTime());
-                            segment.setText(strDate2);
-
-                        }
-                    };
                     base.controller.req_setExercise(strDate);
-                    fit_status = "Execute";//모드 전환
-                    if(check==0)
-                        base.controller.req_countUp("fitness");
-                    else
-                        base.controller.req_continue("fitness");
-                    tm.scheduleAtFixedRate(tt,0,1000);
+                    tm = new Timer();
+                    if(fit.getCPM()!=0) {
+                        fit.setMonth(InstManager.getInstance().getTimekeeping().getMonth());
+                        fit.setDate(InstManager.getInstance().getTimekeeping().getDate());
+                        calendar.set(Calendar.YEAR,fit.getMonth(),fit.getDate(),0,0,0);
+                        String str = dot_fm.format(calendar.getTime());
+                        dot.setText(str+"calories:");
+                        TimerTask tt = new TimerTask() {
+                            @Override
+                            public void run() {
+                                calendar.set(base.controller.getInstManager().getTimekeeping().getYear(),fit.getMonth(),fit.getDate(),fit.getHour(),fit.getMinute(),fit.getSecond());
+                                dot.setText(fit.getExercise()+"calories: "+fit.getTotalCalories());
+                                strDate2 = seg_fm.format(calendar.getTime());
+                                segment.setText(strDate2);
+
+                            }
+                        };
+
+                        fit_status = "Execute";//모드 전환
+                        fit.setHour(0);
+                        fit.setMinute(0);
+                        fit.setSecond(0);
+                        fit.setTotalCalories(0);
+                        if (check == 0)
+                            base.controller.req_countUp("fitness");
+                        else
+                            base.controller.req_continue("fitness");
+                        tm.scheduleAtFixedRate(tt, 0, 1000);
+                    }
 
 
                 }
@@ -230,13 +231,23 @@ public class FitnessView extends JPanel{
 
                 }
                 else if(fit_status.equals("Execute") == true){
-                    check=1;
-                    tm.cancel();
-                    tm.purge();
-                    fit.setMonth(InstManager.getInstance().getTimekeeping().getMonth());
-                    base.controller.req_finish("fitness");
-                    strDate2 = seg_fm.format(calendar.getTime());
-                    fit_status ="List";
+                    //finish
+                    if(is_pause==true) {
+                        check = 1;
+                        tm.cancel();
+                        tm.purge();
+                        fit.setMonth(InstManager.getInstance().getTimekeeping().getMonth());
+                        base.controller.req_finish("fitness");
+                        strDate2 = seg_fm.format(calendar.getTime());
+                        fit_status = "List";
+                        //바로 목록 보여줄 수 있도록
+                        base.controller.req_fitnessList(count);
+                        calendar.set(Calendar.YEAR, fit.getMonth(), fit.getDate(), fit.getHour(), fit.getMinute(), fit.getSecond());
+                        strDate = seg_fm.format(calendar.getTime());
+                        strDate2 = dot_fm.format(calendar.getTime());
+                        segment.setText(strDate);
+                        dot.setText(strDate2 + "calories: " + InstManager.getInstance().getFitness().getTotalCalories());
+                    }
                 }
 
             }

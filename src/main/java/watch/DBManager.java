@@ -31,6 +31,7 @@ public class DBManager {
 
     private int fitColumn ;// 열 개수
     private FitnessDTO fitDTO = FitnessDTO.getInstance();
+    private int first=0;
 
     //Stopwatch Attibute
     private int swColumn;
@@ -106,7 +107,7 @@ public class DBManager {
             }
             else if(status.equals("finish"))
             {
-                sql = "select * FROM stopwatch where number="+Integer.toString(fitDTO.getCount())+";"; //마지막 레코드만 읽어오기
+                sql = "select * FROM fitness where number="+Integer.toString(fitDTO.getCount())+";"; //마지막 레코드만 읽어오기
                 psmt = con.prepareStatement(sql);
                 rs = psmt.executeQuery(sql);
                 while(rs.next()) {
@@ -160,12 +161,16 @@ public class DBManager {
     public void updateFitness( int hour, int minute,int second, int totalCalories){
 
         //맨 마지막 거에만 추가해주는 거.
-        sql = "update fitness set hour = "+Integer.toString(hour)+",minute="+Integer.toString(minute)+",second="+Integer.toString(second)+",totalCalories="+Integer.toString(totalCalories)+"where number = "+fitDTO.getCount()+";";
+        sql = "update fitness set hour = ?,minute= ? ,second= ?,totalCalories= ? where number = ?;";
         fitColumn=0;
         try{
             psmt = con.prepareStatement(sql);
+            psmt.setInt(1,hour);
+            psmt.setInt(2,minute);
+            psmt.setInt(3,second);
+            psmt.setInt(4,totalCalories);
+            psmt.setInt(5,fitDTO.getCount());
             psmt.executeUpdate();
-
             fitDTO.setHour(hour);
             fitDTO.setMinute(minute);
             fitDTO.setSecond(second);
@@ -199,8 +204,8 @@ public class DBManager {
     //Stopwatch method
     //필드설명 1. hour 2. minute 3.second 4. number
 
-    public void selectStopwatch(){
-
+    public void selectStopwatch(int column){
+        swColumn = column;
         sql = "select * from stopwatch where number="+Integer.toString(swColumn)+";";
         if(swColumn==0)
         {
@@ -210,8 +215,8 @@ public class DBManager {
 
         try {
 
-            psmt = con.prepareStatement(sql);
-            psmt_sw = con.prepareStatement(sql_sw);
+            psmt = con.prepareStatement(sql); //보여주는 애
+            psmt_sw = con.prepareStatement(sql_sw); //개수세는 애
 
             rs = psmt.executeQuery(sql);
             rs_ver2 =psmt_sw.executeQuery(sql_sw);
@@ -223,8 +228,8 @@ public class DBManager {
                 swDTO.setMinute(rs.getInt("minute"));
                 swDTO.setSecond(rs.getInt("second"));
                 swColumn++;
-                if (swColumn == 11)
-                    swColumn = 0;
+                /*if (swColumn == 11)
+                    swColumn = 0;*/
             }
 
         }catch (Exception e){
@@ -233,7 +238,7 @@ public class DBManager {
 
 
     }
-    public void insertStopwatch(int hour, int minute, int second){
+    public void insertStopwatch(int hour, int minute, int second, int count){
 
 
         sql_ver2= "insert into stopwatch value (?,?,?,?)";
@@ -241,22 +246,38 @@ public class DBManager {
         try{
 
             psmt_ver2 = con.prepareStatement(sql_ver2);
-            psmt_sw = con.prepareStatement(sql_sw);
+            psmt_sw = con.prepareStatement(sql_sw); //개수세는애
+
+            //완료안하고 창닫으면 기존 기록 누적되어있음  오류처리
+            rs_ver2 =psmt_sw.executeQuery(sql_sw);
+            rs_ver2.last();
+            System.out.println(rs_ver2.getRow());
+            if((count-1 != rs_ver2.getRow())&&first==0 )
+            {
+                resetStopwatch();
+                //지워주고 저장시작
+                rs_ver2 = psmt_sw.executeQuery(sql_sw);
+                rs_ver2.last();
+                swDTO.setNum(0);
+                first++;
+            }
 
             psmt_ver2.setInt(1,hour);
             psmt_ver2.setInt(2,minute);
             psmt_ver2.setInt(3,second);
             psmt_ver2.setInt(4,swDTO.getNum()+1);
 
+
             swDTO.setHour(hour);
             swDTO.setMinute(minute);
             swDTO.setSecond(second);
 
-
             psmt_ver2.executeUpdate();
-            psmt_sw.executeUpdate();
-            rs.last();
-            swDTO.setNum(rs.getRow());
+
+            rs_ver2 =psmt_sw.executeQuery(sql_sw);//더해진 개수 센다.
+            rs_ver2.last();
+            swDTO.setNum(rs_ver2.getRow());
+
         }
 
         catch (Exception e){
@@ -275,6 +296,7 @@ public class DBManager {
 
             psmt.executeUpdate();
             psmt_ver2.executeUpdate();
+            swDTO.setNum(swDTO.getNum()-1);
 
         }
         catch (Exception e){
@@ -288,7 +310,10 @@ public class DBManager {
         try{
 
             psmt = con.prepareStatement(sql);
-
+            swDTO.setSecond(0);
+            swDTO.setMinute(0);
+            swDTO.setHour(0);
+            swDTO.setNum(0);
             psmt.executeUpdate();
 
         }

@@ -1,15 +1,13 @@
 package View;
 
-import watch.Alarm;
 import watch.Controller;
-import watch.InstManager;
 
 import javax.swing.*;
 
 public class BaseView extends JFrame {
     private JPanel contentPane;
     public TimeKeepingView tkv=null;
-    public TimerView tmv = null;
+    public TimersView tmv = null;
     public AlarmView alarmView = null;
     public StopWatchView stopWatchView =null;
     public DdayView ddayView = null;
@@ -25,31 +23,37 @@ public class BaseView extends JFrame {
         switch(num){
             case 0:
                 setContentPane(tkv);
+                tkv.setLCD(tkv);
                 revalidate();
                 repaint();
                 break;
             case 1:
                 setContentPane(tmv);
+                tmv.setLCD(tmv);
                 revalidate();
                 repaint();
                 break;
             case 2:
                 setContentPane(alarmView);
+                alarmView.setLCD(alarmView);
                 revalidate();
                 repaint();
                 break;
             case 3:
                 setContentPane(stopWatchView);
+                stopWatchView.setLCD(stopWatchView);
                 revalidate();
                 repaint();
                 break;
             case 4:
                 setContentPane(ddayView);
+                ddayView.setLCD(ddayView);
                 revalidate();
                 repaint();
                 break;
             case 5:
                 setContentPane(fitnessView);
+                fitnessView.setLCD(fitnessView);
                 revalidate();
                 repaint();
                 break;
@@ -67,10 +71,10 @@ public class BaseView extends JFrame {
 
 
         BaseView bv = new BaseView();
-   
+
         bv.controller = new Controller(bv);
         bv.tkv = new TimeKeepingView(bv);
-        bv.tmv = new TimerView(bv);
+        bv.tmv = new TimersView(bv);
         bv.alarmView = new AlarmView(bv);
         bv.selectView = new SelectView(bv);
         bv.stopWatchView = new StopWatchView(bv);

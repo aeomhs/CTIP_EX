@@ -10,18 +10,14 @@ public class Stopwatch extends Thread implements CountUp, StateChange{
     private DBManager dbManager;
     private StopwatchDTO swDTO;
 
-
-
-
     public Stopwatch(){
         this.hour = 0;
         this.minute = 0;
         this.second = 0;
-        is_stop = true;
+        is_stop = false;
 
         this.dbManager = new DBManager();
         this.swDTO = StopwatchDTO.getInstance();
-        start();
     }
 
 
@@ -64,19 +60,23 @@ public class Stopwatch extends Thread implements CountUp, StateChange{
         countUp();
     }
 
+
     // method
     @Override
     synchronized public void countUp() {
+        outerLoop:
         while(true) {
+            //   System.out.println("루프엔 들어왔니");
             if (is_stop == false) {
-                second++;
-                if (second == 60) {
-                    second = 0;
-                    minute++;
+                //     System.out.println("is stop은 통과했니");
+                this.second++;
+                if (this.second == 60) {
+                    this.second = 0;
+                    this.minute++;
                 }
-                if (minute == 60) {
-                    minute = 0;
-                    hour++;
+                if (this.minute == 60) {
+                    this.minute = 0;
+                    this.hour++;
                 }
                 try {
                     Thread.sleep(1000);
@@ -97,12 +97,6 @@ public class Stopwatch extends Thread implements CountUp, StateChange{
                     }
                 }
             }
-            try{
-                sleep(1000);
-            }catch(InterruptedException e){
-                e.printStackTrace();
-            }
-
         }
     }
 
@@ -114,18 +108,17 @@ public class Stopwatch extends Thread implements CountUp, StateChange{
         dbManager.resetStopwatch();
     }
 
-
-    public void showRecord(){
-        dbManager.selectStopwatch();
-
+    public void showRecord(int column){
+        dbManager.selectStopwatch(column);
     }
 
-    public void  record(){
-        if(swDTO.getNum() >= 10){
+    public void  record(int count){
+     //   System.out.println("여기는 스탑워치의 record함수");
+        if(swDTO.getNum() >=10){
             dbManager.deleteStopwatch();
         }
-        dbManager.insertStopwatch(this.hour, this.minute, this.second);
-        dbManager.selectStopwatch();
+        dbManager.insertStopwatch(this.hour, this.minute, this.second, count);
+        dbManager.selectStopwatch(swDTO.getNum());
     }
 
 

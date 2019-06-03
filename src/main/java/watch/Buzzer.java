@@ -28,7 +28,7 @@ public class Buzzer{
         AudioFormat format;
         DataLine.Info info;
 
-        bgm = new File("C:\\Users\\김소현\\Desktop\\3학년 1학기\\소프트웨어 모델링및분석/beep.wav");
+        bgm = new File("beep.wav");
 
         Clip clip;
 

@@ -12,11 +12,9 @@ public class Dday extends Thread{
     private String goal;
     private String[] goalList ={"stop drinking","stop smoking","studying","exercising","diet","save money"};
     private int index=0;
-    private int number;
     private int dayCount = 0;
     private int diffHour;
     private int diffMinute;
-    private String status;
     private InstManager im;
     Timer timer;
     Timekeeping tk;

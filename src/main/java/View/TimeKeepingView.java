@@ -40,13 +40,13 @@ public class TimeKeepingView extends JPanel{
     private JLabel segment;
     private JLabel tmp;
 
-   /* private int year;
-    private int month;
-    private int date;
-    private int hour;
-    private int minute;
-    private int second;*/
-   // Timekeeping tk;
+    /* private int year;
+     private int month;
+     private int date;
+     private int hour;
+     private int minute;
+     private int second;*/
+    // Timekeeping tk;
     Calendar calendar;
     SimpleDateFormat dot_fm;
     SimpleDateFormat seg_fm;
@@ -65,7 +65,7 @@ public class TimeKeepingView extends JPanel{
         this.setBounds(0,0,800,500);
         //this.setBackground(Color.ORANGE);
         calendar = Calendar.getInstance();
-        dot_fm = new SimpleDateFormat("yy.MM.dd.E요일");
+        dot_fm = new SimpleDateFormat("yy.M.dd.E요일");
         seg_fm = new SimpleDateFormat("HH:mm:ss");
 
         calendar.set(InstManager.getInstance().getTimekeeping().getYear(),InstManager.getInstance().getTimekeeping().getMonth(),InstManager.getInstance().getTimekeeping().getDate(),InstManager.getInstance().getTimekeeping().getHour(),InstManager.getInstance().getTimekeeping().getMinute(),InstManager.getInstance().getTimekeeping().getSecond());
@@ -170,36 +170,36 @@ public class TimeKeepingView extends JPanel{
         C.setBounds(100,300,50,50);
         tk_label.add(C);
         C.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(tk_status.equals("Timekeeping") == true){
-                    //Setting 으로 상태 바꿔준다.
-                        tk_status ="Setting";
-                            base.controller.req_pause("timekeeping");
-                            System.out.println(tk_status);
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    if(tk_status.equals("Timekeeping") == true){
+                                        //Setting 으로 상태 바꿔준다.
+                                        tk_status ="Setting";
+                                        base.controller.req_pause("timekeeping");
+                                        System.out.println(tk_status);
 
-                }
-                else if(tk_status.equals("Setting") == true){
-                    //이 때 C버튼은 OK(Next)
-                        settingNum++;
-                        System.out.println(settingNum);
-                        if(settingNum==3)
-                        {
-                        //    base.controller.req_setDate("timekeeping",calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE));
-                            Timekeeping tk = InstManager.getInstance().getTimekeeping();
-                         System.out.println(tk.getDate());
+                                    }
+                                    else if(tk_status.equals("Setting") == true){
+                                        //이 때 C버튼은 OK(Next)
+                                        settingNum++;
+                                        System.out.println(settingNum);
+                                        if(settingNum==3)
+                                        {
+                                            base.controller.req_setDate("timekeeping",calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE));
+                                            Timekeeping tk = InstManager.getInstance().getTimekeeping();
+                                            System.out.println(tk.getDate());
 
-                        }
-                        else if(settingNum==6) {
-                            base.controller.req_setTime("timekeeping",calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND));
-                            settingNum = 0;
-                            tk_status="Timekeeping";
-                            base.controller.req_continue("timekeeping");
-                        }
-                }
+                                        }
+                                        else if(settingNum==6) {
+                                            base.controller.req_setTime("timekeeping",calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND));
+                                            settingNum = 0;
+                                            tk_status="Timekeeping";
+                                            base.controller.req_continue("timekeeping");
+                                        }
+                                    }
 
-            }
-        }
+                                }
+                            }
         );
 
         D = new JButton("D");
@@ -252,15 +252,20 @@ public class TimeKeepingView extends JPanel{
                     calendar.set(tk.getYear(),tk.getMonth(),tk.getDate(),tk.getHour(),tk.getMinute(),tk.getSecond());
                     strDate = dot_fm.format(calendar.getTime());
                     dot.setText(strDate);
-                    System.out.println("화면시간"+calendar.get(Calendar.SECOND));
+                    //System.out.println("화면시간"+calendar.get(Calendar.SECOND));
                     strDate2 = seg_fm.format(calendar.getTime());
                     segment.setText(strDate2);
+                    try {
+                        sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         };
 
-            Timer tm = new Timer();
-            tm.scheduleAtFixedRate(tt,0,1000);
+        Timer tm = new Timer();
+        tm.scheduleAtFixedRate(tt,0,1000);
 
         segment.setBounds(150,230,220,30);
         segment.setBorder(new TitledBorder((new LineBorder(Color.BLACK))));
@@ -319,7 +324,7 @@ public class TimeKeepingView extends JPanel{
     }
     public void req_prevHour()
     {
-        calendar.add(Calendar.HOUR,-1);
+        calendar.add(Calendar.HOUR_OF_DAY,-1);
         strDate2 = seg_fm.format(calendar.getTime());
         segment.setText(strDate2);
     }
@@ -357,7 +362,13 @@ public class TimeKeepingView extends JPanel{
     }
 
 
-
+    public void setLCD(TimeKeepingView timeKeepingView) {
+        timeKeepingView.LCD1.setVisible(base.controller.req_isFunctionSelected(1));
+        timeKeepingView.LCD2.setVisible(base.controller.req_isFunctionSelected(2));
+        timeKeepingView.LCD3.setVisible(base.controller.req_isFunctionSelected(3));
+        timeKeepingView.LCD4.setVisible(base.controller.req_isFunctionSelected(4));
+        timeKeepingView.LCD5.setVisible(base.controller.req_isFunctionSelected(5));
+    }
 
 
 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class InstManager {
 
     private Timekeeping timekeeping;
-    private Timer timer;
+    private Timers timer;
 
     private ArrayList<Alarm> alarmList;
     private int alarmIndex;
@@ -38,7 +38,7 @@ public class InstManager {
         dDayInstNum = 0;
 
         timekeeping = new Timekeeping();
-        timer = new Timer();
+        timer = new Timers();
         alarmList = new ArrayList<Alarm>(4);
         stopwatch = new Stopwatch();
         dDayList = new ArrayList<Dday>(6);
@@ -77,7 +77,7 @@ public class InstManager {
         return timekeeping;
     }
 
-    public Timer getTimer() {
+    public Timers getTimer() {
         return timer;
     }
 

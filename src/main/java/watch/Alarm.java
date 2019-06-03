@@ -15,6 +15,7 @@ public class Alarm extends Thread {
     private Timekeeping time;
     private Timer tm;
     private int cycleCount;
+    private boolean is_delete = false;
     TimerTask tt;
     Buzzer buzzer;
 
@@ -64,6 +65,13 @@ public class Alarm extends Thread {
         return this.minute;
     }
 
+    public boolean getStatus() {
+        return status;
+    }
+
+    public ArrayList<Integer> getCheckDayList() {
+        return checkDayList;
+    }
 
     public void setDay(int day) {
         this.checkDayList.add(day);
@@ -81,57 +89,90 @@ public class Alarm extends Thread {
         this.minute = minute;
     }
 
+    public void setIs_delete(boolean is_delete) {
+        this.is_delete = is_delete;
+    }
+
     //usecase: onoff_alarm  그리고 이부분 보고서랑 다이어그램 고치기.
     public void OnOffAlarm() {
         if(status == true) {
             status = false;
+            System.out.println("Off status:"+status);
         }
         //status == false
         else {
-            synchronized (this) {
+            status = true;
+            System.out.println("On status :"+status);
+           /* synchronized (this) {
                 try {
                     status = true;
-                    notify();
+                   // notify();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
+            */
+
         }
     }
 
     synchronized public void checkAlarm() {
 
 
-        tt = new TimerTask() {
-            @Override
-            public void run() {
-                if(cycleCount==3||buzzer.getIs_stop()==true)
-                {
-                    tm.cancel();
-                    return;
-                }
-                cycleCount++;
-                buzzer.setIs_stop(false);
-                buzzer.ringBuzzer();
-
-            }
-        };
-        tm = new Timer();
-
-        while (true) {
+        while (is_delete == false) {
             //(Alarm off)
+            System.out.println("check alarm!!");
+            try{
+                sleep(1000);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
             if(status == true) {
+                /*
                 try {
                     Thread.sleep(60000);
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
+                */
+                System.out.println("status ==true!!");
                 if (this.hour == time.getHour() && this.minute == time.getMinute()) {
+                    System.out.println("시간이 똑같다!!");
                     for (int i = 0; i < checkDayList.size(); i++) {
                         if (this.checkDayList.get(i) == time.getDayNum()) {
-                            if(cycle !=0)
-                                tm.scheduleAtFixedRate(tt,0,cycle*60*1000);
+                            System.out.println("요일도 똑같다!!");
+                            System.out.println("알람요일 : "+this.checkDayList.get(i)+"   시계 요일 : "+ time.getDayNum());
+                            if(cycle !=0 ) {
+                                tm = new Timer();
+                                tt = new TimerTask() {
+                                    @Override
+                                    public void run() {
+
+                                        //int i;
+                                        //for(i=0; i<3; i++){
+                                        // buzzer.setIs_stop(false);
+                                        //buzzer.ringBuzzer();
+                                        //}
+                                        if (cycleCount == 3 || buzzer.getIs_stop() == true) {
+                                            tm.cancel();
+                                            tm.purge();
+                                            cycleCount = 0;
+                                            status = true;
+                                            //return;
+                                        } else {
+                                            cycleCount++;
+                                            System.out.println("cycle : "+cycle);
+                                            buzzer.setIs_stop(false);
+                                            buzzer.ringBuzzer();
+                                            status = false;
+                                        }
+                                    }
+                                };
+
+                                tm.scheduleAtFixedRate(tt, 0, cycle * 60 * 1000);
+                            }
                             else if(cycle==0) {
                                 buzzer.setIs_stop(false);
                                 buzzer.ringBuzzer();
@@ -142,17 +183,18 @@ public class Alarm extends Thread {
                 }
             }
             //status == false (Alarm off)
-            else{
+            /*else{
                 synchronized (this) {
                     try {
-                        //System.out.println("wait");
+
+                        System.out.println("wait");
                         this.wait();
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }
-            }
+            }*/
         }
     }
 }
