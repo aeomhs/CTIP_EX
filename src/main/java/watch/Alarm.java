@@ -16,7 +16,6 @@ public class Alarm extends Thread {
     private Timer tm;
     private int cycleCount = 0;
     private boolean is_delete = false;
-    TimerTask tt;
     Buzzer buzzer;
 
 
@@ -118,7 +117,6 @@ public class Alarm extends Thread {
 
         while (is_delete == false) {
             try {
-                // 주기만큼 잠든다.
                 sleep(1000);
             }
             catch (Exception e){

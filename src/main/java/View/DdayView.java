@@ -17,6 +17,10 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import static java.lang.Thread.sleep;
 
 
 public class DdayView extends JPanel{
@@ -150,74 +154,74 @@ public class DdayView extends JPanel{
                 }
                 else{
                     if(dDay_status.equals("List") == true){
-                    dDay =base.controller.req_selectDate();
-                    if( dDay != null){
-                        dDay_status = "Add";
-                        segment.setText("   ???   ");
-                        req_nextGoal();
-                    }
-
-
-                }
-                    else if(dDay_status.equals("Finish") == true){
-                    dDay =base.controller.req_selectDate();
-                    if( dDay != null){
-                        dDay_status = "Add";
-                        segment.setText("   ???   ");
-                        req_nextGoal();
-                    }
-                }
-                    else if(dDay_status.equals("Setting") == true){
-                    base.controller.req_deleteDday();
-                    base.controller.getInstManager().setdDayIndex(-1);
-                    dDay_status = "Finish";
-
-                    dot.setText("delete completed~");
-                    segment.setText("   X   ");
-
-
-                }
-                    else if(dDay_status.equals("Add") == true){
-                    switch(settingNum)
-                    {
-                        case 1:
+                        dDay =base.controller.req_selectDate();
+                        if( dDay != null){
+                            dDay_status = "Add";
+                            segment.setText("   ???   ");
                             req_nextGoal();
-                            break;
-                        case 2:
-                            if(timekeeping.getYear() > calendar.get(Calendar.YEAR)) {
-                                req_nextYear();
-                            }
-                            break;
-                        case 3:
-                            if(timekeeping.getYear() > calendar.get(Calendar.YEAR)) {
-                                req_nextMonth();
-                            }
-                            else if(timekeeping.getYear() == calendar.get(Calendar.YEAR)){
-                                if(timekeeping.getMonth() > calendar.get(Calendar.MONTH)) {
+                        }
+
+
+                    }
+                    else if(dDay_status.equals("Finish") == true){
+                        dDay =base.controller.req_selectDate();
+                        if( dDay != null){
+                            dDay_status = "Add";
+                            segment.setText("   ???   ");
+                            req_nextGoal();
+                        }
+                    }
+                    else if(dDay_status.equals("Setting") == true){
+                        base.controller.req_deleteDday();
+                        base.controller.getInstManager().setdDayIndex(-1);
+                        dDay_status = "Finish";
+
+                        dot.setText("delete completed~");
+                        segment.setText("   X   ");
+
+
+                    }
+                    else if(dDay_status.equals("Add") == true){
+                        switch(settingNum)
+                        {
+                            case 1:
+                                req_nextGoal();
+                                break;
+                            case 2:
+                                if(timekeeping.getYear() > calendar.get(Calendar.YEAR)) {
+                                    req_nextYear();
+                                }
+                                break;
+                            case 3:
+                                if(timekeeping.getYear() > calendar.get(Calendar.YEAR)) {
                                     req_nextMonth();
                                 }
-                            }
-                            break;
-                        case 4:
-                            if(timekeeping.getYear() > calendar.get(Calendar.YEAR)) {
-                                req_nextDate();
-                            }
-                            else if(timekeeping.getYear() == calendar.get(Calendar.YEAR)){
-
-                                if(timekeeping.getMonth() > calendar.get(Calendar.MONTH)) {
-                                    req_nextDate();
-                                }
-                                else if(timekeeping.getMonth() == calendar.get(Calendar.MONTH)) {
-                                    if(timekeeping.getDate() > calendar.get(Calendar.DATE)) {
-                                        req_nextDate();
+                                else if(timekeeping.getYear() == calendar.get(Calendar.YEAR)){
+                                    if(timekeeping.getMonth() > calendar.get(Calendar.MONTH)) {
+                                        req_nextMonth();
                                     }
                                 }
-                            }
-                            break;
+                                break;
+                            case 4:
+                                if(timekeeping.getYear() > calendar.get(Calendar.YEAR)) {
+                                    req_nextDate();
+                                }
+                                else if(timekeeping.getYear() == calendar.get(Calendar.YEAR)){
+
+                                    if(timekeeping.getMonth() > calendar.get(Calendar.MONTH)) {
+                                        req_nextDate();
+                                    }
+                                    else if(timekeeping.getMonth() == calendar.get(Calendar.MONTH)) {
+                                        if(timekeeping.getDate() > calendar.get(Calendar.DATE)) {
+                                            req_nextDate();
+                                        }
+                                    }
+                                }
+                                break;
+
+                        }
 
                     }
-
-                }
                 }
             }
         });
@@ -267,16 +271,7 @@ public class DdayView extends JPanel{
                             dot.setText("Add completed!!");
                             segment.setText("   Cheer Up~   ");
 
-                       /* dDay = base.controller.req_DdayList();
-                        if(dDay == null){
-                            dot.setText("No D+day List");
-                            segment.setText("   +0   ");
-                        }
-                        else{
-                            dot.setText(dDay.getGoal());
-                            segment.setText((InstManager.getInstance().getdDayIndex()+1)+"번째 D+day: +"+dDay.getDayCount());
-                        }
-                        */
+
                         }
 
                     }
@@ -352,7 +347,18 @@ public class DdayView extends JPanel{
         Dday_label.add(segment);
 
 
-
+        TimerTask tt = new TimerTask() {
+            @Override
+            public void run() {
+                if (dDay_status.equals("List") == true) {
+                    if (dDay != null){
+                        segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: +" + dDay.getDayCount());
+                    }
+                }
+            }
+        };
+        java.util.Timer tm = new Timer();
+        tm.scheduleAtFixedRate(tt,0,1000);
 
     }
 
@@ -416,7 +422,6 @@ public class DdayView extends JPanel{
         strDate = seg_fm.format(calendar.getTime());
         segment.setText(strDate);
     }
-
 
 
 }

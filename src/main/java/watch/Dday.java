@@ -1,5 +1,7 @@
 package watch;
 
+import View.DdayView;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
@@ -13,12 +15,18 @@ public class Dday extends Thread{
     private String[] goalList ={"stop drinking","stop smoking","studying","exercising","diet","save money"};
     private int index=0;
     private int dayCount = 0;
-    private int diffHour;
-    private int diffMinute;
+
     private InstManager im;
-    Timer timer;
     Timekeeping tk;
-    TimerTask task;
+    private int currYear;
+    private int currMonth;
+    private int currDate;
+    private Calendar cal = Calendar.getInstance();
+    private Calendar cal2 = Calendar.getInstance();
+
+    private int count;
+    private boolean is_delete = false;
+
 
     public Dday()
     {
@@ -55,85 +63,37 @@ public class Dday extends Thread{
 
     public void calculateDday()
     {
-        task = new TimerTask() {
-            @Override
-            public void run() {
-                dayCount +=1;
-                System.out.println("TImer 발동!");
+        while(is_delete == false){
+            try {
+                // 주기만큼 잠든다.
+                sleep(1000);
+                setDday();
             }
-        };
-
-        timer = new Timer();
-        timer.scheduleAtFixedRate(task, (diffHour * 60 + diffMinute) * 60 * 1000, 24 * 60 * 60 * 1000);
-        //timer.scheduleAtFixedRate(task, 1000*60, 1000*60*2);
-/*
-        while(check < 2) {
-            if (check == 0) {
-                task = new TimerTask() {
-                    @Override
-                    public void run() {
-                        if(check==0) {
-                            timer.cancel();
-                            timer.purge();
-                        }
-                        dayCount +=1;
-                        check++;
-                    }
-                };
-                timer = new Timer();
-                //timer.scheduleAtFixedRate(task, 0, (diffHour * 60 + diffMinute) * 60 * 1000);
-                timer.scheduleAtFixedRate(task, 0, 1000*60);
-            }
-            else {
-                task = new TimerTask() {
-                    @Override
-                    public void run() {
-                       /* if(check==1) {
-                            timer.cancel();
-                            timer.purge();
-                        }
-                           check++;
-
-
-                        dayCount +=1;
-                       //check++;
-                    }
-                };
-                timer = new Timer();
-                //timer.scheduleAtFixedRate(task, 0, 24 * 60 * 60 * 1000);
-                timer.scheduleAtFixedRate(task, 0, 1000*60*2);
+            catch (Exception e){
+                e.printStackTrace();
             }
         }
-        */
-
     }
 
     public void setDday()
     {
 
-        int currYear = tk.getYear();
-        int currMonth = tk.getMonth();
-        int currDate = tk.getDate();
+        currYear = tk.getYear();
+        currMonth = tk.getMonth();
+        currDate = tk.getDate();
 
-        int currHour =tk.getHour();
-        int currMinute = tk.getMinute();
-        diffHour = 24-currHour;
-        diffMinute = 60 - currMinute;
-
-        Calendar cal = Calendar.getInstance();
         cal.set(currYear, currMonth, currDate);//오늘
 
-        Calendar cal2 = Calendar.getInstance();
         cal2.set(this.year, this.month, this.date);//설정일
 
-        int count = 0;
+        count = 0;
         while (!cal2.after(cal)) {
             count++;
             cal2.add(Calendar.DATE, 1);
         }
         dayCount = count -1;
 
-        System.out.println("dayCOunt:"+dayCount);
+        System.out.println("dayCount:"+dayCount);
     }
 
 
@@ -179,4 +139,9 @@ public class Dday extends Thread{
     public void setGoalList(String[] goalList) {
         this.goalList = goalList;
     }
+
+    public void setIs_delete(boolean is_delete) {
+        this.is_delete = is_delete;
+    }
+
 }
