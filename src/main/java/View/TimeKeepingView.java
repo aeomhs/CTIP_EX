@@ -203,6 +203,7 @@ public class TimeKeepingView extends JPanel{
                             System.out.println(tk.getDate());
                         } else if (settingNum == 6) {
                             base.controller.req_setTime("timekeeping", calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND));
+                            System.out.println("화면시간"+calendar.get(Calendar.SECOND)+"초"+calendar.get(Calendar.DATE)+"일"+"timekeeping:"+InstManager.getInstance().getTimekeeping().getDate());
                             settingNum = 0;
                             tk_status = "Timekeeping";
                             base.controller.req_continue("timekeeping");
@@ -264,9 +265,11 @@ public class TimeKeepingView extends JPanel{
             public void run() {
                 if(tk_status.equals("Timekeeping")) {
                     calendar.set(tk.getYear(),tk.getMonth(),tk.getDate(),tk.getHour(),tk.getMinute(),tk.getSecond());
+                   // tk.setDate(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE));
+                    //tk.setTime(calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),calendar.get(Calendar.MONTH));
                     strDate = dot_fm.format(calendar.getTime());
                     dot.setText(strDate);
-                    //System.out.println("화면시간"+calendar.get(Calendar.SECOND));
+                  //  System.out.println("화면시간"+calendar.get(Calendar.SECOND)+"초"+calendar.get(Calendar.DATE)+"일"+"timekeeping:"+tk.getDate());
                     strDate2 = seg_fm.format(calendar.getTime());
                     segment.setText(strDate2);
                     try {

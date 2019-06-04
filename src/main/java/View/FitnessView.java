@@ -257,10 +257,13 @@ public class FitnessView extends JPanel{
                             tm.cancel();
                             tm.purge();
                             fit.setMonth(InstManager.getInstance().getTimekeeping().getMonth());
+                            fit.setDate(InstManager.getInstance().getTimekeeping().getDate());
+                            System.out.println("지금 날짜는 :"+ fit.getDate());
                             base.controller.req_finish("fitness");
-                            strDate2 = seg_fm.format(calendar.getTime());
+                           // strDate2 = seg_fm.format(calendar.getTime());
                             fit_status = "List";
                             //바로 목록 보여줄 수 있도록
+                            count=fit.getCount();
                             base.controller.req_fitnessList(count);
                             calendar.set(Calendar.YEAR, fit.getMonth(), fit.getDate(), fit.getHour(), fit.getMinute(), fit.getSecond());
                             strDate = seg_fm.format(calendar.getTime());

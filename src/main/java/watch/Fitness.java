@@ -139,6 +139,8 @@ public class Fitness extends Thread implements CountUp{
     }
 
     public boolean checkDate(){
+        inst = InstManager.getInstance();
+        System.out.println(date);
 
         if((recentMonth==month)&&( recentDate == date))
             return true;
