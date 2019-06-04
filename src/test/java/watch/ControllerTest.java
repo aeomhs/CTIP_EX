@@ -2,6 +2,7 @@ package watch;
 
 import View.*;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +13,7 @@ class ControllerTest {
     ControllerTest(){
     }
 
-    @BeforeAll
+    @Disabled
      public static void makeInstance(){
         BaseView bv = new BaseView();
         bv.controller = new Controller(bv);
@@ -306,7 +307,7 @@ class ControllerTest {
         }
     }
 
-    @Test
+    @Disabled
     void getInstManager()  {
         junitTest.getInstManager();
     }

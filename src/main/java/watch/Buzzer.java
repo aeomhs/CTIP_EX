@@ -2,6 +2,7 @@ package watch;
 
 import View.BaseView;
 
+import java.awt.*;
 import java.io.File;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -14,7 +15,7 @@ public class Buzzer{
     public boolean is_stop;
     private BaseView baseView;
     private static Buzzer buzzerInstance = new Buzzer();
-
+    Toolkit toolkit;
     //다른클래스에서는 getInstance로 호출
     //Buzzer buzzer1 = Buzzer.getInstance(); 로 사용하면 된다
     public static Buzzer getInstance() {
@@ -22,6 +23,7 @@ public class Buzzer{
     }
 
     public Buzzer() {
+        toolkit = Toolkit.getDefaultToolkit();
         this.time = time;
     }
 
@@ -35,7 +37,7 @@ public class Buzzer{
         AudioFormat format;
         DataLine.Info info;
 
-        bgm = new File("src/main/java/Image/beep.wav");
+        bgm = new File("./beep.wav");
 
         Clip clip;
 
@@ -59,7 +61,8 @@ public class Buzzer{
         baseView.on_buzzerMode();
         while(time<10){
             if(is_stop == false) {
-                beep();
+                //beep();
+                toolkit.beep();
                 System.out.println("Beep!!!!!!!!!!!!!!");
                 this.time++;
                 try {
