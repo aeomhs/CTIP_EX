@@ -66,29 +66,17 @@ public class SelectFunction {
 
     public boolean setFunctionList(int index)
     {
-        if(this.functionList[index]==true )
+        if(this.functionList[index])
         {
-            if(count<0)
-            {
-                System.out.println("error");
-                return false;
-            }
             this.functionList[index] = false;
             count--;
-            return true;
         }
         else
         {
-            if(count<3)
-            {
-                this.functionList[index] = true;
-                count++;
-                return true;
-            }
-            else
-                return false;
+            this.functionList[index] = true;
+            count++;
         }
-
+        return this.functionList[index];
     }
 
 
@@ -100,6 +88,8 @@ public class SelectFunction {
         else
             return false;
     }
+
+
 
 
 }

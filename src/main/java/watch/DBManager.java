@@ -26,6 +26,7 @@ public class DBManager {
 
     String url = null;
 
+    private static DBManager dm;
     //Fitness Attribute
 
 
@@ -37,25 +38,35 @@ public class DBManager {
     private int swColumn;
     private StopwatchDTO swDTO = StopwatchDTO.getInstance();
 
-    public DBManager()
+    private DBManager()
     {
 
-        url = "jdbc:mysql://localhost:3306/watch?useSSL=false";
+        url = "jdbc:sqlite:watch.db";
         sql_fit = "select * from fitness";
         sql_sw = "select * from stopwatch";
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");//드라이버 로드
-            con = DriverManager.getConnection(url,"aaa","!rhfms2clrhk!");
-            System.out.println("DB연결 성공");
-        } catch (SQLException e) {
-            e.printStackTrace();
+            Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
+        try {
+
+            con = DriverManager.getConnection(url);
+            createTable();
+            System.out.println("DB연결 성공");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
+    public static DBManager getInstance() {
+        if(dm ==null)
+            dm=new DBManager();
+        return dm;
+    }
+
 
 
     //Fitness method
@@ -78,10 +89,11 @@ public class DBManager {
         try {
             psmt_fit = con.prepareStatement(sql_fit);//레코드 개수 가져오기 (기본)
 
-            rs_ver2 = psmt_fit.executeQuery(sql_fit);
+            rs_ver2 = psmt_fit.executeQuery();
+            while(rs_ver2.next()) {
+                fitDTO.setCount(rs_ver2.getRow()); //레코드개수 저장
+            }
 
-            rs_ver2.last();
-            fitDTO.setCount(rs_ver2.getRow()); //레코드개수 저장
 
 
             if(fitDTO.getCount()==0) {
@@ -89,9 +101,10 @@ public class DBManager {
                 return;
             }
 
+
             if (status.equals("look")) {
                 psmt = con.prepareStatement(sql);//특정 행 가져오기
-                rs = psmt.executeQuery(sql);
+                rs = psmt.executeQuery();
 
                 while(rs.next()) {
                     fitDTO.setMonth(rs.getInt("month"));
@@ -109,7 +122,7 @@ public class DBManager {
             {
                 sql = "select * FROM fitness where number="+Integer.toString(fitDTO.getCount())+";"; //마지막 레코드만 읽어오기
                 psmt = con.prepareStatement(sql);
-                rs = psmt.executeQuery(sql);
+                rs = psmt.executeQuery();
                 while(rs.next()) {
                     fitDTO.setMonth(rs.getInt("month"));
                     fitDTO.setDate(rs.getInt("date"));
@@ -129,7 +142,8 @@ public class DBManager {
     }
     public void insertFitness(int month, int date, int hour, int minute,int second, int totalCalories) throws ClassNotFoundException {
 
-        sql = "insert into fitness value (?,?,?,?,?,?,?)";
+        sql = "insert into fitness (month, date, hour, minute, second, totalCalories, number)" +
+                "values (?,?,?,?,?,?,?)";
         fitColumn=0;
 
         try{
@@ -147,9 +161,11 @@ public class DBManager {
 
             psmt.executeUpdate();
             //실행한 후 증가된 개수
-            rs_ver2 = psmt_fit.executeQuery(sql_fit);
-            rs_ver2.last();
-            fitDTO.setCount(rs_ver2.getRow());
+            rs_ver2 = psmt_fit.executeQuery();
+            while(rs_ver2.next()) {
+                fitDTO.setCount(rs_ver2.getRow()); //레코드개수 저장
+            }
+
 
 
         }
@@ -218,10 +234,11 @@ public class DBManager {
             psmt = con.prepareStatement(sql); //보여주는 애
             psmt_sw = con.prepareStatement(sql_sw); //개수세는 애
 
-            rs = psmt.executeQuery(sql);
-            rs_ver2 =psmt_sw.executeQuery(sql_sw);
-            rs_ver2.last();
-            swDTO.setNum(rs_ver2.getRow());
+            rs = psmt.executeQuery();
+            rs_ver2 =psmt_sw.executeQuery();
+            while(rs_ver2.next()) {
+                swDTO.setNum(rs_ver2.getRow()); //레코드개수 저장
+            }
 
             while(rs.next()) {
                 swDTO.setHour(rs.getInt("hour"));
@@ -241,7 +258,9 @@ public class DBManager {
     public void insertStopwatch(int hour, int minute, int second, int count){
 
 
-        sql_ver2= "insert into stopwatch value (?,?,?,?)";
+        sql_ver2= "insert into stopwatch (hour,minute,second,number)" +
+                " values (?,?,?,?)";
+        int num=0;
 
         try{
 
@@ -249,15 +268,24 @@ public class DBManager {
             psmt_sw = con.prepareStatement(sql_sw); //개수세는애
 
             //완료안하고 창닫으면 기존 기록 누적되어있음  오류처리
-            rs_ver2 =psmt_sw.executeQuery(sql_sw);
-            rs_ver2.last();
+            rs_ver2 =psmt_sw.executeQuery();
+            while(rs_ver2.next()) {
+                //레코드개수 저장
+                System.out.println("인서트하기 전");
+                System.out.println(rs_ver2.getRow());
+            }
             System.out.println(rs_ver2.getRow());
-            if((count-1 != rs_ver2.getRow())&&first==0 )
+            if((count-2 != rs_ver2.getRow())&&first==0 )
             {
                 resetStopwatch();
                 //지워주고 저장시작
-                rs_ver2 = psmt_sw.executeQuery(sql_sw);
-                rs_ver2.last();
+                rs_ver2 = psmt_sw.executeQuery();
+                while(rs_ver2.next()) {
+                    num= rs_ver2.getRow();
+                }
+                System.out.println("삭제성공");
+                System.out.println(num);
+
                 swDTO.setNum(0);
                 first++;
             }
@@ -274,9 +302,10 @@ public class DBManager {
 
             psmt_ver2.executeUpdate();
 
-            rs_ver2 =psmt_sw.executeQuery(sql_sw);//더해진 개수 센다.
-            rs_ver2.last();
-            swDTO.setNum(rs_ver2.getRow());
+            rs_ver2 =psmt_sw.executeQuery();//더해진 개수 센다.
+            while(rs_ver2.next()) {
+                swDTO.setNum(rs_ver2.getRow()); //레코드개수 저장
+            }
 
         }
 
@@ -321,5 +350,31 @@ public class DBManager {
             e.printStackTrace();
         }
 
+    }
+    private void createTable(){
+        String createTableQuery = "CREATE TABLE IF NOT EXISTS fitness(" +
+                "month INTEGER NOT NULL," +
+                "date INTEGER NOT NULL," +
+                "hour INTEGER NOT NULL," +
+                "minute INTEGER NOT NULL ," +
+                "second INTEGER NOT NULL ," +
+                "totalCalories INTEGER NOT NULL ," +
+                "number INTEGER NOT NULL "+
+                ");";
+
+        String createTableQuery_2= "CREATE TABLE IF NOT EXISTS stopwatch("+
+                "hour INTEGER NOT NULL,"+
+                "minute INTEGER  NOT NULL,"+
+                "second INTEGER  NOT NULL,"+
+                "number INTEGER  NOT NULL "+
+                ");";
+        try {
+            Statement statement = con.createStatement();
+            Statement statement_2 = con.createStatement();
+            statement.execute(createTableQuery);
+            statement_2.execute(createTableQuery_2);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

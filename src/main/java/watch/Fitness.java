@@ -32,7 +32,7 @@ public class Fitness extends Thread implements CountUp{
         this.second = 0;
         this.totalCalories = 0;
         this.CPM=0;
-        this.dbManager = new DBManager();
+        this.dbManager = DBManager.getInstance();
         this.fitDTO = FitnessDTO.getInstance();
     }
 
@@ -139,6 +139,8 @@ public class Fitness extends Thread implements CountUp{
     }
 
     public boolean checkDate(){
+        inst = InstManager.getInstance();
+        System.out.println(date);
 
         if((recentMonth==month)&&( recentDate == date))
             return true;
@@ -172,7 +174,6 @@ public class Fitness extends Thread implements CountUp{
         while (true) {
             if (is_stop == false) {
                 second++;
-                calcultateCalories();
                 if (second == 60) {
                     second = 0;
                     minute++;

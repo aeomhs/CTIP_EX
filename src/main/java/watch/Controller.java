@@ -180,6 +180,12 @@ public class Controller {
 
     public boolean req_finishSelect(){
         if(selectFunc.check_four_fuction() == true){
+            if(selectFunc.getFunctionListBool(2) == false){
+                int i;
+                for(i=0; i<instManager.getAlarmInstNum(); i++){
+                    instManager.getAlarmList().get(i).setStatus(false);
+                }
+            }
             return true;
         }
         else{
@@ -326,6 +332,7 @@ public class Controller {
     public BaseView getBaseView() {
         return baseView;
     }
+
 
     //dDay function
     public Dday req_selectDate(){

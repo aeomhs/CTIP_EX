@@ -75,18 +75,26 @@ public class Timekeeping extends Thread implements CountUp {
     @Override
     synchronized public void countUp(){
         while (true) {
+            cal.set(year,month,date,hour,minute,second);
             if (is_stop == false) {
                 second++;
+                System.out.println("timekeeping날짜;"+date);
+                    cal.set(Calendar.SECOND,second);
                 if (second == 60) {
                     second = 0;
                     minute++;
+                    cal.set(Calendar.MINUTE,minute);
                 }
                 if (minute == 60) {
                     minute = 0;
                     hour++;
+                    cal.set(Calendar.HOUR_OF_DAY,hour);
                     if (hour == 24) {
-                        hour = 0;
-                        cal.add(Calendar.DATE, 1);
+                        hour = cal.get(Calendar.HOUR_OF_DAY);
+                        date =cal.get(Calendar.DATE);
+                        //System.out.println("timekeeping날짜;"+date);
+                        month = cal.get(Calendar.MONTH);
+                        year = cal.get(Calendar.YEAR);
                         try {
                             calculateDay(year, month, date);
                         } catch (Exception e) {
@@ -126,6 +134,7 @@ public class Timekeeping extends Thread implements CountUp {
         this.year = year;
         this.month = month;
         this.date = date;
+        cal.set(year,month,date);
     }
 
     //usecase: set_time
@@ -133,6 +142,9 @@ public class Timekeeping extends Thread implements CountUp {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
+        cal.set(Calendar.HOUR_OF_DAY,hour);
+        cal.set(Calendar.MINUTE,minute);
+        cal.set(Calendar.SECOND,second);
     }
 
     //usecase: set_time

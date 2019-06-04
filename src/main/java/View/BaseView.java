@@ -1,5 +1,6 @@
 package View;
 
+import watch.Buzzer;
 import watch.Controller;
 
 import javax.swing.*;
@@ -66,6 +67,29 @@ public class BaseView extends JFrame {
         }
     }
 
+    public void on_buzzerMode(){
+        tkv.setBuzzer_mode(true);
+        tmv.setBuzzer_mode(true);
+        alarmView.setBuzzer_mode(true);
+        stopWatchView.setBuzzer_mode(true);
+        ddayView.setBuzzer_mode(true);
+        fitnessView.setBuzzer_mode(true);
+        selectView.setBuzzer_mode(true);
+
+    }
+
+    public void off_buzzerMode(){
+
+        tkv.setBuzzer_mode(false);
+        tmv.setBuzzer_mode(false);
+        alarmView.setBuzzer_mode(false);
+        stopWatchView.setBuzzer_mode(false);
+        ddayView.setBuzzer_mode(false);
+        fitnessView.setBuzzer_mode(false);
+        selectView.setBuzzer_mode(false);
+
+    }
+
     public static void main(String[] args)
     {
 
@@ -73,6 +97,7 @@ public class BaseView extends JFrame {
         BaseView bv = new BaseView();
 
         bv.controller = new Controller(bv);
+        Buzzer.getInstance().setBaseView(bv);
         bv.tkv = new TimeKeepingView(bv);
         bv.tmv = new TimersView(bv);
         bv.alarmView = new AlarmView(bv);
@@ -80,6 +105,7 @@ public class BaseView extends JFrame {
         bv.stopWatchView = new StopWatchView(bv);
         bv.fitnessView = new FitnessView(bv);
         bv.ddayView = new DdayView(bv);
+
 
         bv.setTitle("SMA_T6_CLOCK");
         bv.setContentPane(bv.tkv);

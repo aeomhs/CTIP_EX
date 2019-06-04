@@ -57,6 +57,12 @@ public class StopWatchView extends JPanel {
                                             //기록하는중이 아니라
     */
 
+    boolean buzzer_mode;
+
+    public void setBuzzer_mode(boolean buzzer_mode) {
+        this.buzzer_mode = buzzer_mode;
+    }
+
 
     public StopWatchView(BaseView base)
     {
@@ -68,7 +74,7 @@ public class StopWatchView extends JPanel {
 
         this.base= base;
         this.setBounds(0,0,800,500);
-      //  this.setBackground(Color.CYAN);
+        //  this.setBackground(Color.CYAN);
 
         //ImageIcon icon1 = new ImageIcon("C:\\Users\\조은지\\IdeaProjects\\CTIP_SMA_6\\src\\main\\java\\Image\\circle.png");
         sw_label = new JLabel();
@@ -129,7 +135,12 @@ public class StopWatchView extends JPanel {
         A.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                base.controller.req_changeMode();
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
+                }
+                else {
+                    base.controller.req_changeMode();
+                }
             }
         });
 
@@ -140,28 +151,30 @@ public class StopWatchView extends JPanel {
         B.addActionListener(new ActionListener() {  //reset버튼 / next버튼
             @Override
             public void actionPerformed(ActionEvent e) {
-                //if(tk_status.equals("TimeKeeping"))
-                if(sw_status.equals("Pause") == true){  //리셋이다.
-                    base.controller.req_finish("stopwatch");
-                    segment.setText(Integer.toString(stw.getHour())+":"+Integer.toString(stw.getMinute())+":"+Integer.toString(stw.getSecond()));
-                    dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
+                }
+                else {
+                    //if(tk_status.equals("TimeKeeping"))
+                    if (sw_status.equals("Pause") == true) {  //리셋이다.
+                        sw_status = "Reset";
+                        base.controller.req_finish("stopwatch");
+                        segment.setText(Integer.toString(stw.getHour()) + ":" + Integer.toString(stw.getMinute()) + ":" + Integer.toString(stw.getSecond()));
+                        dot.setText(Integer.toString(dto.getHour()) + ":" + Integer.toString(dto.getMinute()) + ":" + Integer.toString(dto.getSecond()));
 
-                }
-                else if(sw_status.equals("Execute") == true){   //리셋이다
-                    base.controller.req_finish("stopwatch");
-                    sw_status = "Pause";
-                    segment.setText(Integer.toString(stw.getHour())+":"+Integer.toString(stw.getMinute())+":"+Integer.toString(stw.getSecond()));
-                    dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
-                }
-                else if(sw_status.equals("Record") == true){    //next기록보여준다
-                    //next기록보여준다
-                    count++;
-                    if(count==dto.getNum()+1)
-                        count= 1;
-                    base.controller.req_recordList(count);
-                    calendar.set(InstManager.getInstance().getTimekeeping().getYear(),InstManager.getInstance().getTimekeeping().getMonth(),InstManager.getInstance().getTimekeeping().getDate(),dto.getHour(),dto.getMinute(),dto.getSecond());
-                    strDate = seg_fm.format(calendar.getTime());
-                    dot.setText("number"+count+":" +strDate);
+                    } else if (sw_status.equals("Execute") == true) {   //리셋이다
+                       //none
+                        System.out.println("매뉴얼에 없습니다");
+                    } else if (sw_status.equals("Record") == true) {    //next기록보여준다
+                        //next기록보여준다
+                        count++;
+                        if (count == dto.getNum() + 1)
+                            count = 1;
+                        base.controller.req_recordList(count);
+                        calendar.set(InstManager.getInstance().getTimekeeping().getYear(), InstManager.getInstance().getTimekeeping().getMonth(), InstManager.getInstance().getTimekeeping().getDate(), dto.getHour(), dto.getMinute(), dto.getSecond());
+                        strDate = seg_fm.format(calendar.getTime());
+                        dot.setText("number" + count + ":" + strDate);
+                    }
                 }
             }
         });
@@ -172,23 +185,31 @@ public class StopWatchView extends JPanel {
         C.addActionListener(new ActionListener() {  //pause or continue버튼
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(sw_status.equals("Pause") == true){
-                    sw_status = "Execute";
-                    if(stw.getHour()==0 && stw.getMinute()==0 && stw.getSecond()==0){
-                        base.controller.req_countUp("stopwatch");
-                    }
-                    else if(stw.getHour()!=0 || stw.getMinute()!=0 || stw.getSecond()!=0){
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
+                }
+                else {
+                    if (sw_status.equals("Pause") == true) {
+                        sw_status = "Execute";
+                        if (stw.getHour() == 0 && stw.getMinute() == 0 && stw.getSecond() == 0) {
+                            base.controller.req_countUp("stopwatch");
+                        }
+                        else if(stw.getHour()!=0 || stw.getMinute()!=0 || stw.getSecond()!=0){
+                            base.controller.req_continue("stopwatch");
+                        }
+                    } else if (sw_status.equals("Execute") == true) {
+                        sw_status = "Pause";
+                        base.controller.req_pause("stopwatch");
+                        segment.setText(Integer.toString(stw.getHour()) + ":" + Integer.toString(stw.getMinute()) + ":" + Integer.toString(stw.getSecond()));
+                        dot.setText(Integer.toString(dto.getHour()) + ":" + Integer.toString(dto.getMinute()) + ":" + Integer.toString(dto.getSecond()));
+                    } else if (sw_status.equals("Record") == true) {
+                        //none
+                    } else if(sw_status.equals("Reset")==true){
+                        System.out.println("여기는 왔는가");
+                        sw_status = "Execute";
                         base.controller.req_continue("stopwatch");
+
                     }
-                }
-                else if(sw_status.equals("Execute") == true){
-                    sw_status = "Pause";
-                    base.controller.req_pause("stopwatch");
-                    segment.setText(Integer.toString(stw.getHour())+":"+Integer.toString(stw.getMinute())+":"+Integer.toString(stw.getSecond()));
-                    dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
-                }
-                else if(sw_status.equals("Record") == true){
-                    //none
                 }
             }
         });
@@ -200,26 +221,29 @@ public class StopWatchView extends JPanel {
             //record하기(실행중) or record보기(일시정지)   -> record(일시정지상태로 돌아가기)
 
 
-        @Override
+            @Override
             public void actionPerformed(ActionEvent e) {
-           //     System.out.println("여기는 d버튼");
-                if(sw_status.equals("Pause") == true){
-                    sw_status = "Record";
-                    count=0;
-                    base.controller.req_recordList(dto.getNum());
+                //     System.out.println("여기는 d버튼");
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
                 }
-                else if(sw_status.equals("Execute") == true){
-                    count++;
-                    if(count==11)
-                        count =1;
-                    base.controller.req_record(count);
-                    dot.setText(Integer.toString(dto.getHour())+":"+Integer.toString(dto.getMinute())+":"+Integer.toString(dto.getSecond()));
-                }
-                else if(sw_status.equals("Record") == true){
-                    sw_status = "Pause";
-                    segment.setText(Integer.toString(hour)+":"+Integer.toString(minute)+":"+Integer.toString(second));
-                    //  base.controller.req_recordList();
-                    //   calendar.set(InstManager.getInstance().getTimekeeping().getYear(),InstManager.getInstance().getTimekeeping().getMonth(),InstManager.getInstance().getTimekeeping().getDate(),dto.getHour(),dto.getMinute(),dto.getSecond());
+                else {
+                    if (sw_status.equals("Pause") == true) {
+                        sw_status = "Record";
+                        count = 0;
+                        base.controller.req_recordList(dto.getNum());
+                    } else if (sw_status.equals("Execute") == true) {
+                        count++;
+                        if (count == 11)
+                            count = 1;
+                        base.controller.req_record(count);
+                        dot.setText(Integer.toString(dto.getHour()) + ":" + Integer.toString(dto.getMinute()) + ":" + Integer.toString(dto.getSecond()));
+                    } else if (sw_status.equals("Record") == true) {
+                        sw_status = "Pause";
+                        segment.setText(Integer.toString(hour) + ":" + Integer.toString(minute) + ":" + Integer.toString(second));
+                        //  base.controller.req_recordList();
+                        //   calendar.set(InstManager.getInstance().getTimekeeping().getYear(),InstManager.getInstance().getTimekeeping().getMonth(),InstManager.getInstance().getTimekeeping().getDate(),dto.getHour(),dto.getMinute(),dto.getSecond());
+                    }
                 }
             }
         });

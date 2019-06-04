@@ -2,6 +2,7 @@ package View;
 
 
 
+import watch.Buzzer;
 import watch.InstManager;
 import watch.Timekeeping;
 
@@ -58,6 +59,11 @@ public class TimeKeepingView extends JPanel{
     /*
         1.Timekeeping   2. Setting
      */
+    boolean buzzer_mode;
+
+    public void setBuzzer_mode(boolean buzzer_mode) {
+        this.buzzer_mode = buzzer_mode;
+    }
 
     public TimeKeepingView(BaseView base)
     {
@@ -124,7 +130,12 @@ public class TimeKeepingView extends JPanel{
         A.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                base.controller.req_changeMode();
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
+                }
+                else {
+                    base.controller.req_changeMode();
+                }
             }
         });
         B = new JButton("B");
@@ -133,73 +144,74 @@ public class TimeKeepingView extends JPanel{
         B.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(tk_status.equals("Timekeeping") == true){
-                    //Setting 으로 상태 바꿔준다.
-                    base.change_view(6);
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
                 }
-                else if(tk_status.equals("Setting") == true){
-                    //이 때 B버튼은 Up버튼임
-                    switch(settingNum)
-                    {
-                        case 0:
-                            req_nextYear();
-                            break;
-                        case 1:
-                            req_nextMonth();
-                            break;
-                        case 2:
-                            req_nextDate();
-                            break;
-                        case 3:
-                            req_nextHour();
-                            break;
-                        case 4:
-                            req_nextMinute();
-                            break;
-                        case 5:
-                            req_nextSecond();
-                            break;
+                else {
+                    if (tk_status.equals("Timekeeping") == true) {
+                        //Setting 으로 상태 바꿔준다.
+                        base.change_view(6);
+                    } else if (tk_status.equals("Setting") == true) {
+                        //이 때 B버튼은 Up버튼임
+                        switch (settingNum) {
+                            case 0:
+                                req_nextYear();
+                                break;
+                            case 1:
+                                req_nextMonth();
+                                break;
+                            case 2:
+                                req_nextDate();
+                                break;
+                            case 3:
+                                req_nextHour();
+                                break;
+                            case 4:
+                                req_nextMinute();
+                                break;
+                            case 5:
+                                req_nextSecond();
+                                break;
+                        }
+
+
                     }
-
-
                 }
-
             }
         });
         C = new JButton("C");
         C.setBounds(100,300,50,50);
         tk_label.add(C);
         C.addActionListener(new ActionListener() {
-                                @Override
-                                public void actionPerformed(ActionEvent e) {
-                                    if(tk_status.equals("Timekeeping") == true){
-                                        //Setting 으로 상태 바꿔준다.
-                                        tk_status ="Setting";
-                                        base.controller.req_pause("timekeeping");
-                                        System.out.println(tk_status);
-
-                                    }
-                                    else if(tk_status.equals("Setting") == true){
-                                        //이 때 C버튼은 OK(Next)
-                                        settingNum++;
-                                        System.out.println(settingNum);
-                                        if(settingNum==3)
-                                        {
-                                            base.controller.req_setDate("timekeeping",calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE));
-                                            Timekeeping tk = InstManager.getInstance().getTimekeeping();
-                                            System.out.println(tk.getDate());
-
-                                        }
-                                        else if(settingNum==6) {
-                                            base.controller.req_setTime("timekeeping",calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND));
-                                            settingNum = 0;
-                                            tk_status="Timekeeping";
-                                            base.controller.req_continue("timekeeping");
-                                        }
-                                    }
-
-                                }
-                            }
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
+                }
+                else {
+                    if (tk_status.equals("Timekeeping") == true) {//Setting 으로 상태 바꿔준다.
+                        tk_status = "Setting";
+                        base.controller.req_pause("timekeeping");
+                        System.out.println(tk_status);
+                    } else if (tk_status.equals("Setting") == true) {
+                        //이 때 C버튼은 OK(Next)
+                        settingNum++;
+                        System.out.println(settingNum);
+                        if (settingNum == 3) {
+                            base.controller.req_setDate("timekeeping", calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
+                            Timekeeping tk = InstManager.getInstance().getTimekeeping();
+                            System.out.println(tk.getDate());
+                        } else if (settingNum == 6) {
+                            base.controller.req_setTime("timekeeping", calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND));
+                            System.out.println("화면시간"+calendar.get(Calendar.SECOND)+"초"+calendar.get(Calendar.DATE)+"일"+"timekeeping:"+InstManager.getInstance().getTimekeeping().getDate());
+                            settingNum = 0;
+                            tk_status = "Timekeeping";
+                            base.controller.req_continue("timekeeping");
+                        }
+                    }
+                }
+            }
+        }
         );
 
         D = new JButton("D");
@@ -208,32 +220,35 @@ public class TimeKeepingView extends JPanel{
         D.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(tk_status.equals("Setting") == true){
-                    //DOWN버튼
-                    switch(settingNum)
-                    {
-                        case 0:
-                            req_prevYear();
-                            break;
-                        case 1:
-                            req_prevMonth();
-                            break;
-                        case 2:
-                            req_prevDate();
-                            break;
-                        case 3:
-                            req_prevHour();
-                            break;
-                        case 4:
-                            req_prevMinute();
-                            break;
-                        case 5:
-                            req_prevSecond();
-                            break;
-                    }
-
+                if(buzzer_mode == true){
+                    Buzzer.getInstance().stopBuzzer();
                 }
+                else {
+                    if (tk_status.equals("Setting") == true) {
+                        //DOWN버튼
+                        switch (settingNum) {
+                            case 0:
+                                req_prevYear();
+                                break;
+                            case 1:
+                                req_prevMonth();
+                                break;
+                            case 2:
+                                req_prevDate();
+                                break;
+                            case 3:
+                                req_prevHour();
+                                break;
+                            case 4:
+                                req_prevMinute();
+                                break;
+                            case 5:
+                                req_prevSecond();
+                                break;
+                        }
 
+                    }
+                }
             }
         });
 
@@ -250,9 +265,11 @@ public class TimeKeepingView extends JPanel{
             public void run() {
                 if(tk_status.equals("Timekeeping")) {
                     calendar.set(tk.getYear(),tk.getMonth(),tk.getDate(),tk.getHour(),tk.getMinute(),tk.getSecond());
+                   // tk.setDate(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE));
+                    //tk.setTime(calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),calendar.get(Calendar.MONTH));
                     strDate = dot_fm.format(calendar.getTime());
                     dot.setText(strDate);
-                    //System.out.println("화면시간"+calendar.get(Calendar.SECOND));
+                  //  System.out.println("화면시간"+calendar.get(Calendar.SECOND)+"초"+calendar.get(Calendar.DATE)+"일"+"timekeeping:"+tk.getDate());
                     strDate2 = seg_fm.format(calendar.getTime());
                     segment.setText(strDate2);
                     try {

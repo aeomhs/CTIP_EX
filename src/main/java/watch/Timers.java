@@ -1,5 +1,7 @@
 package watch;
 
+import View.TimersView;
+
 public class Timers extends Thread{
     private int hour, minute, second;
     private boolean is_stop;
@@ -51,7 +53,13 @@ public class Timers extends Thread{
         outerLoop:
         while (true) {
             if(is_stop == false) {
-                this.second--;
+                if(this.second != 0){
+                    this.second--;
+                }else {
+                    this.minute--;
+                    this.second = 60;
+                    this.second--;
+                }
                 if (this.second == 0 && this.minute != 0) {
                     this.second = 60;
                     this.minute--;
