@@ -35,7 +35,7 @@ public class Buzzer{
         AudioFormat format;
         DataLine.Info info;
 
-        bgm = new File("src/main/java/Image/beep.wav");
+        bgm = new File("./beep.wav");
 
         Clip clip;
 
