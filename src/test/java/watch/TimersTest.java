@@ -68,7 +68,7 @@ class TimersTest {
     @Test
     void getIs_stop() throws Exception{
         try{
-            assertEquals(false, junitTest.getIs_stop());
+            assertEquals(true, junitTest.getIs_stop());
         }catch (Exception var2){
             System.out.println("error");
         }

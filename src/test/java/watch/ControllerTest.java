@@ -84,7 +84,7 @@ class ControllerTest {
     @Test
     void req_finishSelect() throws Exception{
         try{
-            assertEquals(false, junitTest.req_finishSelect());
+            assertEquals(true, junitTest.req_finishSelect());
         }catch (Exception e){
             System.out.println("req_finishSelect failed");
         }

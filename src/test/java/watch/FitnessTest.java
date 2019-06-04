@@ -46,7 +46,7 @@ class FitnessTest {
     @Test
     void getExercise() throws Exception{
         try {
-            assertEquals(null, junitTest.getExercise());
+            assertEquals("running", junitTest.getExercise());
         }catch (Exception e){
             System.out.println("error");
         }

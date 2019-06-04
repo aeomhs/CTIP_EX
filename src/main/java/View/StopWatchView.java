@@ -163,10 +163,8 @@ public class StopWatchView extends JPanel {
                         dot.setText(Integer.toString(dto.getHour()) + ":" + Integer.toString(dto.getMinute()) + ":" + Integer.toString(dto.getSecond()));
 
                     } else if (sw_status.equals("Execute") == true) {   //리셋이다
-                        sw_status = "Reset";
-                        base.controller.req_finish("stopwatch");
-                        segment.setText(Integer.toString(stw.getHour()) + ":" + Integer.toString(stw.getMinute()) + ":" + Integer.toString(stw.getSecond()));
-                        dot.setText(Integer.toString(dto.getHour()) + ":" + Integer.toString(dto.getMinute()) + ":" + Integer.toString(dto.getSecond()));
+                       //none
+                        System.out.println("매뉴얼에 없습니다");
                     } else if (sw_status.equals("Record") == true) {    //next기록보여준다
                         //next기록보여준다
                         count++;
