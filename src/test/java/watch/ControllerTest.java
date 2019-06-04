@@ -1,6 +1,6 @@
 package watch;
 
-import View.BaseView;
+import View.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +15,15 @@ class ControllerTest {
     @BeforeAll
      public static void makeInstance(){
         BaseView bv = new BaseView();
+        bv.controller = new Controller(bv);
+        Buzzer.getInstance().setBaseView(bv);
+        bv.tkv = new TimeKeepingView(bv);
+        bv.tmv = new TimersView(bv);
+        bv.alarmView = new AlarmView(bv);
+        bv.selectView = new SelectView(bv);
+        bv.stopWatchView = new StopWatchView(bv);
+        bv.fitnessView = new FitnessView(bv);
+        bv.ddayView = new DdayView(bv);
         junitTest = new Controller(bv);
     }
 
