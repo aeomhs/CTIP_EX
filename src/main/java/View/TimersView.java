@@ -37,7 +37,7 @@ public class TimersView extends JPanel{
 
     private JLabel dot;
     private JLabel segment;
-  //  private JLabel tmp;
+    //  private JLabel tmp;
 
     private int hour = 0;
     private int minute = 0;
@@ -67,7 +67,7 @@ public class TimersView extends JPanel{
 
         this.base = base;
         this.setBounds(0,0,800,500);
-    //    this.setBackground(Color.CYAN);
+        //    this.setBackground(Color.CYAN);
 
         dot_fm = new SimpleDateFormat("yy.MM.dd.E요일");
         seg_fm = new SimpleDateFormat("HH:mm:SS");
@@ -144,7 +144,7 @@ public class TimersView extends JPanel{
                     Buzzer.getInstance().stopBuzzer();
                 }
                 else {
-                    if (timer_status.equals("Setting") == true) {     //이게 문제
+                    if (timer_status.equals("Setting") == true) {
                         switch (settingNum) {
                             case 0:
                                 req_nextHour();
@@ -159,16 +159,20 @@ public class TimersView extends JPanel{
                     }
                     //타이머 일시정지 중에 리셋버튼이 눌리면
                     else if (timer_status.equals("Pause") == true) {
-                        base.controller.req_reset();
+                        System.out.println("reset합니다");
                         timer_status = "Setting";
+                        base.controller.req_reset();
                         segment.setText(Integer.toString(timer.getHour()) + ":" + Integer.toString(timer.getMinute()) + ":" + Integer.toString(timer.getSecond()));
+                        settingNum=0;
                     }
                     //타이머 실행 중에 리셋 버튼이 눌리면
                     else if (timer_status.equals("Execute") == true) {
+                        System.out.println("reset합니다");
+                        timer_status = "Setting";
                         base.controller.req_pause("timer");
                         base.controller.req_reset();
-                        timer_status = "Setting";
                         segment.setText(Integer.toString(timer.getHour()) + ":" + Integer.toString(timer.getMinute()) + ":" + Integer.toString(timer.getSecond()));
+                        settingNum = 0;
                     }
                 }
             }
@@ -192,6 +196,7 @@ public class TimersView extends JPanel{
                     } else if (timer_status.equals("Setting") == true) {
                         settingNum++;
                         if (settingNum == 3) {
+                            settingNum=0;
                             req_next();
                             timer_status = "Execute";
                         }
@@ -218,6 +223,7 @@ public class TimersView extends JPanel{
                 else {
                     if (timer_status.equals("Pause") == true) {
                         //none
+                        System.out.println("none입니다.");
                     } else if (timer_status.equals("Setting") == true) {
                         switch (settingNum) {
                             case 0:
@@ -232,6 +238,7 @@ public class TimersView extends JPanel{
                         }
                     } else if (timer_status.equals("Execute") == true) {
                         //none
+                        System.out.println("none입니다.");
                     }
 
                 }
@@ -274,7 +281,7 @@ public class TimersView extends JPanel{
     //req함수들
     public void req_nextHour() {
         if(hour != 99){
-            hour=hour+1;
+            hour++;
         }else{
             hour=0;
         }
@@ -290,10 +297,11 @@ public class TimersView extends JPanel{
     }
 
     public void req_nextMinute(){
-        if(minute != 99){
+        if(minute != 60){
             minute++;
         }else{
-            minute=99;
+            minute=0;
+            hour++;
         }
         segment.setText(Integer.toString(hour)+":"+Integer.toString(minute)+":"+Integer.toString(second));
     }
@@ -307,10 +315,11 @@ public class TimersView extends JPanel{
     }
 
     public void req_nextSecond(){
-        if(second != 99){
+        if(second != 60){
             second++;
         }else{
-            second=99;
+            second=00;
+            minute++;
         }
         segment.setText(Integer.toString(hour)+":"+Integer.toString(minute)+":"+Integer.toString(second));
     }

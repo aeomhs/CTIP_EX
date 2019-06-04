@@ -74,7 +74,7 @@ public class StopWatchView extends JPanel {
 
         this.base= base;
         this.setBounds(0,0,800,500);
-      //  this.setBackground(Color.CYAN);
+        //  this.setBackground(Color.CYAN);
 
         //ImageIcon icon1 = new ImageIcon("C:\\Users\\조은지\\IdeaProjects\\CTIP_SMA_6\\src\\main\\java\\Image\\circle.png");
         sw_label = new JLabel();
@@ -157,6 +157,7 @@ public class StopWatchView extends JPanel {
                 else {
                     //if(tk_status.equals("TimeKeeping"))
                     if (sw_status.equals("Pause") == true) {  //리셋이다.
+                        sw_status = "Pause";
                         base.controller.req_finish("stopwatch");
                         segment.setText(Integer.toString(stw.getHour()) + ":" + Integer.toString(stw.getMinute()) + ":" + Integer.toString(stw.getSecond()));
                         dot.setText(Integer.toString(dto.getHour()) + ":" + Integer.toString(dto.getMinute()) + ":" + Integer.toString(dto.getSecond()));
@@ -186,7 +187,6 @@ public class StopWatchView extends JPanel {
         C.addActionListener(new ActionListener() {  //pause or continue버튼
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 if(buzzer_mode == true){
                     Buzzer.getInstance().stopBuzzer();
                 }
@@ -195,7 +195,8 @@ public class StopWatchView extends JPanel {
                         sw_status = "Execute";
                         if (stw.getHour() == 0 && stw.getMinute() == 0 && stw.getSecond() == 0) {
                             base.controller.req_countUp("stopwatch");
-                        } else if (stw.getHour() != 0 || stw.getMinute() != 0 || stw.getSecond() != 0) {
+                        }
+                        else if(stw.getHour()!=0 || stw.getMinute()!=0 || stw.getSecond()!=0){
                             base.controller.req_continue("stopwatch");
                         }
                     } else if (sw_status.equals("Execute") == true) {
@@ -217,9 +218,9 @@ public class StopWatchView extends JPanel {
             //record하기(실행중) or record보기(일시정지)   -> record(일시정지상태로 돌아가기)
 
 
-        @Override
+            @Override
             public void actionPerformed(ActionEvent e) {
-           //     System.out.println("여기는 d버튼");
+                //     System.out.println("여기는 d버튼");
                 if(buzzer_mode == true){
                     Buzzer.getInstance().stopBuzzer();
                 }
