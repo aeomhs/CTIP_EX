@@ -162,6 +162,9 @@ public class TimersView extends JPanel{
                         System.out.println("reset합니다");
                         timer_status = "Setting";
                         base.controller.req_reset();
+                        hour = 0;
+                        minute = 0;
+                        second = 0;
                         segment.setText(Integer.toString(timer.getHour()) + ":" + Integer.toString(timer.getMinute()) + ":" + Integer.toString(timer.getSecond()));
                         settingNum=0;
                     }
@@ -171,6 +174,9 @@ public class TimersView extends JPanel{
                         timer_status = "Setting";
                         base.controller.req_pause("timer");
                         base.controller.req_reset();
+                        hour = 0;
+                        minute = 0;
+                        second = 0;
                         segment.setText(Integer.toString(timer.getHour()) + ":" + Integer.toString(timer.getMinute()) + ":" + Integer.toString(timer.getSecond()));
                         settingNum = 0;
                     }
