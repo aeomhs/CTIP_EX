@@ -7,28 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e3c3cb9-d7da-4981-97b3-68d1b6236022" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/209e3695-a888-4758-80ae-8c1a261fc854.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/209e3695-a888-4758-80ae-8c1a261fc854.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fec5a7fc-ed27-45a5-9654-aae48b57e261.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fec5a7fc-ed27-45a5-9654-aae48b57e261.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/AlarmView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/AlarmView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/AlarmView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/AlarmView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/AlarmView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/AlarmView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/AlarmView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/AlarmView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/AlarmView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/AlarmView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/DdayView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/DdayView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/DdayView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/DdayView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/DdayView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/DdayView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/DdayView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/DdayView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/DdayView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/DdayView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Alarm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Alarm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Dday$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Dday.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Dday.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/InstManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/InstManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/FitnessView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/FitnessView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/TimeKeepingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/TimeKeepingView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/watch/Fitness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/watch/Fitness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/watch/Timekeeping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/watch/Timekeeping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/watch.db" beforeDir="false" afterPath="$PROJECT_DIR$/watch.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CTIP_SMA_6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CTIP_SMA_6.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -89,17 +69,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/watch/Fitness.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
+            <state relative-caret-position="-1982">
+              <caret line="143" selection-start-line="143" selection-end-line="143" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/watch/FitnessTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="182" column="13" lean-forward="true" selection-start-line="182" selection-start-column="13" selection-end-line="182" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/watch/InstManager.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/View/BaseView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+            <state relative-caret-position="95">
+              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/watch/InstManagerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -117,7 +115,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/View/TimeKeepingView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="583">
-              <caret line="379" lean-forward="true" selection-start-line="379" selection-end-line="379" />
+              <caret line="379" selection-start-line="379" selection-end-line="379" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#12356#12357#0" expanded="true" />
@@ -141,7 +139,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/watch/DBManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
+            <state relative-caret-position="4321">
               <caret line="281" column="49" selection-start-line="281" selection-start-column="49" selection-end-line="281" selection-end-column="49" />
             </state>
           </provider>
@@ -151,16 +149,16 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/watch/FitnessDTO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="171">
-              <caret line="56" column="53" lean-forward="true" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
+              <caret line="56" column="53" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/FitnessView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="265" column="74" selection-start-line="265" selection-start-column="74" selection-end-line="265" selection-end-column="74" />
+            <state relative-caret-position="133">
+              <caret line="262" column="75" selection-start-line="262" selection-start-column="75" selection-end-line="262" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -189,6 +187,7 @@
       <find>count++</find>
       <find>기록</find>
       <find>finish</find>
+      <find>FitnessList</find>
       <find>inst</find>
     </findStrings>
   </component>
@@ -291,6 +290,27 @@
             </path>
             <path>
               <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="watch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
             <path>
@@ -328,11 +348,11 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559391423620" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/sqlite-jdbc-3.27.2.1.jar!/" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
@@ -354,7 +374,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.FitnessTest.finish">
     <configuration name="BaseView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="View.BaseView" />
       <module name="CTIP_SMA_6.main" />
@@ -368,9 +388,60 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FitnessTest.finish" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CTIP_SMA_6.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="watch.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="watch" />
+      <option name="MAIN_CLASS_NAME" value="watch.FitnessTest" />
+      <option name="METHOD_NAME" value="finish" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FitnessTest.getCPM" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CTIP_SMA_6.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="watch.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="watch" />
+      <option name="MAIN_CLASS_NAME" value="watch.FitnessTest" />
+      <option name="METHOD_NAME" value="getCPM" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FitnessTest.updateFitness" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CTIP_SMA_6.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="watch.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="watch" />
+      <option name="MAIN_CLASS_NAME" value="watch.FitnessTest" />
+      <option name="METHOD_NAME" value="updateFitness" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FitnessTest.finish" />
+        <item itemvalue="JUnit.FitnessTest.updateFitness" />
         <item itemvalue="Application.BaseView" />
+        <item itemvalue="JUnit.FitnessTest.getCPM" />
       </list>
     </recent_temporary>
   </component>
@@ -390,12 +461,29 @@
       <workItem from="1559574910542" duration="916000" />
       <workItem from="1559575924455" duration="1192000" />
       <workItem from="1559578545107" duration="320000" />
-      <workItem from="1559614490586" duration="5877000" />
+      <workItem from="1559614490586" duration="6832000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="FitnessTest_getCPM - 2019.06.04 at 13h 27m 01s.xml">
+      <configuration name="FitnessTest.getCPM" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FitnessTest_finish - 2019.06.04 at 13h 27m 33s.xml">
+      <configuration name="FitnessTest.finish" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FitnessTest_finish - 2019.06.04 at 13h 27m 47s.xml">
+      <configuration name="FitnessTest.finish" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FitnessTest_updateFitness - 2019.06.04 at 13h 30m 47s.xml">
+      <configuration name="FitnessTest.updateFitness" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FitnessTest_finish - 2019.06.04 at 13h 31m 00s.xml">
+      <configuration name="FitnessTest.finish" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31262000" />
+    <option name="totallyTimeSpent" value="32217000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -419,40 +507,6 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32907802" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3248227" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32907802" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32899627" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="10" weight="0.069767445" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32713756" />
-      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info active="true" anchor="bottom" id="Database Console" order="14" visible="true" weight="0.32907802" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
-      <window_info anchor="right" id="Gradle" order="5" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Database" order="9" weight="0.3295302" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17248322" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32907802" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3248227" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -466,6 +520,7 @@
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.32907802" />
+      <window_info anchor="right" id="Coverage" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -475,8 +530,8 @@
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Database" order="9" />
-    </layout-to-restore>
+      <window_info anchor="right" id="Database" order="9" weight="0.3295302" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -493,6 +548,11 @@
       </breakpoints>
     </breakpoint-manager>
   </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CTIP_SMA_6$FitnessTest_updateFitness.ic" NAME="FitnessTest.updateFitness Coverage Results" MODIFIED="1559622571425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>watch.*</FILTER>
+    </SUITE>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/watch/StateChange.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -506,13 +566,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="139" column="56" selection-start-line="139" selection-start-column="56" selection-end-line="139" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/BaseView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -658,13 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/watch/DBManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="281" column="49" selection-start-line="281" selection-start-column="49" selection-end-line="281" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/watch/InstManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -672,24 +718,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/watch/FitnessDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="56" column="53" lean-forward="true" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/watch/SelectFunction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1349">
           <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/watch/Fitness.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
         </state>
       </provider>
     </entry>
@@ -717,7 +749,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/View/TimeKeepingView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="583">
-          <caret line="379" lean-forward="true" selection-start-line="379" selection-end-line="379" />
+          <caret line="379" selection-start-line="379" selection-end-line="379" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#12356#12357#0" expanded="true" />
@@ -730,8 +762,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/FitnessView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="265" column="74" selection-start-line="265" selection-start-column="74" selection-end-line="265" selection-end-column="74" />
+        <state relative-caret-position="133">
+          <caret line="262" column="75" selection-start-line="262" selection-start-column="75" selection-end-line="262" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/watch/FitnessDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="56" column="53" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/watch/DBManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4321">
+          <caret line="281" column="49" selection-start-line="281" selection-start-column="49" selection-end-line="281" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/watch/Fitness.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1982">
+          <caret line="143" selection-start-line="143" selection-end-line="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/BaseView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/InstManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/FitnessTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="182" column="13" lean-forward="true" selection-start-line="182" selection-start-column="13" selection-end-line="182" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -798,7 +872,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Gradle: org.opentest4j:opentest4j:1.1.1</last-edited>
+          <last-edited>sqlite-jdbc-3.27.2.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
