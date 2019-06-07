@@ -87,11 +87,22 @@ public class Dday extends Thread{
         cal2.set(this.year, this.month, this.date);//설정일
 
         count = 0;
-        while (!cal2.after(cal)) {
-            count++;
-            cal2.add(Calendar.DATE, 1);
+
+        if(cal2.after(cal)){
+            while (!cal.after(cal2)) {
+                count--;
+                cal.add(Calendar.DATE, 1);
+            }
+            dayCount = count+1;
         }
-        dayCount = count -1;
+        else {
+            while (!cal2.after(cal)) {
+                count++;
+                cal2.add(Calendar.DATE, 1);
+            }
+            dayCount = count -1;
+        }
+
 
         System.out.println("dayCount:"+dayCount);
     }

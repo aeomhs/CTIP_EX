@@ -158,6 +158,9 @@ public class DdayView extends JPanel{
                         if( dDay != null){
                             dDay_status = "Add";
                             segment.setText("   ???   ");
+                            calendar.set(timekeeping.getYear(),timekeeping.getMonth(),timekeeping.getDate());
+                            strDate = seg_fm.format(calendar.getTime());
+                            segment.setText(strDate);
                             req_nextGoal();
                         }
 
@@ -247,6 +250,12 @@ public class DdayView extends JPanel{
                     } else if (dDay_status.equals("Setting") == true) {
                         dDay_status = "List";
                         dot.setText((InstManager.getInstance().getdDayIndex() + 1) + "번째 목표 : " + dDay.getGoal());
+                        if(dDay.getDayCount() >= 0) {
+                            segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: D+" + dDay.getDayCount());
+                        }
+                        else{
+                            segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: D" + dDay.getDayCount());
+                        }
 
                     } else if (dDay_status.equals("Add") == true) {
                         if (settingNum == 1) {
@@ -296,7 +305,12 @@ public class DdayView extends JPanel{
                         } else {
                             dot.setText(dDay.getGoal());
                             dot.setText((InstManager.getInstance().getdDayIndex() + 1) + "번째 목표 : " + dDay.getGoal());
-                            segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: +" + dDay.getDayCount());
+                            if(dDay.getDayCount() >= 0) {
+                                segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: D+" + dDay.getDayCount());
+                            }
+                            else{
+                                segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: D" + dDay.getDayCount());
+                            }
                         }
 
                     } else if (dDay_status.equals("Finish") == true) {
@@ -308,7 +322,12 @@ public class DdayView extends JPanel{
                         } else {
                             dot.setText(dDay.getGoal());
                             dot.setText((InstManager.getInstance().getdDayIndex() + 1) + "번째 목표 : " + dDay.getGoal());
-                            segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: +" + dDay.getDayCount());
+                            if(dDay.getDayCount() >= 0) {
+                                segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: D+" + dDay.getDayCount());
+                            }
+                            else{
+                                segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: D" + dDay.getDayCount());
+                            }
                         }
                     } else if (dDay_status.equals("Add") == true) {
                         switch (settingNum) {
@@ -352,7 +371,12 @@ public class DdayView extends JPanel{
             public void run() {
                 if (dDay_status.equals("List") == true) {
                     if (dDay != null){
-                        segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: +" + dDay.getDayCount());
+                        if(dDay.getDayCount() >= 0) {
+                            segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: D+" + dDay.getDayCount());
+                        }
+                        else{
+                            segment.setText((InstManager.getInstance().getdDayIndex() + 1) + "번쨰 D+day 값: D" + dDay.getDayCount());
+                        }
                     }
                 }
             }
