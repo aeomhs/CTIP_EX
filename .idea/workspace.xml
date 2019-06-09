@@ -6,61 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e3c3cb9-d7da-4981-97b3-68d1b6236022" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_27_2_11.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/CTIP_SMA_6.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/CTIP_SMA_6.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/CTIP_SMA_6.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/CTIP_SMA_6.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CTIP_SMA_6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CTIP_SMA_6.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/AlarmView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/AlarmView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/AlarmView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/AlarmView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/AlarmView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/AlarmView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/DdayView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/DdayView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/DdayView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/DdayView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/DdayView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/DdayView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/DdayView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/DdayView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/FitnessView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/FitnessView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/FitnessView$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/FitnessView$3$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/FitnessView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/FitnessView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/FitnessView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/FitnessView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/FitnessView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/FitnessView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/SelectView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/SelectView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/SelectView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/SelectView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/SelectView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/SelectView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/StopWatchView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/StopWatchView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimersView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimersView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimersView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimersView$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimersView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimersView$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimersView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimersView$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimersView$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimersView$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimersView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimersView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Alarm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Alarm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Buzzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Buzzer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/DBManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/DBManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Dday.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Dday.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Fitness.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Fitness.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/FitnessDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/FitnessDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/SelectFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/SelectFunction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Stopwatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Stopwatch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Timekeeping.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Timekeeping.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Timers.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Timers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/watch/AlarmTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/AlarmTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/watch/DdayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/DdayTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/watch/FitnessDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/FitnessDTOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/watch/FitnessTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/FitnessTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/watch/InstManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/InstManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/watch/TimekeepingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/TimekeepingTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/watch.db" beforeDir="false" afterPath="$PROJECT_DIR$/watch.db" afterDir="false" />
-    </list>
+    <list default="true" id="4e3c3cb9-d7da-4981-97b3-68d1b6236022" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -187,7 +133,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/watch/TimekeepingTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="228">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -478,17 +424,11 @@
       <workItem from="1559578545107" duration="320000" />
       <workItem from="1559614490586" duration="6832000" />
       <workItem from="1560087077341" duration="593000" />
-      <workItem from="1560098837147" duration="745000" />
+      <workItem from="1560098837147" duration="1282000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FitnessTest_finish - 2019.06.04 at 13h 27m 47s.xml">
-      <configuration name="FitnessTest.finish" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FitnessTest_updateFitness - 2019.06.04 at 13h 30m 47s.xml">
-      <configuration name="FitnessTest.updateFitness" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="FitnessTest_finish - 2019.06.04 at 13h 31m 00s.xml">
       <configuration name="FitnessTest.finish" configurationId="JUnit" />
     </history-entry>
@@ -513,9 +453,15 @@
     <history-entry file="FitnessTest - 2019.06.10 at 01h 56m 17s.xml">
       <configuration name="FitnessTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="FitnessTest - 2019.06.10 at 01h 57m 30s.xml">
+      <configuration name="FitnessTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FitnessTest - 2019.06.10 at 01h 57m 40s.xml">
+      <configuration name="FitnessTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33555000" />
+    <option name="totallyTimeSpent" value="34092000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -528,6 +474,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17651007" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -926,7 +873,7 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/watch/TimekeepingTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
