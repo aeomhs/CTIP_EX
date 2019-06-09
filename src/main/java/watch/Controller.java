@@ -15,11 +15,8 @@ public class Controller {
 
     private InstManager instManager;
     private FitnessDTO fitDTO;
-    private StopwatchDTO swDTO;
-    private BaseView baseView;
 
-    private int dDayIndex;
-    private int alarmIndex;
+    private BaseView baseView;
 
     private int alarmInstNum;
     private int dDayInstNum;
@@ -41,14 +38,14 @@ public class Controller {
         this.selectFunc = instManager.getSelectFunction();
 
         this.fitDTO = FitnessDTO.getInstance();
-        this.swDTO = StopwatchDTO.getInstance();
+
 
 
     }
 
     // common function & select function
     synchronized public void req_countUp(String status) {
-        // System.out.println("tlqnfkf");
+
         if (status.equals("stopwatch")) {//스탑워치일 때
             stopwatch.setIs_stop(false);
             stopwatch.start();
@@ -180,13 +177,18 @@ public class Controller {
 
     public boolean req_finishSelect(){
         if(selectFunc.check_four_fuction() == true){
-            if(selectFunc.getFunctionListBool(2) == false){
-                int i;
-                for(i=0; i<instManager.getAlarmInstNum(); i++){
-                    instManager.getAlarmList().get(i).setStatus(false);
+            if(selectFunc.checkDefaultDisplay()){
+                if(selectFunc.getFunctionListBool(2) == false){
+                    int i;
+                    for(i=0; i<instManager.getAlarmInstNum(); i++){
+                        instManager.getAlarmList().get(i).setStatus(false);
+                    }
                 }
+                return true;
             }
-            return true;
+            else{
+                return false;
+            }
         }
         else{
             return false;
@@ -244,11 +246,11 @@ public class Controller {
         //통일해주어야 할 것 같다.
         else if(status.equals("fitness") == true){
             fitness.setIs_stop(true);
-            System.out.println("3");
+            //System.out.println("3");
         }
         else if(status.equals("timekeeping") == true){
             timekeeping.setIs_stop(true);
-            System.out.println("4");
+            //System.out.println("4");
         }
 
     }
@@ -344,10 +346,12 @@ public class Controller {
             return dDay;
         }
     }
+
+    /*
     public String req_nextGoal(String status){
         return dDay.showGoal(status);
     }
-
+*/
     public void req_setGoal(String currGoal){
         this.dDay.setGoal(currGoal);
     }

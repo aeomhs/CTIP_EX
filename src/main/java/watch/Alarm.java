@@ -1,9 +1,7 @@
 package watch;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 public class Alarm extends Thread {
     private int hour, minute, cycle;
@@ -13,13 +11,10 @@ public class Alarm extends Thread {
     private int[] dayList = {1, 2, 3, 4, 5, 6, 7};  //순서대로 일월화수목금토
     private InstManager inst;
     private Timekeeping time;
-    private Timer tm;
-    private int cycleCount = 0;
     private boolean is_delete = false;
-    Buzzer buzzer;
+    private Buzzer buzzer;
 
 
-    Calendar cal = Calendar.getInstance();
 
     public Alarm(){
         inst = InstManager.getInstance();
@@ -39,9 +34,9 @@ public class Alarm extends Thread {
     }
 
     //요일 배열을 가져온다
-    public int[] getDayList() {
-        return dayList;
-    }
+   // public int[] getDayList() {
+   //     return dayList;
+   // }
 
     //가져온 day배열중에 설정된 요일의 넘버만 리해준다
     public int getCheckDayList(int index) {
@@ -121,6 +116,7 @@ public class Alarm extends Thread {
             }
             catch (Exception e){
                 e.printStackTrace();
+
             }
 
 
@@ -143,7 +139,7 @@ public class Alarm extends Thread {
                                         try {
                                             // (주기-버저울린시간)만큼 잠든다.
                                             time_value = (time_value*3)-1;
-                                            sleep(cycle * 60 * 1000 - time_value * 1000);
+                                            sleep((long)(cycle * 60 * 1000 - time_value * 1000));
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
@@ -157,7 +153,8 @@ public class Alarm extends Thread {
                                 try {
                                     // (1분-버저울린시간)만큼 잠든다.
                                     time_value = (time_value*3)-1;
-                                    sleep(  (60 * 1000) - (time_value * 1000));
+                                    sleep((long)((60 * 1000) - (time_value * 1000)));
+
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }

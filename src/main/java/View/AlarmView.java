@@ -335,21 +335,6 @@ public class AlarmView extends JPanel {
                             }
                         }
 
-                        //이 때 C버튼은 OK(Next)
-                 /*   System.out.println(settingNum);
-                    if(settingNum==2)
-                    {
-                        base.controller.req_setDate("timekeeping",calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE));
-                        Timekeeping tk = InstManager.getInstance().getTimekeeping();
-                        System.out.println(tk.getDate());
-
-                    }
-                    else if(settingNum==6) {
-                        base.controller.req_setTime(calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND));
-                        settingNum = 0;
-
-                    }
-                */
                     } else if (alarm_status.equals("Add") == true) {
 
                         if (settingNum == 1) {

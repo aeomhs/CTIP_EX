@@ -180,7 +180,7 @@ public class SelectView extends JPanel{
                         setTempFunctionList(4);//해당기능을 선택 또는 취소
                         LCD4.setVisible(tempFunctionList[4]);
                     }
-                    else if(functionName.equals("Fitness")){
+                    else{
                         setTempFunctionList(5);//해당기능을 선택 또는 취소
                         LCD5.setVisible(tempFunctionList[5]);
                     }
@@ -196,20 +196,19 @@ public class SelectView extends JPanel{
                 if(buzzer_mode == true){
                     Buzzer.getInstance().stopBuzzer();
                 }
-                else {
-                    if (getTempCount()==3){//선택된 기능의 개수가 3개이면 배열값 복사 후 change_view 호출.
-                        //배열값 똑같이 맞춰주기.
-                        for(int i=1;i<6;i++){
-                            if(tempFunctionList[i] != selectFunction.getFunctionListBool(i)){//둘의 값이 다르다면
-                                selectFunction.setFunctionList(i);//selectFunction의 배열로 바꿔준다.
-                            }//둘의 값이 같다면 바꿔줄 필요 없다.
-                        }
-                        //change_view 호출
-                        if(base.controller.req_finishSelect()){
-                            base.change_view(0);}// timekeepingView로 바꿔준다.
+                else if (getTempCount()==3 && base.controller.req_finishSelect())
+                {//선택된 기능의 개수가 3개이면 배열값 복사 후 change_view 호출.
+                    //배열값 똑같이 맞춰주기.
+                    for(int i=1;i<6;i++){
+                        if(tempFunctionList[i] != selectFunction.getFunctionListBool(i)){//둘의 값이 다르다면
+                            selectFunction.setFunctionList(i);//selectFunction의 배열로 바꿔준다.
+                        }//둘의 값이 같다면 바꿔줄 필요 없다.
                     }
+                    //change_view 호출
+                    base.change_view(0);// timekeepingView로 바꿔준다.
                 }
             }
+
         });
         dot = new JLabel();
 

@@ -183,35 +183,41 @@ public class TimeKeepingView extends JPanel{
         C.setBounds(100,300,50,50);
         tk_label.add(C);
         C.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(buzzer_mode == true){
-                    Buzzer.getInstance().stopBuzzer();
-                }
-                else {
-                    if (tk_status.equals("Timekeeping") == true) {//Setting 으로 상태 바꿔준다.
-                        tk_status = "Setting";
-                        base.controller.req_pause("timekeeping");
-                        System.out.println(tk_status);
-                    } else if (tk_status.equals("Setting") == true) {
-                        //이 때 C버튼은 OK(Next)
-                        settingNum++;
-                        System.out.println(settingNum);
-                        if (settingNum == 3) {
-                            base.controller.req_setDate("timekeeping", calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
-                            Timekeeping tk = InstManager.getInstance().getTimekeeping();
-                            System.out.println(tk.getDate());
-                        } else if (settingNum == 6) {
-                            base.controller.req_setTime("timekeeping", calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND));
-                            System.out.println("화면시간"+calendar.get(Calendar.SECOND)+"초"+calendar.get(Calendar.DATE)+"일"+"timekeeping:"+InstManager.getInstance().getTimekeeping().getDate());
-                            settingNum = 0;
-                            tk_status = "Timekeeping";
-                            base.controller.req_continue("timekeeping");
-                        }
-                    }
-                }
-            }
-        }
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    if(buzzer_mode == true){
+                                        Buzzer.getInstance().stopBuzzer();
+                                    }
+                                    else {
+                                        if (tk_status.equals("Timekeeping") == true) {//Setting 으로 상태 바꿔준다.
+                                            tk_status = "Setting";
+                                            base.controller.req_pause("timekeeping");
+                                            System.out.println(tk_status);
+                                        } else if (tk_status.equals("Setting") == true) {
+                                            //이 때 C버튼은 OK(Next)
+                                            settingNum++;
+                                            System.out.println(settingNum);
+                                            if (settingNum == 3) {
+                                                base.controller.req_setDate("timekeeping", calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
+                                                Timekeeping tk = InstManager.getInstance().getTimekeeping();
+                                                System.out.println(tk.getDate());
+                                            } else if (settingNum == 6) {
+                                                base.controller.req_setTime("timekeeping", calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND));
+                                                System.out.println("화면시간"+calendar.get(Calendar.SECOND)+"초"+calendar.get(Calendar.DATE)+"일"+"timekeeping:"+InstManager.getInstance().getTimekeeping().getDate());
+                                                settingNum = 0;
+                                                tk_status = "Timekeeping";
+                                                base.controller.req_continue("timekeeping");
+                                            }
+                                            else{
+
+                                            }
+                                        }
+                                        else{
+
+                                        }
+                                    }
+                                }
+                            }
         );
 
         D = new JButton("D");
@@ -245,7 +251,12 @@ public class TimeKeepingView extends JPanel{
                             case 5:
                                 req_prevSecond();
                                 break;
+                            default:
+                                break;
                         }
+
+                    }
+                    else{
 
                     }
                 }
@@ -265,17 +276,18 @@ public class TimeKeepingView extends JPanel{
             public void run() {
                 if(tk_status.equals("Timekeeping")) {
                     calendar.set(tk.getYear(),tk.getMonth(),tk.getDate(),tk.getHour(),tk.getMinute(),tk.getSecond());
-                   // tk.setDate(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE));
+                    // tk.setDate(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE));
                     //tk.setTime(calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),calendar.get(Calendar.MONTH));
                     strDate = dot_fm.format(calendar.getTime());
                     dot.setText(strDate);
-                  //  System.out.println("화면시간"+calendar.get(Calendar.SECOND)+"초"+calendar.get(Calendar.DATE)+"일"+"timekeeping:"+tk.getDate());
+                    //  System.out.println("화면시간"+calendar.get(Calendar.SECOND)+"초"+calendar.get(Calendar.DATE)+"일"+"timekeeping:"+tk.getDate());
                     strDate2 = seg_fm.format(calendar.getTime());
                     segment.setText(strDate2);
                     try {
                         sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                        Thread.currentThread().interrupt();
                     }
                 }
             }

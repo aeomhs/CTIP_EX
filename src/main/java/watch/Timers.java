@@ -49,30 +49,39 @@ public class Timers extends Thread{
     }
 
     //usecase: count_down
-    synchronized public void countDown() {
-        outerLoop:
+    synchronized public void countDown() {      //000   00x     0xx     xxx     x0x     x00     xx0     0x0
         while (true) {
             if(is_stop == false) {
-                if(this.second != 0){
+                if(this.second!=0 && this.minute==0 && this.hour==0){
                     this.second--;
-                }else {
-                    this.minute--;
-                    this.second = 60;
+                }else if(this.second!=0 && this.minute!=0 && this.hour==0){
                     this.second--;
-                }
-                if (this.second == 0 && this.minute != 0) {
-                    this.second = 60;
-                    this.minute--;
-                } else if (this.second == 0 && this.minute == 0 && this.hour != 0) {
-                    this.minute = 60;
+                }else if(this.second!=0 && this.minute!=0 && this.hour!=0){
+                    this.second--;
+                }else if(this.second!=0 && this.minute==0 && this.hour!=0){
+                    this.second--;
+                }else if(this.second==0 && this.minute==0 && this.hour!=0){
                     this.hour--;
+                    this.minute = 59;
+                    this.second = 60;
+                    this.second--;
+                }else if(this.second==0 && this.minute!=0 && this.hour!=0){
+                    this.minute--;
+                    this.second=60;
+                    this.second--;
+                }else if(this.second==0 && this.minute!=0 && this.hour==0) {
+                    this.minute--;
+                    this.second = 60;
+                    this.second--;
                 } else if(this.second == 0 && this.minute == 0 && this.hour == 0){
                     check = checkTimer();
                     if (check == true) {
                         buzzer.setIs_stop(false);
                         buzzer.ringBuzzer();
-                        break outerLoop;
+                        // break outerLoop;
                     }
+                }else{
+                    //none
                 }
                 try {
                     Thread.sleep(1000);
@@ -83,15 +92,14 @@ public class Timers extends Thread{
             }
             //is_stop == true
             else{
-                synchronized (this) {
-                    try {
-                        //System.out.println("wait");
-                        this.wait();
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
+                //   synchronized (this) {
+                try {
+                    this.wait();
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
+                //  }
             }
             System.out.println(hour + ":" +  minute +  ":" +  second);
         }

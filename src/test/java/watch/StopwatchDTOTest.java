@@ -1,8 +1,6 @@
 package watch;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class StopwatchDTOTest {
@@ -13,12 +11,8 @@ class StopwatchDTOTest {
 
 
     @Test
-    void getInstance() throws Exception{
-        try {
-            junitTest.getInstance();
-        }catch (Exception e){
-            System.out.println("getInstance failed");
-        }
+    void getInstance(){
+        assertNotNull(junitTest.getInstance());
     }
 
 
@@ -36,6 +30,7 @@ class StopwatchDTOTest {
     void setNum()  throws  Exception{
         try{
             junitTest.setNum(3);
+            assertEquals(3, junitTest.getNum());
         }catch (Exception e){
             System.out.println("setNum failed");
         }

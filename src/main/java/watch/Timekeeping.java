@@ -11,7 +11,7 @@ public class Timekeeping extends Thread implements CountUp {
     private int hour, minute, second ;
     private String day;
     private int dayNum;
-    private boolean is_stop,get_signal;
+    private boolean is_stop;
     private String[] dayName = {"SUN","MON","TUE","WED","THU","FRI","SAT"};
 
     public Timekeeping(){
@@ -25,7 +25,6 @@ public class Timekeeping extends Thread implements CountUp {
         this.dayNum = myCalendar.get(Calendar.DAY_OF_WEEK);
         this.day = dayName[dayNum - 1];
         this.is_stop = false;
-        this.get_signal = false;
         start();
 
     }
@@ -79,7 +78,7 @@ public class Timekeeping extends Thread implements CountUp {
             if (is_stop == false) {
                 second++;
                 System.out.println("timekeeping날짜;"+date);
-                    cal.set(Calendar.SECOND,second);
+                cal.set(Calendar.SECOND,second);
                 if (second == 60) {
                     second = 0;
                     minute++;
@@ -95,6 +94,7 @@ public class Timekeeping extends Thread implements CountUp {
                         //System.out.println("timekeeping날짜;"+date);
                         month = cal.get(Calendar.MONTH);
                         year = cal.get(Calendar.YEAR);
+
                         try {
                             calculateDay(year, month, date);
                         } catch (Exception e) {
@@ -108,6 +108,7 @@ public class Timekeeping extends Thread implements CountUp {
                     // TODO Auto-generated catch block
                     // e.printStackTrace();
                     System.out.println("interrupt");
+                    break;
                 }
             }
             else {
@@ -118,6 +119,7 @@ public class Timekeeping extends Thread implements CountUp {
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
+                        break;
                     }
                 }
 
@@ -149,22 +151,9 @@ public class Timekeeping extends Thread implements CountUp {
 
     //usecase: set_time
     public String calculateDay (int year, int month, int date) throws Exception {
-       /* String str0 = "" + year;
-        String str1 = "" + month;
-        String str2 = "" + date;
+        cal.set(year,month-1,date);
 
-        String result = str0.concat(str1);
-        String result2 = result.concat(str2);
-        //이제 이 string을 Date로 바꾸자
-
-        //이게 저 패턴으로 바꿔주는거고
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-        Date nDate = formatter.parse(result2);
-        cal.setTime(nDate);*/
-
-        cal.set(year,month,date);
-
-        int dayNum = cal.get(Calendar.DAY_OF_WEEK);
+        int dayNum = cal.get(cal.DAY_OF_WEEK);
         switch(dayNum){
             case 1:
                 day = dayName[0];
@@ -187,6 +176,9 @@ public class Timekeeping extends Thread implements CountUp {
             case 7:
                 day = dayName[6];
                 break;
+            default:
+                break;
+
         }
         return day;
     }

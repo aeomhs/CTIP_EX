@@ -1,65 +1,64 @@
 package watch;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TimersTest {
     public static Timers junitTest;
+    Timers instance = new Timers();
 
     TimersTest() {
     }
 
     @BeforeAll
     public static void makeInstance(){
-        junitTest = new Timers();
+        assertNotNull(junitTest = new Timers());
     }
 
-
     @Test
-    void getBuzzer()  throws Exception {
-        try {
-            junitTest.getBuzzer();
-        } catch (Exception var2) {
-            System.out.println("error");
-        }
+    void getBuzzer() {
+        assertNotNull(junitTest.getBuzzer());
     }
 
     @Test
     void setTime()  throws Exception {
+        instance.setTime(3, 10, 30);
         try {
-            junitTest.setTime(2, 10, 30);
+            assertEquals(3, instance.getHour());
+            assertEquals(10, instance.getMinute());
+            assertEquals(30, instance.getSecond());
         } catch (Exception var2) {
             System.out.println("error");
         }
     }
 
 
-    @Ignore
+    @Disabled
     void countDown() throws Exception {
         try {
             junitTest.countDown();
         } catch (Exception var2) {
-            System.out.println("error: 무한하게 test하기때문에 ignore처리");
+            System.out.println("무한하게 test하기때문에 disable");
         }
     }
 
     @Test
-    void checkTimer() throws Exception {
-        try {
-            junitTest.checkTimer();
-        } catch (Exception var2) {
-            System.out.println("error");
-        }
+        //timer가 00:00:00이 아닌지만 체크해주는 함수라서
+        //assert로 테스트할 부분이 없다.
+    void checkTimer(){
+        junitTest.checkTimer();
     }
 
     @Test
+        //reset한거니까 hour,minute,second가 0일거다.
     void reset() throws Exception {
         try {
-            junitTest.reset();
+            assertEquals(0, instance.getHour());
+            assertEquals(0, instance.getMinute());
+            assertEquals(0, instance.getSecond());
         } catch (Exception var2) {
             System.out.println("error");
         }
@@ -76,8 +75,9 @@ class TimersTest {
 
     @Test
     void setIs_stop() throws Exception{
+        instance.setIs_stop(false);
         try {
-            junitTest.setIs_stop(true);
+            assertEquals(false, instance.getIs_stop());
         }
         catch (Exception var2){
             System.out.println("error");

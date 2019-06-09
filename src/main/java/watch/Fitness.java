@@ -17,16 +17,14 @@ public class Fitness extends Thread implements CountUp{
     //목록 개수
     private int count;
     private String exercise;
-    private boolean is_exist;
 
     private boolean is_stop;
 
     DBManager dbManager;
-    InstManager inst;
     private FitnessDTO fitDTO;
 
     public Fitness(){
-        this.is_stop = false;
+        this.is_stop = true;
         this.hour = 0;
         this.minute = 0;
         this.second = 0;
@@ -34,6 +32,9 @@ public class Fitness extends Thread implements CountUp{
         this.CPM=0;
         this.dbManager = DBManager.getInstance();
         this.fitDTO = FitnessDTO.getInstance();
+        this.month = fitDTO.getMonth();
+        System.out.println("현재 월"+ month);
+        this.date = fitDTO.getDate();
     }
 
     //getter
@@ -71,12 +72,14 @@ public class Fitness extends Thread implements CountUp{
         return count;
     }
 
-    public String getExercise() {
-        return exercise;
+    public int getRecentMonth() {
+        return recentMonth;
     }
 
-    public boolean isIs_exist() {
-        return is_exist;
+
+
+    public String getExercise() {
+        return exercise;
     }
 
     public boolean getIs_stop() {
@@ -112,16 +115,8 @@ public class Fitness extends Thread implements CountUp{
         this.totalCalories = totalCalories;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
-
     public void setExercise(String exercise) {
         this.exercise = exercise;
-    }
-
-    public void setIs_exist(boolean is_exist) {
-        this.is_exist = is_exist;
     }
 
     public void setIs_stop(boolean is_stop) {
@@ -139,7 +134,6 @@ public class Fitness extends Thread implements CountUp{
     }
 
     public boolean checkDate(){
-        inst = InstManager.getInstance();
         System.out.println(date);
 
         if((recentMonth==month)&&( recentDate == date))
@@ -187,6 +181,7 @@ public class Fitness extends Thread implements CountUp{
                     sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                    break;
                 }
             }
             //is_stop == true
@@ -194,10 +189,12 @@ public class Fitness extends Thread implements CountUp{
                 synchronized (this) {
                     try {
                         //System.out.println("wait");
+
                         this.wait();
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
+                        break;
                     }
                 }
             }
@@ -238,13 +235,27 @@ public class Fitness extends Thread implements CountUp{
         dbManager.selectFitness("finish",count);//마지막 행의 데이터 가져오기
         int cal = fitDTO.getTotalCalories();
         cal+=this.totalCalories;
-        int h = fitDTO.getHour();
-        h+=this.hour;
-        int m = fitDTO.getMinute();
-        m+=this.minute;
-        int s = fitDTO.getSecond();
-        s+=this.second;
 
+        int h = fitDTO.getHour();
+        int m = fitDTO.getMinute();
+        int s = fitDTO.getSecond();
+
+        s+=this.second;
+        if(s>=60)
+        {
+            s= s-60;
+            m++;
+        }
+
+        m+=this.minute;
+
+        if(m>=60)
+        {
+            m = m-60;
+            h++;
+        }
+
+        h+=this.hour;
         dbManager.updateFitness(h,m,s,cal);
 
     }
