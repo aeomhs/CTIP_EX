@@ -211,6 +211,8 @@ public class DBManager {
             psmt.executeUpdate();
             psmt_ver2.executeUpdate(); //모든 레코드의 column넘버를 -1해줌
             fitDTO.setCount(fitDTO.getCount()-1);
+            if(fitDTO.getCount()<0)
+                fitDTO.setCount(0);
 
         }
         catch (Exception e){

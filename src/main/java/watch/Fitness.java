@@ -76,9 +76,7 @@ public class Fitness extends Thread implements CountUp{
         return recentMonth;
     }
 
-    public void setRecentMonth(int recentMonth) {
-        this.recentMonth = recentMonth;
-    }
+
 
     public String getExercise() {
         return exercise;
@@ -115,10 +113,6 @@ public class Fitness extends Thread implements CountUp{
 
     public void setTotalCalories(int totalCalories) {
         this.totalCalories = totalCalories;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
     }
 
     public void setExercise(String exercise) {
@@ -241,13 +235,27 @@ public class Fitness extends Thread implements CountUp{
         dbManager.selectFitness("finish",count);//마지막 행의 데이터 가져오기
         int cal = fitDTO.getTotalCalories();
         cal+=this.totalCalories;
-        int h = fitDTO.getHour();
-        h+=this.hour;
-        int m = fitDTO.getMinute();
-        m+=this.minute;
-        int s = fitDTO.getSecond();
-        s+=this.second;
 
+        int h = fitDTO.getHour();
+        int m = fitDTO.getMinute();
+        int s = fitDTO.getSecond();
+
+        s+=this.second;
+        if(s>=60)
+        {
+            s= s-60;
+            m++;
+        }
+
+        m+=this.minute;
+
+        if(m>=60)
+        {
+            m = m-60;
+            h++;
+        }
+
+        h+=this.hour;
         dbManager.updateFitness(h,m,s,cal);
 
     }

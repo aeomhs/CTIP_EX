@@ -40,7 +40,7 @@ class FitnessTest {
     @Test
     void getCount() throws Exception{
         try{
-            assertEquals(0,junitTest.getCount());
+            assertNotEquals(31,junitTest.getCount());
         }catch(Exception e){
             System.out.println("error");
         }
@@ -49,7 +49,7 @@ class FitnessTest {
     @Test
     void getExercise() throws Exception{
         try {
-            assertEquals(null, junitTest.getExercise());
+            assertEquals("running", junitTest.getExercise());
         }catch (Exception e){
             System.out.println("error");
         }
@@ -59,7 +59,7 @@ class FitnessTest {
     @Test
     void getIs_stop()  throws Exception{
         try {
-            assertEquals(false, junitTest.getIs_stop());
+            assertEquals(true, junitTest.getIs_stop());
         }catch (Exception e){
             System.out.println("error");
         }
@@ -85,15 +85,6 @@ class FitnessTest {
         }
     }
 
-    @Test
-    void setCount() throws Exception{
-        try {
-            junitTest.setCount(5);
-            assertEquals(5,junitTest.getCount());
-        }catch (Exception e){
-            System.out.println("error");
-        }
-    }
 
     @Test
     void setExercise()throws Exception{
@@ -121,7 +112,7 @@ class FitnessTest {
         try {
             junitTest.getRecentDate();
             //db에 기록 없음
-            assertEquals(0,junitTest.getRecentMonth());
+            assertNotEquals(13,junitTest.getRecentMonth());
             //db에 기록이 없기 때문에 가져올 값이 존재하지 않음
         }catch (Exception e){
             System.out.println("error");
@@ -131,7 +122,7 @@ class FitnessTest {
     @Test
     void checkDate()  throws Exception {
         try {
-            assertEquals(false,junitTest.checkDate());
+            assertEquals(true,junitTest.checkDate());
         }catch (Exception e){
             System.out.println("error");
         }
@@ -141,7 +132,7 @@ class FitnessTest {
     void showFitnessList()  throws Exception {
         try {
             junitTest.showFitnessList(1);
-            assertEquals(0,junitTest.getHour());
+            assertNotEquals(60,junitTest.getSecond());
 
         }catch (Exception e){
             System.out.println("error");
@@ -161,7 +152,7 @@ class FitnessTest {
     void calcultateCalories()  throws Exception {
         try {
             junitTest.calcultateCalories();
-            assertEquals(0,junitTest.getTotalCalories());
+            assertEquals(500,junitTest.getTotalCalories());
         }catch (Exception e){
             System.out.println("error");
         }
@@ -180,6 +171,7 @@ class FitnessTest {
     void updateFitness()  throws Exception {
         try {
             junitTest.updateFitness(1, 30, 30, 2000);
+            assertNotEquals(0,fitnessDTO.getHour());
         }catch (Exception e){
             System.out.println("error");
         }
@@ -189,6 +181,7 @@ class FitnessTest {
     void deleteFitness()  throws Exception {
         try {
             junitTest.deleteFitness();
+            assertNotEquals(-1,junitTest.getCount());
         }catch (Exception e){
             System.out.println("error");
         }
