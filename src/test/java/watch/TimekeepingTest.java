@@ -3,6 +3,7 @@ package watch;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +26,7 @@ class TimekeepingTest {
 
 
     @Ignore
-    //현재 일 을 적어줘야 test통과가 된다. 이미 확인했으므로 차후 테스트 fail을 방지하기 위해 ignore처리를 해준다.
+        //현재 일 을 적어줘야 test통과가 된다. 이미 확인했으므로 차후 테스트 fail을 방지하기 위해 ignore처리를 해준다.
     void getDate() throws Exception {
         try {
             Assertions.assertEquals(4, junitTest.getDate());
@@ -35,7 +36,7 @@ class TimekeepingTest {
     }
 
     @Ignore
-    //현재 요일을 적어줘야 test통가과 된다. 이미 확인했으므로 차후 테스트 fail을 방지하기 위해 Ignore처리를 해준다.
+        //현재 요일을 적어줘야 test통가과 된다. 이미 확인했으므로 차후 테스트 fail을 방지하기 위해 Ignore처리를 해준다.
     void getDayNum()  throws Exception {
         try {
             Assertions.assertEquals(3, junitTest.getDayNum());
@@ -47,7 +48,7 @@ class TimekeepingTest {
     @Test
     void getIs_stop() throws Exception{
         try{
-            junitTest.getIs_stop();
+            assertEquals(false,junitTest.getIs_stop());
         }catch (Exception var2){
             System.out.println("error");
         }
@@ -56,13 +57,14 @@ class TimekeepingTest {
     @Test
     void setIs_stop() throws Exception {
         try{
-            junitTest.setIs_stop(false);
+            junitTest.setIs_stop(true);
+            assertEquals(true,junitTest.getIs_stop());
         }catch (Exception var2){
             System.out.println("error");
         }
     }
 
-    @Ignore
+    @Disabled
     void countUp()  throws Exception {
         try {
             junitTest.countUp();
@@ -75,6 +77,9 @@ class TimekeepingTest {
     void setDate() throws Exception {
         try {
             junitTest.setDate(2020, 3, 11);
+            assertEquals(2020,junitTest.getYear());
+            assertEquals(3,junitTest.getMonth());
+            assertEquals(11,junitTest.getDate());
         } catch (Exception var2) {
             System.out.println("error");
         }
@@ -84,6 +89,9 @@ class TimekeepingTest {
     void setTime() throws Exception {
         try {
             junitTest.setTime(6, 30, 30);
+            assertEquals(6,junitTest.getHour());
+            assertEquals(30,junitTest.getMinute());
+            assertEquals(30,junitTest.getSecond());
         } catch (Exception var2) {
             System.out.println("error");
         }
@@ -92,7 +100,7 @@ class TimekeepingTest {
     @Test
     void calculateDay() throws Exception {
         try {
-            junitTest.calculateDay(2019, 5, 26);
+            assertEquals("SUN",junitTest.calculateDay(2019, 6, 9));
         } catch (Exception var2) {
             System.out.println("error");
         }

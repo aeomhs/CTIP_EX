@@ -17,7 +17,7 @@ public class Dday extends Thread{
     private int dayCount = 0;
 
     private InstManager im;
-    Timekeeping tk;
+    private Timekeeping tk;
     private int currYear;
     private int currMonth;
     private int currDate;
@@ -117,6 +117,9 @@ public class Dday extends Thread{
         return month;
     }
 
+    public int getDate() {
+        return date;
+    }
 
     public String getGoal() {
         return goal;
@@ -125,31 +128,23 @@ public class Dday extends Thread{
     public int getDayCount() {
         return dayCount;
     }
-
+/*
     public String[] getGoalList() {
         return goalList;
     }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-
-    public void setMonth(int month) {
-        this.month = month;
-    }
-
+*/
+/*
     public void setDate(int date) {
         this.date = date;
     }
-
+*/
     public void setGoal(String goal) {
         this.goal = goal;
     }
 
-    public void setGoalList(String[] goalList) {
-        this.goalList = goalList;
-    }
+    //public void setGoalList(String[] goalList) {
+     //   this.goalList = goalList;
+    //}
 
     public void setIs_delete(boolean is_delete) {
         this.is_delete = is_delete;

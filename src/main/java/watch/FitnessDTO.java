@@ -1,5 +1,9 @@
 package watch;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class FitnessDTO {
 
     private int month;
@@ -13,13 +17,20 @@ public class FitnessDTO {
     private int index = -1;
     private String exerciseList [] ={"cycling", "walking", "running"};
 
-    private static FitnessDTO ourInstance = new FitnessDTO();
+    private static FitnessDTO ourInstance;
 
     public static FitnessDTO getInstance() {
+        if(ourInstance==null)
+            ourInstance= new FitnessDTO();
         return ourInstance;
     }
 
     private FitnessDTO() {
+        GregorianCalendar today = new GregorianCalendar ( );
+
+        month = today.get(today.MONTH)+1;
+        date = today.get(today.DATE);
+        count =0;
 
     }
 
@@ -63,9 +74,10 @@ public class FitnessDTO {
         else if(exercise.equals(exerciseList[2]) == true){
             return CPMList[2];
         }
-        //
-        System.out.println("getCPM() : Wrong Exercise Name");
-        return 0;
+        else {
+            System.out.println("getCPM() : Wrong Exercise Name");
+            return 0;
+        }
     }
 
     public String getNextExercise() {

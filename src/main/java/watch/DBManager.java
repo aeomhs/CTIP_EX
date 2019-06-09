@@ -210,6 +210,7 @@ public class DBManager {
 
             psmt.executeUpdate();
             psmt_ver2.executeUpdate(); //모든 레코드의 column넘버를 -1해줌
+            fitDTO.setCount(fitDTO.getCount()-1);
 
         }
         catch (Exception e){
@@ -352,6 +353,8 @@ public class DBManager {
 
     }
     private void createTable(){
+        Statement statement = null;
+        Statement statement_2 = null;
         String createTableQuery = "CREATE TABLE IF NOT EXISTS fitness(" +
                 "month INTEGER NOT NULL," +
                 "date INTEGER NOT NULL," +
@@ -369,12 +372,20 @@ public class DBManager {
                 "number INTEGER  NOT NULL "+
                 ");";
         try {
-            Statement statement = con.createStatement();
-            Statement statement_2 = con.createStatement();
+            statement = con.createStatement();
+            statement_2 = con.createStatement();
             statement.execute(createTableQuery);
             statement_2.execute(createTableQuery_2);
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            try {
+                statement.close();
+                statement_2.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

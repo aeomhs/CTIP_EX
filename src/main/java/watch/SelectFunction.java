@@ -1,11 +1,13 @@
 package watch;
 
+import javax.naming.ldap.Control;
+
 public class SelectFunction {
     private static int count;
     private static int index=0;
     private static int i=0;
-    private boolean[] functionList = new boolean[6];
-    private String[] functionName ={"TimeKeeping","Timer","Alarm","StopWatch","D+Day","Fitness"};
+    private static boolean[] functionList = new boolean[6];
+    private static String[] functionName ={"TimeKeeping","Timer","Alarm","StopWatch","D+Day","Fitness"};
     InstManager instManager;
 
     public SelectFunction() {
@@ -19,22 +21,22 @@ public class SelectFunction {
     }
 
 
-    public String getfunctionName()
+    public static String getfunctionName()
     {
         String name = functionName[i];
         i++;
-        if(i==6)
-            i=0;
+        if(i==6){
+            i=0;}
         return name;
     }
 
 
-    public int getfunctionList()
+    public static int getfunctionList()
     {
         do {
             index++;
-            if(index==6)
-                index = 0;
+            if(index==6){
+                index = 0;}
         }while(functionList[index]!=true);
 
         int nextFunc = index;
@@ -49,47 +51,46 @@ public class SelectFunction {
 
     public boolean checkFirstDisplay(String status)
     {
-        if(status.equals("TimeKeeping"))
-            return true;
-        else
-            return false;
+        if(status.equals("TimeKeeping")){
+            return true;}
+        else{
+            return false;}
     }
     public boolean checkDefaultDisplay()
     {
-        boolean is_stop[] = {instManager.getTimer().getIs_stop(),instManager.getStopwatch().getIs_stop()};
+        instManager = InstManager.getInstance();
+        boolean is_stop[] = {instManager.getTimer().getIs_stop(),instManager.getStopwatch().getIs_stop(), instManager.getFitness().getIs_stop()};
 
-        if((is_stop[0]==true)||(is_stop[1]==true)||(is_stop[2]==true))
-            return true;
-        else
-            return false;
+        if((is_stop[0]==true)&&(is_stop[1]==true)&&(is_stop[2]==true)){
+            return true;}
+        else{
+            System.out.println("타이머 is_stop : "+ is_stop[0]);
+            System.out.println("스탑워치 is_stop : "+ is_stop[1]);
+            System.out.println("피트니스 is_stop : "+ is_stop[2]);
+            return false;}
     }
 
-    public boolean setFunctionList(int index)
+    public static boolean setFunctionList(int index)
     {
-        if(this.functionList[index])
+        if(functionList[index])
         {
-            this.functionList[index] = false;
+            functionList[index] = false;
             count--;
         }
         else
         {
-            this.functionList[index] = true;
+            functionList[index] = true;
             count++;
         }
-        return this.functionList[index];
+        return functionList[index];
     }
-
-
 
     public boolean check_four_fuction()
     {
-        if(count == 3)
-            return true;
-        else
-            return false;
+        if(count == 3){
+            return true;}
+        else{
+            return false;}
     }
-
-
-
 
 }

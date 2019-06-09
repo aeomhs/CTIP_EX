@@ -81,6 +81,7 @@ class FitnessDTOTest {
     void setDate() throws  Exception {
         try{
             junitTest.setDate(11);
+            assertEquals(11,junitTest.getDate());
         }catch (Exception e){
             System.out.println("setDate failed");
         }
@@ -91,6 +92,7 @@ class FitnessDTOTest {
     void setTotalCalories() throws  Exception {
         try{
             junitTest.setTotalCalories(200);
+            assertEquals(11,junitTest.getTotalCalories());
         }catch (Exception e){
             System.out.println("setTotalCalories failed");
         }
@@ -100,6 +102,7 @@ class FitnessDTOTest {
     void setCount() throws  Exception {
         try{
             junitTest.setCount(5);
+            assertEquals(11,junitTest.getCount());
         }catch (Exception e){
             System.out.println("setCount failed");
         }

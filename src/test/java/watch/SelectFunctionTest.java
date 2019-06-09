@@ -35,6 +35,15 @@ class SelectFunctionTest {
     }
 
     @Test
+    void getFunctionListBool() throws Exception{
+        try{
+            assertEquals(true, junitTest.getFunctionListBool(0));
+        }catch (Exception e){
+            System.out.println("getFunctionListBool failed");
+        }
+    }
+
+    @Test
     void checkFirstDisplay() throws Exception{
         try{
             assertEquals(true, junitTest.checkFirstDisplay("TimeKeeping"));
@@ -64,7 +73,7 @@ class SelectFunctionTest {
     @Test
     void check_four_fuction() throws Exception{
         try{
-            assertEquals(false, junitTest.check_four_fuction());
+            assertEquals(true, junitTest.check_four_fuction());
         }catch (Exception e){
             System.out.println("check_four_function failed");
         }

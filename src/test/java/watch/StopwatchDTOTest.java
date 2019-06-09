@@ -36,6 +36,7 @@ class StopwatchDTOTest {
     void setNum()  throws  Exception{
         try{
             junitTest.setNum(3);
+            assertEquals(3,junitTest.getNum());
         }catch (Exception e){
             System.out.println("setNum failed");
         }

@@ -33,6 +33,7 @@ public class Buzzer{
 
     public void beep(){
         File bgm;
+
         AudioInputStream stream;
         AudioFormat format;
         DataLine.Info info;

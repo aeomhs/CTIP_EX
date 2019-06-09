@@ -15,7 +15,7 @@ public class Controller {
 
     private InstManager instManager;
     private FitnessDTO fitDTO;
-    private StopwatchDTO swDTO;
+    //private StopwatchDTO swDTO;
     private BaseView baseView;
 
     private int dDayIndex;
@@ -41,7 +41,7 @@ public class Controller {
         this.selectFunc = instManager.getSelectFunction();
 
         this.fitDTO = FitnessDTO.getInstance();
-        this.swDTO = StopwatchDTO.getInstance();
+        //this.swDTO = StopwatchDTO.getInstance();
 
 
     }
@@ -180,13 +180,18 @@ public class Controller {
 
     public boolean req_finishSelect(){
         if(selectFunc.check_four_fuction() == true){
-            if(selectFunc.getFunctionListBool(2) == false){
-                int i;
-                for(i=0; i<instManager.getAlarmInstNum(); i++){
-                    instManager.getAlarmList().get(i).setStatus(false);
+            if(selectFunc.checkDefaultDisplay()){
+                if(selectFunc.getFunctionListBool(2) == false){
+                    int i;
+                    for(i=0; i<instManager.getAlarmInstNum(); i++){
+                        instManager.getAlarmList().get(i).setStatus(false);
+                    }
                 }
+                return true;
             }
-            return true;
+            else{
+                return false;
+            }
         }
         else{
             return false;
@@ -244,11 +249,11 @@ public class Controller {
         //통일해주어야 할 것 같다.
         else if(status.equals("fitness") == true){
             fitness.setIs_stop(true);
-            System.out.println("3");
+            //System.out.println("3");
         }
         else if(status.equals("timekeeping") == true){
             timekeeping.setIs_stop(true);
-            System.out.println("4");
+            //System.out.println("4");
         }
 
     }
