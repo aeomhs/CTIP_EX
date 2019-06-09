@@ -50,12 +50,8 @@ public class Timers extends Thread{
 
     //usecase: count_down
     synchronized public void countDown() {      //000   00x     0xx     xxx     x0x     x00     xx0     0x0
-        //   System.out.println("dd");
-        //    outerLoop:
         while (true) {
-            System.out.println("ddsf");
             if(is_stop == false) {
-                System.out.println("여기는 카운트다운 while문 내부");
                 if(this.second!=0 && this.minute==0 && this.hour==0){
                     this.second--;
                 }else if(this.second!=0 && this.minute!=0 && this.hour==0){
@@ -84,6 +80,8 @@ public class Timers extends Thread{
                         buzzer.ringBuzzer();
                         // break outerLoop;
                     }
+                }else{
+                    //none
                 }
                 try {
                     Thread.sleep(1000);
@@ -94,15 +92,14 @@ public class Timers extends Thread{
             }
             //is_stop == true
             else{
-                synchronized (this) {
-                    try {
-                        //System.out.println("wait");
-                        this.wait();
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
+                //   synchronized (this) {
+                try {
+                    this.wait();
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
+                //  }
             }
             System.out.println(hour + ":" +  minute +  ":" +  second);
         }

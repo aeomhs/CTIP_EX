@@ -119,7 +119,7 @@ class FitnessTest {
         }
     }
 
-    @Test
+    @Disabled
     void checkDate()  throws Exception {
         try {
             assertEquals(true,junitTest.checkDate());
