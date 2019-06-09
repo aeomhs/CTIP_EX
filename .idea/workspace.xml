@@ -7,8 +7,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e3c3cb9-d7da-4981-97b3-68d1b6236022" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_27_2_11.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/CTIP_SMA_6.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/CTIP_SMA_6.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/CTIP_SMA_6.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/CTIP_SMA_6.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CTIP_SMA_6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CTIP_SMA_6.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/AlarmView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/AlarmView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/AlarmView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/AlarmView$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/AlarmView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/AlarmView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/DdayView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/DdayView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/DdayView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/DdayView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/DdayView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/DdayView$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/DdayView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/DdayView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/FitnessView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/FitnessView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/FitnessView$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/FitnessView$3$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/FitnessView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/FitnessView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/FitnessView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/FitnessView$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/FitnessView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/FitnessView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/SelectView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/SelectView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/SelectView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/SelectView$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/SelectView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/SelectView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/StopWatchView$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/StopWatchView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/StopWatchView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimeKeepingView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimersView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimersView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimersView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimersView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimersView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimersView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimersView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimersView$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimersView$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimersView$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/View/TimersView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/View/TimersView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Alarm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Alarm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Buzzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Buzzer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/DBManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/DBManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Dday.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Dday.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Fitness.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Fitness.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/FitnessDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/FitnessDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/SelectFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/SelectFunction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Stopwatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Stopwatch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Timekeeping.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Timekeeping.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/watch/Timers.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/watch/Timers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/watch/AlarmTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/AlarmTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/watch/DdayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/DdayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/watch/FitnessDTOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/FitnessDTOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/watch/FitnessTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/FitnessTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/watch/InstManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/InstManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/watch/TimekeepingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/watch/TimekeepingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/watch.db" beforeDir="false" afterPath="$PROJECT_DIR$/watch.db" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -67,28 +118,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/watch/Fitness.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1982">
-              <caret line="143" selection-start-line="143" selection-end-line="143" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/watch/FitnessTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="182" column="13" lean-forward="true" selection-start-line="182" selection-start-column="13" selection-end-line="182" selection-end-column="13" />
+            <state relative-caret-position="-239">
+              <caret line="169" column="13" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/View/BaseView.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/watch/AlarmTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+            <state relative-caret-position="76">
+              <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -96,69 +141,86 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/watch/InstManagerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
+            <state relative-caret-position="36">
+              <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/watch/SelectFunctionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
               <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/watch/SelectFunction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1349">
-              <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/View/TimeKeepingView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="379" selection-start-line="379" selection-end-line="379" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#12356#12357#0" expanded="true" />
-                <element signature="e#12382#12383#0" expanded="true" />
-                <element signature="e#12416#12417#0" expanded="true" />
-                <element signature="e#12446#12447#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/watch/Timekeeping.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/watch/StopwatchDTOTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="94" column="26" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
+            <state relative-caret-position="95">
+              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/watch/DBManager.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/watch/StopwatchTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4321">
-              <caret line="281" column="49" selection-start-line="281" selection-start-column="49" selection-end-line="281" selection-end-column="49" />
+            <state relative-caret-position="151">
+              <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/watch/FitnessDTO.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/watch/TimekeepingTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="56" column="53" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
+            <state relative-caret-position="228">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/watch/TimersTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-380">
+              <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/View/FitnessView.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/watch/DdayTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="262" column="75" selection-start-line="262" selection-start-column="75" selection-end-line="262" selection-end-column="75" />
+            <state relative-caret-position="1419">
+              <caret line="142" column="3" selection-start-line="142" selection-start-column="3" selection-end-line="142" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/watch/FitnessDTOTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -215,13 +277,19 @@
         <option value="$PROJECT_DIR$/src/main/java/View/TimeKeepingView.java" />
         <option value="$PROJECT_DIR$/src/main/java/watch/Timekeeping.java" />
         <option value="$PROJECT_DIR$/src/main/java/View/FitnessView.java" />
+        <option value="$PROJECT_DIR$/src/test/java/watch/AlarmTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/watch/DdayTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/watch/FitnessDTOTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/watch/FitnessTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/watch/InstManagerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/watch/TimekeepingTest.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
-    <option name="width" value="1934" />
+    <option name="width" value="1935" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
@@ -234,76 +302,29 @@
           <expand>
             <path>
               <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="CTIP_SMA_6_1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="CTIP_SMA_6_1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="FitnessView" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="TimeKeepingView" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="watch" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="CTIP_SMA_6_1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="CTIP_SMA_6_1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CTIP_SMA_6" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="CTIP_SMA_6_1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -313,33 +334,12 @@
               <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
-            <path>
-              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-            </path>
-            <path>
-              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Database Consoles" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-            </path>
-            <path>
-              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Database Consoles" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-              <item name="209e3695-a888-4758-80ae-8c1a261fc854" type="1e004dc1:ScratchProjectViewPane$MyRootNode$1$1" />
-            </path>
-            <path>
-              <item name="CTIP_SMA_6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Database Consoles" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-              <item name="fec5a7fc-ed27-45a5-9654-aae48b57e261" type="1e004dc1:ScratchProjectViewPane$MyRootNode$1$1" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -352,7 +352,7 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
@@ -374,7 +374,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.FitnessTest.finish">
+  <component name="RunManager" selected="JUnit.FitnessTest">
     <configuration name="BaseView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="View.BaseView" />
       <module name="CTIP_SMA_6.main" />
@@ -384,6 +384,36 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AlarmTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CTIP_SMA_6.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="watch.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="watch" />
+      <option name="MAIN_CLASS_NAME" value="watch.AlarmTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FitnessTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CTIP_SMA_6.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="watch.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="watch" />
+      <option name="MAIN_CLASS_NAME" value="watch.FitnessTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -399,22 +429,6 @@
       <option name="PACKAGE_NAME" value="watch" />
       <option name="MAIN_CLASS_NAME" value="watch.FitnessTest" />
       <option name="METHOD_NAME" value="finish" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FitnessTest.getCPM" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CTIP_SMA_6.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="watch.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="watch" />
-      <option name="MAIN_CLASS_NAME" value="watch.FitnessTest" />
-      <option name="METHOD_NAME" value="getCPM" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -438,10 +452,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FitnessTest" />
+        <item itemvalue="JUnit.AlarmTest" />
         <item itemvalue="JUnit.FitnessTest.finish" />
         <item itemvalue="JUnit.FitnessTest.updateFitness" />
         <item itemvalue="Application.BaseView" />
-        <item itemvalue="JUnit.FitnessTest.getCPM" />
       </list>
     </recent_temporary>
   </component>
@@ -462,16 +477,12 @@
       <workItem from="1559575924455" duration="1192000" />
       <workItem from="1559578545107" duration="320000" />
       <workItem from="1559614490586" duration="6832000" />
+      <workItem from="1560087077341" duration="593000" />
+      <workItem from="1560098837147" duration="745000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FitnessTest_getCPM - 2019.06.04 at 13h 27m 01s.xml">
-      <configuration name="FitnessTest.getCPM" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FitnessTest_finish - 2019.06.04 at 13h 27m 33s.xml">
-      <configuration name="FitnessTest.finish" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="FitnessTest_finish - 2019.06.04 at 13h 27m 47s.xml">
       <configuration name="FitnessTest.finish" configurationId="JUnit" />
     </history-entry>
@@ -481,9 +492,30 @@
     <history-entry file="FitnessTest_finish - 2019.06.04 at 13h 31m 00s.xml">
       <configuration name="FitnessTest.finish" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="AlarmTest - 2019.06.10 at 01h 48m 40s.xml">
+      <configuration name="AlarmTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FitnessTest - 2019.06.10 at 01h 51m 40s.xml">
+      <configuration name="FitnessTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FitnessTest - 2019.06.10 at 01h 52m 19s.xml">
+      <configuration name="FitnessTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FitnessTest - 2019.06.10 at 01h 53m 10s.xml">
+      <configuration name="FitnessTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FitnessTest - 2019.06.10 at 01h 54m 37s.xml">
+      <configuration name="FitnessTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FitnessTest - 2019.06.10 at 01h 54m 55s.xml">
+      <configuration name="FitnessTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FitnessTest - 2019.06.10 at 01h 56m 17s.xml">
+      <configuration name="FitnessTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32217000" />
+    <option name="totallyTimeSpent" value="33555000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -496,9 +528,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17248322" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17651007" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -507,7 +538,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32907802" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3248227" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3248227" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -516,11 +547,10 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32899627" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.069767445" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32713756" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32624114" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.32907802" />
-      <window_info anchor="right" id="Coverage" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -531,6 +561,7 @@
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Database" order="9" weight="0.3295302" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -718,20 +749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/watch/SelectFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1349">
-          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/watch/Timekeeping.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="94" column="26" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/209e3695-a888-4758-80ae-8c1a261fc854/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -746,44 +763,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/TimeKeepingView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="379" selection-start-line="379" selection-end-line="379" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#12356#12357#0" expanded="true" />
-            <element signature="e#12382#12383#0" expanded="true" />
-            <element signature="e#12416#12417#0" expanded="true" />
-            <element signature="e#12446#12447#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/FitnessView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="262" column="75" selection-start-line="262" selection-start-column="75" selection-end-line="262" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/watch/FitnessDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="56" column="53" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/watch/DBManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4321">
-          <caret line="281" column="49" selection-start-line="281" selection-start-column="49" selection-end-line="281" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/watch/Fitness.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1982">
+        <state relative-caret-position="1957">
           <caret line="143" selection-start-line="143" selection-end-line="143" />
         </state>
       </provider>
@@ -795,17 +777,166 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/watch/InstManagerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/watch/SelectFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
+        <state relative-caret-position="1349">
+          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/TimeKeepingView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6840">
+          <caret line="379" selection-start-line="379" selection-end-line="379" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/watch/Timekeeping.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1368">
+          <caret line="94" column="26" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/watch/DBManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5339">
+          <caret line="281" column="13" selection-start-line="281" selection-start-column="13" selection-end-line="281" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/watch/FitnessDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/FitnessView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4636">
+          <caret line="262" column="38" selection-start-line="262" selection-start-column="38" selection-end-line="262" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/ControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/BuzzerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-562">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/DBManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1721">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/DdayTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1419">
+          <caret line="142" column="3" selection-start-line="142" selection-start-column="3" selection-end-line="142" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/FitnessDTOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/watch/FitnessTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="182" column="13" lean-forward="true" selection-start-line="182" selection-start-column="13" selection-end-line="182" selection-end-column="13" />
+        <state relative-caret-position="-239">
+          <caret line="169" column="13" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/AlarmTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/InstManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/SelectFunctionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/StopwatchDTOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/StopwatchTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/TimekeepingTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/watch/TimersTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-380">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -827,6 +958,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -860,7 +992,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>CTIP_SMA_6</last-edited>
+          <last-edited>test|CTIP_SMA_6</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -872,7 +1004,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>sqlite-jdbc-3.27.2.1</last-edited>
+          <last-edited>sqlite-jdbc-3.27.2.11</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

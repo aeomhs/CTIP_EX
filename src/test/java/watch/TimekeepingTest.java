@@ -1,6 +1,6 @@
 package watch;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
@@ -25,7 +25,7 @@ class TimekeepingTest {
     }
 
 
-    @Ignore
+    @Disabled
         //현재 일 을 적어줘야 test통과가 된다. 이미 확인했으므로 차후 테스트 fail을 방지하기 위해 ignore처리를 해준다.
     void getDate() throws Exception {
         try {
@@ -35,7 +35,7 @@ class TimekeepingTest {
         }
     }
 
-    @Ignore
+    @Disabled
         //현재 요일을 적어줘야 test통가과 된다. 이미 확인했으므로 차후 테스트 fail을 방지하기 위해 Ignore처리를 해준다.
     void getDayNum()  throws Exception {
         try {
