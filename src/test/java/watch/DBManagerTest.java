@@ -24,7 +24,7 @@ class DBManagerTest {
     void selectFitness() throws Exception{
         try{
             junitTest.selectFitness("look", 0);
-            assertEquals(0,fitnessDTO.getCount());
+            assertEquals(6,fitnessDTO.getCount());
 
         }catch (Exception e){
             System.out.println("selectFitness failed");

@@ -14,7 +14,7 @@ public class Stopwatch extends Thread implements CountUp, StateChange{
         this.hour = 0;
         this.minute = 0;
         this.second = 0;
-        is_stop = false;
+        is_stop = true;
 
         this.dbManager = DBManager.getInstance();
         this.swDTO = StopwatchDTO.getInstance();
@@ -64,11 +64,8 @@ public class Stopwatch extends Thread implements CountUp, StateChange{
     // method
     @Override
     synchronized public void countUp() {
-        outerLoop:
         while(true) {
-            //   System.out.println("루프엔 들어왔니");
             if (is_stop == false) {
-                //     System.out.println("is stop은 통과했니");
                 this.second++;
                 if (this.second == 60) {
                     this.second = 0;
@@ -87,15 +84,15 @@ public class Stopwatch extends Thread implements CountUp, StateChange{
             }
             //is_stop == true
             else{
-                synchronized (this) {
-                    try {
-                        //System.out.println("wait");
-                        this.wait();
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
+                // synchronized (this) {
+                try {
+                    //System.out.println("wait");
+                    this.wait();
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
+                //  }
             }
         }
     }

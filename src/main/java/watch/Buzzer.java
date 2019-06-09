@@ -33,7 +33,6 @@ public class Buzzer{
 
     public void beep(){
         File bgm;
-
         AudioInputStream stream;
         AudioFormat format;
         DataLine.Info info;
@@ -55,8 +54,6 @@ public class Buzzer{
         }
     }
 
-    //30초 다 채워서 울리면 return true
-    //30초 다 못 채우고 울리면 return false
     public int ringBuzzer() {
         int time_value;
         baseView.on_buzzerMode();

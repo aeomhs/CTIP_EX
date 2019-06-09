@@ -55,7 +55,7 @@ class SelectFunctionTest {
     @Test
     void checkDefaultDisplay() throws Exception{
         try{
-            assertEquals(false, junitTest.checkDefaultDisplay());
+            assertEquals(true, junitTest.checkDefaultDisplay());
         }catch (Exception e){
             System.out.println("checkDefaultDisplay failed");
         }

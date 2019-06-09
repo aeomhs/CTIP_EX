@@ -49,29 +49,40 @@ public class Timers extends Thread{
     }
 
     //usecase: count_down
-    synchronized public void countDown() {
-        outerLoop:
+    synchronized public void countDown() {      //000   00x     0xx     xxx     x0x     x00     xx0     0x0
+        //   System.out.println("dd");
+        //    outerLoop:
         while (true) {
+            System.out.println("ddsf");
             if(is_stop == false) {
-                if(this.second != 0){
+                System.out.println("여기는 카운트다운 while문 내부");
+                if(this.second!=0 && this.minute==0 && this.hour==0){
                     this.second--;
-                }else {
-                    this.minute--;
-                    this.second = 60;
+                }else if(this.second!=0 && this.minute!=0 && this.hour==0){
                     this.second--;
-                }
-                if (this.second == 0 && this.minute != 0) {
-                    this.second = 60;
-                    this.minute--;
-                } else if (this.second == 0 && this.minute == 0 && this.hour != 0) {
-                    this.minute = 60;
+                }else if(this.second!=0 && this.minute!=0 && this.hour!=0){
+                    this.second--;
+                }else if(this.second!=0 && this.minute==0 && this.hour!=0){
+                    this.second--;
+                }else if(this.second==0 && this.minute==0 && this.hour!=0){
                     this.hour--;
+                    this.minute = 59;
+                    this.second = 60;
+                    this.second--;
+                }else if(this.second==0 && this.minute!=0 && this.hour!=0){
+                    this.minute--;
+                    this.second=60;
+                    this.second--;
+                }else if(this.second==0 && this.minute!=0 && this.hour==0) {
+                    this.minute--;
+                    this.second = 60;
+                    this.second--;
                 } else if(this.second == 0 && this.minute == 0 && this.hour == 0){
                     check = checkTimer();
                     if (check == true) {
                         buzzer.setIs_stop(false);
                         buzzer.ringBuzzer();
-                        break outerLoop;
+                        // break outerLoop;
                     }
                 }
                 try {
