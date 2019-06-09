@@ -15,7 +15,7 @@ public class Controller {
 
     private InstManager instManager;
     private FitnessDTO fitDTO;
-    //private StopwatchDTO swDTO;
+
     private BaseView baseView;
 
     private int dDayIndex;
@@ -41,14 +41,14 @@ public class Controller {
         this.selectFunc = instManager.getSelectFunction();
 
         this.fitDTO = FitnessDTO.getInstance();
-        //this.swDTO = StopwatchDTO.getInstance();
+
 
 
     }
 
     // common function & select function
     synchronized public void req_countUp(String status) {
-        // System.out.println("tlqnfkf");
+     
         if (status.equals("stopwatch")) {//스탑워치일 때
             stopwatch.setIs_stop(false);
             stopwatch.start();

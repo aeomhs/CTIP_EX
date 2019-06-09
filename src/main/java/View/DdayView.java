@@ -245,8 +245,6 @@ public class DdayView extends JPanel{
                             dDay_status = "Setting";
                             dot.setText("Really Delete??");
                         }
-                    } else if (dDay_status.equals("Finish") == true) {
-
                     } else if (dDay_status.equals("Setting") == true) {
                         dDay_status = "List";
                         dot.setText((InstManager.getInstance().getdDayIndex() + 1) + "번째 목표 : " + dDay.getGoal());
