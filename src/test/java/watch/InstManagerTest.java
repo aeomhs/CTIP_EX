@@ -1,5 +1,6 @@
 package watch;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -12,13 +13,18 @@ class InstManagerTest {
 
     @Test
     void getInstance() {
-        junitTest.getInstance();
+        junitTest = InstManager.getInstance();
+        try {
+            Assertions.assertNotNull(junitTest);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
-
     @Test
     void getAlarmIndex() throws Exception{
         try{
-            junitTest.getAlarmIndex();
+            Assertions.assertEquals(0, junitTest.getAlarmIndex());
         }catch (Exception e){
             System.out.println("getAlarmIndex failed");
         }
@@ -27,7 +33,7 @@ class InstManagerTest {
     @Test
     void getdDayIndex()  throws Exception{
         try{
-            junitTest.getdDayIndex();
+            Assertions.assertEquals(0, junitTest.getdDayIndex());
         }catch (Exception e){
             System.out.println("getdDayIndex failed");
         }
@@ -37,6 +43,7 @@ class InstManagerTest {
     void setAlarmIndex()  throws Exception{
         try{
             junitTest.setAlarmIndex(3);
+            Assertions.assertEquals(3,junitTest.getAlarmIndex());
         }catch (Exception e){
             System.out.println("setAlarmIndex failed");
         }
@@ -46,6 +53,7 @@ class InstManagerTest {
     void setdDayIndex()  throws Exception{
         try{
             junitTest.setdDayIndex(2);
+            Assertions.assertEquals(2, junitTest.getdDayIndex());
         }catch (Exception e){
             System.out.println("setdDayIndex failed");
         }
@@ -55,11 +63,12 @@ class InstManagerTest {
     void getAlarmInstNum()  throws Exception{
         try{
             junitTest.getAlarmInstNum();
+            Assertions.assertEquals(0,junitTest.getAlarmInstNum());
         }catch (Exception e){
             System.out.println("getAlarmInstNum failed");
         }
     }
-
+/*
     @Test
     void getdDayInstNum()  throws Exception{
         try{
@@ -68,11 +77,11 @@ class InstManagerTest {
             System.out.println("getdDayInstNum failed");
         }
     }
-
+*/
     @Test
     void getTimekeeping()  throws Exception{
         try{
-            junitTest.getTimekeeping();
+            Assertions.assertNotNull(junitTest.getTimekeeping());
         }catch (Exception e){
             System.out.println("getTimekeeping failed");
         }
@@ -81,7 +90,7 @@ class InstManagerTest {
     @Test
     void getTimer()  throws Exception{
         try{
-            junitTest.getTimer();
+            Assertions.assertNotNull(junitTest.getTimer());
         }catch (Exception e){
             System.out.println("getTimer failed");
         }
@@ -90,7 +99,9 @@ class InstManagerTest {
     @Test
     void getAlarm()  throws Exception{
         try{
-            junitTest.getAlarm();
+            junitTest.createInst("alarm");
+            junitTest.setAlarmIndex(0);
+            Assertions.assertNotNull(junitTest.getAlarm());
         }catch (Exception e){
             System.out.println("getAlarm failed");
         }
@@ -99,7 +110,7 @@ class InstManagerTest {
     @Test
     void getStopwatch() throws Exception{
         try{
-            junitTest.getStopwatch();
+            Assertions.assertNotNull(junitTest.getStopwatch());
         }catch (Exception e){
             System.out.println("getStopwatch failed");
         }
@@ -108,7 +119,9 @@ class InstManagerTest {
     @Test
     void getDday()  throws Exception{
         try{
-            junitTest.getDday();
+            junitTest.createInst("dDay");
+            junitTest.setdDayIndex(0);
+            Assertions.assertNotNull(junitTest.getDday());
         }catch (Exception e){
             System.out.println("getDday failed");
         }
@@ -117,7 +130,7 @@ class InstManagerTest {
     @Test
     void getFitness()  throws Exception{
         try{
-            junitTest.getFitness();
+            Assertions.assertNotNull(junitTest.getFitness());
         }catch (Exception e){
             System.out.println("getFitness failed");
         }
@@ -126,7 +139,7 @@ class InstManagerTest {
     @Test
     void getSelectFunction()  throws Exception{
         try{
-            junitTest.getSelectFunction();
+            Assertions.assertNotNull(junitTest.getSelectFunction());
         }catch (Exception e){
             System.out.println("getSelectFunction failed");
         }
@@ -136,11 +149,13 @@ class InstManagerTest {
     void deleteInst() throws Exception{
         try{
             junitTest.deleteInst("alarm");
+            Assertions.assertEquals(0,junitTest.getAlarmInstNum());
         }catch (Exception e){
             System.out.println("deleteInst failed");
         }
     }
 
+    /*
     @Test
     void createInst() throws Exception{
         try{
@@ -149,4 +164,6 @@ class InstManagerTest {
             System.out.println("createInst failed");
         }
     }
+    */
+
 }
