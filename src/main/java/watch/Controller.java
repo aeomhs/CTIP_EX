@@ -18,9 +18,6 @@ public class Controller {
 
     private BaseView baseView;
 
-    private int dDayIndex;
-    private int alarmIndex;
-
     private int alarmInstNum;
     private int dDayInstNum;
 
@@ -48,7 +45,7 @@ public class Controller {
 
     // common function & select function
     synchronized public void req_countUp(String status) {
-     
+
         if (status.equals("stopwatch")) {//스탑워치일 때
             stopwatch.setIs_stop(false);
             stopwatch.start();
