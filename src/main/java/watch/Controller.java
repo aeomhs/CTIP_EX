@@ -349,10 +349,12 @@ public class Controller {
             return dDay;
         }
     }
+
+    /*
     public String req_nextGoal(String status){
         return dDay.showGoal(status);
     }
-
+*/
     public void req_setGoal(String currGoal){
         this.dDay.setGoal(currGoal);
     }
