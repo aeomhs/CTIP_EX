@@ -269,15 +269,6 @@ class ControllerTest {
         }
     }
 
-    @Disabled
-    void req_nextGoal() throws Exception {
-        try {
-            junitTest.req_nextGoal("nextGoal");
-            Assertions.assertNotNull(junitTest.getInstManager().getDday());
-        }catch (Exception e){
-            System.out.println("req_nextGoal failed");
-        }
-    }
 
     @Disabled
     void req_setGoal() throws Exception {
