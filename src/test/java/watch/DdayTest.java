@@ -1,12 +1,12 @@
 package watch;
 
 
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
+import static org.junit.jupiter.api.Assertions.*;
 
 class DdayTest {
     public static Dday junitTest;
@@ -20,7 +20,7 @@ class DdayTest {
         junitTest = new Dday();
         junitTest.setIs_delete(false);
         try{
-            Assertions.assertNotNull(junitTest);
+            assertNotNull(junitTest);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -31,9 +31,9 @@ class DdayTest {
     void setDate() throws Exception {
         try{
             junitTest.setDate(2018, 3, 11);
-            Assertions.assertEquals(2018, junitTest.getYear());
-            Assertions.assertEquals(3,junitTest.getMonth());
-            Assertions.assertEquals(11,junitTest.getDate());
+            assertEquals(2018, junitTest.getYear());
+            assertEquals(3,junitTest.getMonth());
+            assertEquals(11,junitTest.getDate());
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -44,7 +44,7 @@ class DdayTest {
     void showGoal() throws Exception {
         try {
 
-            Assertions.assertEquals("stop smoking",junitTest.showGoal("nextGoal"));
+            assertEquals("stop smoking",junitTest.showGoal("nextGoal"));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,10 +64,10 @@ class DdayTest {
     @Test
     void setDday() throws Exception {
         try {
-            junitTest.setDate(2019, 5, 9);
+            junitTest.setDate(InstManager.getInstance().getTimekeeping().getYear(), InstManager.getInstance().getTimekeeping().getMonth(), InstManager.getInstance().getTimekeeping().getDate());
             //System.out.println(InstManager.getInstance().getTimekeeping().getYear() +" 월 : "+ InstManager.getInstance().getTimekeeping().getMonth()+" 일 : "+ InstManager.getInstance().getTimekeeping().getDate());
             junitTest.setDday();
-            Assertions.assertEquals(0,junitTest.getDayCount());
+            assertEquals(0,junitTest.getDayCount());
         } catch (Exception var2) {
             System.out.println("error");
         }
@@ -79,7 +79,7 @@ class DdayTest {
     void getGoal() throws Exception {
         try {
             junitTest.setGoal("stop drinking");
-            Assertions.assertEquals("stop drinking", junitTest.getGoal());
+            assertEquals("stop drinking", junitTest.getGoal());
         } catch (Exception var2) {
             System.out.println("error");
         }
@@ -122,7 +122,7 @@ class DdayTest {
     void setGoal()throws Exception {
         try {
             junitTest.setGoal("stop drinking");
-            Assertions.assertEquals("stop drinking",junitTest.getGoal());
+            assertEquals("stop drinking",junitTest.getGoal());
 
         } catch (Exception var2) {
             System.out.println("error");
