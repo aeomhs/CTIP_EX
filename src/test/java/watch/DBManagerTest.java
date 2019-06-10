@@ -1,6 +1,7 @@
 package watch;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,7 +32,7 @@ class DBManagerTest {
         }
     }
 
-    @Test
+    @Disabled
     void insertFitness() throws Exception {
         try{
             junitTest.insertFitness(3,11, 9,30,00, 100);
@@ -44,7 +45,7 @@ class DBManagerTest {
         }
     }
 
-    @Test
+    @Disabled
     void updateFitness() throws Exception{
         try {
             junitTest.updateFitness(9,30,00, 300);
@@ -54,7 +55,7 @@ class DBManagerTest {
         }
     }
 
-    @Test
+    @Disabled
     void deleteFitness() throws Exception {
         try{
             junitTest.insertFitness(3,11, 9,30,00, 100);
@@ -78,7 +79,7 @@ class DBManagerTest {
 
     }
 
-    @Test
+    @Disabled
     void insertStopwatch() throws Exception {
         try{
             junitTest.insertStopwatch(9,30,00, 1);
@@ -89,7 +90,7 @@ class DBManagerTest {
         }
     }
 
-    @Test
+    @Disabled
     void deleteStopwatch() throws Exception {
         try{
             junitTest.deleteStopwatch();
