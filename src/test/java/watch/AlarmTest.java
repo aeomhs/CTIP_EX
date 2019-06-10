@@ -1,8 +1,5 @@
 package watch;
 
-import com.sun.xml.internal.ws.developer.UsesJAXBContext;
-import jdk.nashorn.internal.ir.annotations.Ignore;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -20,7 +17,7 @@ class AlarmTest {
         junitTest = new Alarm();
         junitTest.setIs_delete(false);
         try {
-            Assertions.assertNotNull(junitTest);
+            assertNotNull(junitTest);
         } catch (Exception var2) {
             System.out.println("error");
         }
@@ -32,7 +29,7 @@ class AlarmTest {
     @Test
     void getBuzzer() throws Exception {
         try {
-            Assertions.assertNotNull(junitTest.getBuzzer());
+            assertNotNull(junitTest.getBuzzer());
         } catch (Exception var2) {
             System.out.println("error");
         }
@@ -53,8 +50,8 @@ class AlarmTest {
     void getCheckDayList() throws Exception{
         try {
             junitTest.setDay(1);
-            Assertions.assertEquals(1,junitTest.getCheckDayList(0));
-            Assertions.assertEquals(1,junitTest.getDayListNum());
+            assertEquals(1,junitTest.getCheckDayList(0));
+            assertEquals(1,junitTest.getDayListNum());
 
         } catch (Exception var2) {
             System.out.println("error");
@@ -75,7 +72,7 @@ class AlarmTest {
     void getCycle()throws Exception {
         try {
             junitTest.setCycle(0);
-            Assertions.assertEquals(0,junitTest.getCycle());
+            assertEquals(0,junitTest.getCycle());
         } catch (Exception var2) {
             System.out.println("error");
         }
@@ -84,7 +81,7 @@ class AlarmTest {
     void getHour() throws Exception{
         try {
             junitTest.setHour(11);
-            Assertions.assertEquals(11, junitTest.getHour());
+            assertEquals(11, junitTest.getHour());
         }
         catch(Exception e){
             e.printStackTrace();
@@ -94,7 +91,7 @@ class AlarmTest {
     void getMinute() throws Exception{
         try {
             junitTest.setMinute(11);
-            Assertions.assertEquals(11, junitTest.getMinute());
+            assertEquals(11, junitTest.getMinute());
         }
         catch(Exception e){
             e.printStackTrace();
@@ -106,7 +103,7 @@ class AlarmTest {
     void getStatus() throws Exception{
         try {
             junitTest.setStatus(true);
-            Assertions.assertEquals(true, junitTest.getStatus());
+            assertEquals(true, junitTest.getStatus());
         }
         catch(Exception e){
             e.printStackTrace();
@@ -118,7 +115,7 @@ class AlarmTest {
     void onOffAlarm() throws Exception {
         try {
             junitTest.OnOffAlarm();
-            Assertions.assertEquals(false, junitTest.getStatus() );
+            assertEquals(false, junitTest.getStatus() );
         } catch (Exception var2) {
             System.out.println("error");
         }

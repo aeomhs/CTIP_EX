@@ -1,7 +1,7 @@
 package watch;
 
 import View.*;
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -33,7 +33,7 @@ class ControllerTest {
     void req_countUp() throws Exception {
         try{
             junitTest.req_countUp("stopwatch");
-            Assertions.assertNotNull(junitTest.getInstManager().getStopwatch());
+            assertNotNull(junitTest.getInstManager().getStopwatch());
         }catch(Exception e){
             System.out.println("req_countUp failed");
         }
@@ -43,7 +43,7 @@ class ControllerTest {
     void req_continue()  throws Exception {
         try{
             junitTest.req_continue("stopwatch");
-            Assertions.assertNotNull(junitTest.getInstManager().getStopwatch());
+          assertNotNull(junitTest.getInstManager().getStopwatch());
         }catch(Exception e){
             System.out.println("req_continue failed");
         }
@@ -53,7 +53,7 @@ class ControllerTest {
     void req_stopBuzzer()  throws Exception {
         try{
             junitTest.req_stopBuzzer("alarm");
-            Assertions.assertNotNull(junitTest.getInstManager().getAlarm());
+           assertNotNull(junitTest.getInstManager().getAlarm());
         }catch(Exception e){
             System.out.println("req_stopBuzzer failed");
         }
@@ -63,7 +63,7 @@ class ControllerTest {
     void req_changeMode()  throws Exception {
         try{
             junitTest.req_changeMode();
-            Assertions.assertNotNull(junitTest.getInstManager().getSelectFunction());
+           assertNotNull(junitTest.getInstManager().getSelectFunction());
         }catch(Exception e){
             System.out.println("req_changeMode failed");
         }
@@ -73,7 +73,7 @@ class ControllerTest {
     void req_lookFunc() throws Exception {
         try{
             junitTest.req_lookFunc();
-            Assertions.assertNotNull(junitTest.getInstManager().getSelectFunction());
+           assertNotNull(junitTest.getInstManager().getSelectFunction());
         }catch(Exception e){
             System.out.println("req_lookFunc failed");
         }
@@ -83,7 +83,7 @@ class ControllerTest {
     void req_funcList() throws Exception {
         try{
             junitTest.req_funcList();
-            Assertions.assertNotNull(junitTest.getInstManager().getSelectFunction());
+          assertNotNull(junitTest.getInstManager().getSelectFunction());
         }catch(Exception e){
             System.out.println("req_funcList failed");
         }
@@ -93,7 +93,7 @@ class ControllerTest {
     void req_selectFunc() throws Exception {
         try{
             junitTest.req_selectFunc(3);
-            Assertions.assertNotNull(junitTest.getInstManager().getSelectFunction());
+           assertNotNull(junitTest.getInstManager().getSelectFunction());
         }catch(Exception e){
             System.out.println("req_selectFunc failed");
         }
@@ -113,7 +113,7 @@ class ControllerTest {
     void req_setDate() throws Exception {
         try{
             junitTest.req_setDate("dDay", 2019, 5, 30);
-            Assertions.assertNotNull(junitTest.getInstManager().getDday());
+           assertNotNull(junitTest.getInstManager().getDday());
         }catch (Exception e){
             System.out.println("req_setDate failed");
         }
@@ -123,7 +123,7 @@ class ControllerTest {
     void req_setTime() throws Exception {
         try{
             junitTest.req_setTime("timer", 13, 5, 30);
-            Assertions.assertNotNull(junitTest.getInstManager().getTimer());
+           assertNotNull(junitTest.getInstManager().getTimer());
         }catch (Exception e){
             System.out.println("req_setTime failed");
         }
@@ -133,7 +133,7 @@ class ControllerTest {
     void req_countDown() throws Exception{
         try {
             junitTest.req_countDown();
-            Assertions.assertNotNull(junitTest.getInstManager().getTimekeeping());
+           assertNotNull(junitTest.getInstManager().getTimekeeping());
         }catch(Exception e){
             System.out.println("req_counDown failed");
         }
@@ -143,7 +143,7 @@ class ControllerTest {
     void req_pause() throws Exception {
         try {
             junitTest.req_pause("timer");
-            Assertions.assertNotNull(junitTest.getInstManager().getTimer());
+            assertNotNull(junitTest.getInstManager().getTimer());
         }catch (Exception e){
             System.out.println("req_pause failed");
         }
@@ -153,7 +153,7 @@ class ControllerTest {
     void req_reset() throws Exception {
         try {
             junitTest.req_reset();
-            Assertions.assertNotNull(junitTest.getInstManager().getTimer());
+           assertNotNull(junitTest.getInstManager().getTimer());
         }catch (Exception e){
             System.out.println("req_reset failed");
         }
@@ -163,7 +163,7 @@ class ControllerTest {
     void req_alarmList() throws Exception {
         try {
             junitTest.req_alarmList();
-            Assertions.assertNotNull(junitTest.getInstManager());
+           assertNotNull(junitTest.getInstManager());
         }catch (Exception e){
             System.out.println("req_alarmList failed");
         }
@@ -173,7 +173,7 @@ class ControllerTest {
     void req_setAlarm() throws Exception {
         try {
             junitTest.req_setAlarm();
-            Assertions.assertNotNull(junitTest.getInstManager().getAlarm());
+            assertNotNull(junitTest.getInstManager().getAlarm());
         }catch (Exception e){
             System.out.println("req_setAlarm failed");
         }
@@ -183,7 +183,7 @@ class ControllerTest {
     void req_setDate1()throws Exception {
         try {
             junitTest.req_setDate(null, 3, 5, 9, 30);
-            Assertions.assertNotNull(junitTest.getInstManager().getAlarm());
+          assertNotNull(junitTest.getInstManager().getAlarm());
         }catch (Exception e){
             System.out.println("req_setDate1 failed");
         }
@@ -193,7 +193,7 @@ class ControllerTest {
     void req_onOff() throws Exception {
         try {
             junitTest.req_onOff();
-            Assertions.assertNotNull(junitTest.getInstManager().getAlarm());
+           assertNotNull(junitTest.getInstManager().getAlarm());
         }catch (Exception e){
             System.out.println("req_onoff failed");
         }
@@ -203,7 +203,7 @@ class ControllerTest {
     void req_deleteAlarm()throws Exception {
         try {
             junitTest.req_deleteAlarm();
-            Assertions.assertNotNull(junitTest.getInstManager().getAlarm());
+           assertNotNull(junitTest.getInstManager().getAlarm());
         }catch (Exception e){
             System.out.println("req_deleteAlarm failed");
         }
@@ -213,7 +213,7 @@ class ControllerTest {
     void req_record() throws Exception {
         try {
             junitTest.req_record(1);
-            Assertions.assertNotNull(junitTest.getInstManager().getStopwatch());
+          assertNotNull(junitTest.getInstManager().getStopwatch());
         }catch (Exception e){
             System.out.println("req_record failed");
         }
@@ -223,7 +223,7 @@ class ControllerTest {
     void req_pause1() throws Exception {
         try {
             junitTest.req_pause();
-            Assertions.assertNotNull(junitTest.getInstManager().getStopwatch());
+          assertNotNull(junitTest.getInstManager().getStopwatch());
         }catch (Exception e){
             System.out.println("req_pause1 failed");
         }
@@ -233,7 +233,7 @@ class ControllerTest {
     void req_recordList() throws Exception {
         try {
             junitTest.req_recordList(1);
-            Assertions.assertNotNull(junitTest.getInstManager().getStopwatch());
+           assertNotNull(junitTest.getInstManager().getStopwatch());
         }catch (Exception e){
             System.out.println("req_recordList failed");
         }
@@ -243,7 +243,7 @@ class ControllerTest {
     void req_finish() throws Exception {
         try {
             junitTest.req_finish("fitness");
-            Assertions.assertNotNull(junitTest.getInstManager().getFitness());
+            assertNotNull(junitTest.getInstManager().getFitness());
         }catch (Exception e){
             System.out.println("req_finish failed");
         }
@@ -252,7 +252,7 @@ class ControllerTest {
     @Disabled
     void getBaseView() throws Exception {
         try {
-            Assertions.assertNotNull(junitTest.getBaseView());
+            assertNotNull(junitTest.getBaseView());
 
         }catch (Exception e){
             System.out.println("getBaseView failed");
@@ -263,7 +263,7 @@ class ControllerTest {
     void req_selectDate() throws Exception {
         try {
             junitTest.req_selectDate();
-            Assertions.assertNotNull(junitTest.getInstManager().getDday());
+            assertNotNull(junitTest.getInstManager().getDday());
         }catch (Exception e){
             System.out.println("req_selectDate failed");
         }
@@ -274,7 +274,7 @@ class ControllerTest {
     void req_setGoal() throws Exception {
         try {
             junitTest.req_setGoal("stop smoking");
-            Assertions.assertEquals("stop smoking",junitTest.getInstManager().getDday().getGoal());
+            assertEquals("stop smoking",junitTest.getInstManager().getDday().getGoal());
         }catch (Exception e){
             System.out.println("req_setGoal failed");
         }
@@ -284,7 +284,7 @@ class ControllerTest {
     void req_DdayList()throws Exception {
         try {
             junitTest.req_DdayList();
-            Assertions.assertNotNull(junitTest.getInstManager().getDday());
+            assertNotNull(junitTest.getInstManager().getDday());
         }catch (Exception e){
             System.out.println("req_DdayList failed");
         }
@@ -294,7 +294,7 @@ class ControllerTest {
     void req_deleteDday() throws Exception {
         try {
             junitTest.req_deleteDday();
-            Assertions.assertNotNull(junitTest.getInstManager().getDday());
+            assertNotNull(junitTest.getInstManager().getDday());
         }catch (Exception e){
             System.out.println("req_deleteDday failed");
         }
@@ -304,7 +304,7 @@ class ControllerTest {
     void req_fitnessList() throws Exception {
         try {
             junitTest.req_fitnessList(1);
-            Assertions.assertNotNull(junitTest.getInstManager().getFitness());
+            assertNotNull(junitTest.getInstManager().getFitness());
 
         }catch (Exception e){
             System.out.println("req_fitnessList failed");
@@ -315,7 +315,7 @@ class ControllerTest {
     void req_nextExercise() throws Exception {
         try {
             junitTest.req_nextExercise();
-            Assertions.assertNotNull(junitTest.getInstManager().getFitness());
+          assertNotNull(junitTest.getInstManager().getFitness());
         }catch (Exception e){
             System.out.println("req_nextExercise failed");
         }
@@ -325,7 +325,7 @@ class ControllerTest {
     void req_setExercise()throws Exception {
         try {
             junitTest.req_setExercise("running");
-            Assertions.assertEquals("running",junitTest.getInstManager().getFitness().getExercise());
+          assertEquals("running",junitTest.getInstManager().getFitness().getExercise());
         }catch (Exception e){
             System.out.println("req_setExercise failed");
         }
@@ -334,6 +334,6 @@ class ControllerTest {
     @Disabled
     void getInstManager()  {
         junitTest.getInstManager();
-        Assertions.assertNotNull(junitTest.getInstManager());
+       assertNotNull(junitTest.getInstManager());
     }
 }
